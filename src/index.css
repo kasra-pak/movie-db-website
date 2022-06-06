@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
+
+/*====================*/
+/*   Custom Styles   */
+/*==================*/
+
+.nav-link {
+  @apply border-2 border-l-0 border-transparent rounded-r-full hover:border-yellow-400 md:border-0;
+}
+
+.nav-link:hover img {
+  @apply scale-110 -rotate-6 transition-transform;
+}
+
+/*==================*/
 @tailwind utilities;
