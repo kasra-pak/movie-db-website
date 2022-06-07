@@ -1,13 +1,13 @@
 import React, { useState } from "react"
 
-import LogoImg from "../images/navbar/logo.svg"
-import HamburgerImg from "../images/navbar/hamburger.svg"
-import SearchImg from "../images/navbar/search.svg"
-import CloseImg from "../images/navbar/close.svg"
-import TvImg from "../images/mobile-menu/tv.svg"
-import MovieImg from "../images/mobile-menu/movie.svg"
-import BookmarkImg from "../images/mobile-menu/bookmark.svg"
-import LoginImg from "../images/mobile-menu/login.svg"
+import Logo from "../images/navbar/logo.svg"
+import Hamburger from "../images/navbar/hamburger.svg"
+import Search from "../images/navbar/search.svg"
+import Close from "../images/navbar/close.svg"
+import Tv from "../images/mobile-menu/tv.svg"
+import Movie from "../images/mobile-menu/movie.svg"
+import Bookmark from "../images/mobile-menu/bookmark.svg"
+import Login from "../images/mobile-menu/login.svg"
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -31,14 +31,19 @@ export default function Navbar() {
         aria-expanded={mobileMenuOpen}
         onClick={toggleMobileMenu}
       >
-        <img className="w-full" src={mobileMenuOpen ? CloseImg : HamburgerImg} aria-hidden="true" />
+        {mobileMenuOpen ? 
+          <Close className="w-full stroke-primary fill-primary" aria-hidden="true" /> :
+          <Hamburger className="w-full stroke-primary" aria-hidden="true" />
+        }
+        
       </button>
       {/* Logo */}
       <a href="#" className="flex gap-x-2.5 items-center z-10">
         <div className="w-7 sm:w-8">
-          <img src={LogoImg} alt="Website Logo" />
+          {/* <img src={LogoImg} alt="Website Logo" /> */}
+          <Logo className='fill-primary' />
         </div>
-        <p className="text-4xl font-semibold space text-yellow-400">
+        <p className="text-4xl font-semibold space text-primary">
           M<span className="hidden sm:inline">OVIE </span>DB
         </p>
       </a>
@@ -49,22 +54,22 @@ export default function Navbar() {
       >
         <li className="nav-link">
           <a className="block p-2 sm:p-3" href="#">
-            <img className="inline-block w-6 mr-2 -mt-1 my-auto sm:w-7 sm:mr-3 md:hidden" src={MovieImg} aria-hidden="true" />
+            <Movie className="inline-block w-6  fill-primary  mr-2 -mt-1 my-auto sm:mr-3 md:hidden" aria-hidden="true" />
             Movies</a>
         </li>
         <li className="nav-link">
           <a className="block p-2 sm:p-3" href="#">
-            <img className="inline-block w-6 mr-2 -mt-1 sm:w-7 sm:mr-3 md:hidden" src={TvImg} aria-hidden="true" />
+            <Tv className="inline-block fill-primary w-6 mr-2 -mt-1 sm:w-7 sm:mr-3 md:hidden" aria-hidden="true" />
             TV Shows</a>
         </li>
         <li className="nav-link">
           <a className="block p-2 sm:p-3" href="#">
-            <img className="inline-block w-6 mr-2 -mt-1 sm:w-7 sm:mr-3 md:hidden" src={BookmarkImg} aria-hidden="true" />
+            <Bookmark className="inline-block fill-primary w-6 mr-2 -mt-1 sm:w-7 sm:mr-3 md:hidden" aria-hidden="true" />
             Watch List</a>
         </li>
-        <li className="nav-link md:hidden text-yellow-400">
+        <li className="nav-link md:hidden text-primary">
           <a className="block p-2 sm:p-3" href="#">
-            <img className="inline-block w-6 mr-2 -mt-1 sm:w-7 sm:mr-3 md:hidden" src={LoginImg} aria-hidden="true" />
+            <Login className="inline-block fill-primary w-6 mr-2 -mt-1 sm:w-7 sm:mr-3 md:hidden" aria-hidden="true" />
             Login</a>
         </li>
       </ul>
@@ -85,10 +90,10 @@ export default function Navbar() {
         aria-expanded={searchBarOpen}
         onClick={toggleSearchBar}
       >
-        <img src={SearchImg} className="w-full" aria-hidden="true"/>
+        <Search className="w-full stroke-primary fill-gray-800" aria-hidden="true"/>
       </button>
       {/* logIn button */}
-      <a href="#" className="hidden md:block text-gray-900 bg-yellow-400 px-3 py-1 rounded-md">
+      <a href="#" className="hidden md:block text-gray-900 bg-primary px-3 py-1 rounded-md">
         Log In
       </a>
     </nav>

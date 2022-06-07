@@ -16,8 +16,12 @@ module.exports = {
         use: ["style-loader", "css-loader", "postcss-loader"]
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        test: /\.(png|jpg|jpeg|gif)$/i,
         type: 'asset/resource',
+      },
+      {
+        test: /\.svg$/i,
+        use: ['@svgr/webpack'],
       },
     ]
   },
@@ -34,11 +38,11 @@ module.exports = {
     //   publicPath: "/",
     // },
     client: {
-      logging: 'warn',
+      logging: "warn",
     },
     open: {
       app: {
-        name: 'firefox'
+        name: "firefox",
       }
     },
     port: 3000,
