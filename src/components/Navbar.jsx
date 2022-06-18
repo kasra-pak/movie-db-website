@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useRef, useState } from "react"
 
 import Logo from "../images/navbar/logo.svg"
 import Hamburger from "../images/navbar/hamburger.svg"
@@ -12,6 +12,7 @@ import Login from "../images/mobile-menu/login.svg"
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [searchBarOpen, setSearchBarOpen] = useState(false)
+  const searchInput = useRef()
 
   function toggleMobileMenu() {
     setMobileMenuOpen(prevState => !prevState)
@@ -20,13 +21,14 @@ export default function Navbar() {
   function toggleSearchBar() {
     setSearchBarOpen(prevState => !prevState)
     setMobileMenuOpen(false)
+    if (!searchBarOpen) searchInput.current.focus()
   }
 
   return (
     <nav className="bg-gray-800 text-gray-100 text-xl font-semibold tracking-wider flex justify-between items-center p-4 sm:text-2xl sm:p-6 md:tracking-wide">
       {/* Hamburger button */}
       <button
-        className="relative z-20 w-10 sm:w-14 md:hidden"
+        className="relative z-30 w-10 sm:w-14 md:hidden"
         aria-controls="mobile-menu"
         aria-expanded={mobileMenuOpen}
         onClick={toggleMobileMenu}
@@ -38,7 +40,7 @@ export default function Navbar() {
         
       </button>
       {/* Logo */}
-      <a href="#" className="flex gap-x-2.5 items-center z-10">
+      <a href="#" className={`flex gap-x-2.5 items-center ${searchBarOpen ? 'z-0' : 'z-30'} transition-all`}>
         <div className="w-7 sm:w-8">
           {/* <img src={LogoImg} alt="Website Logo" /> */}
           <Logo className='fill-primary' />
@@ -50,11 +52,11 @@ export default function Navbar() {
       {/* Links */}
       <ul
         id="mobile-menu"
-        className={`bg-inherit absolute inset-0 right-1/4 flex flex-col gap-10 py-32 px-4 transition-transform sm:py-40 sm:px-6 sm:gap-12 md:static md:flex-row md:gap-x-1 md:p-0 md:translate-x-0 overflow-hidden ${mobileMenuOpen ? '' : '-translate-x-full'}`}
+        className={`bg-inherit absolute inset-0 z-20 right-1/4 flex flex-col gap-10 py-32 px-4 transition-transform sm:py-40 sm:px-6 sm:gap-12 md:static md:flex-row md:gap-x-1 md:p-0 md:translate-x-0 overflow-hidden ${mobileMenuOpen ? '' : '-translate-x-full'}`}
       >
         <li className="nav-link">
           <a className="block p-2 sm:p-3" href="#">
-            <Movie className="inline-block w-6  fill-primary  mr-2 -mt-1 my-auto sm:mr-3 md:hidden" aria-hidden="true" />
+            <Movie className="inline-block fill-primary w-6 mr-2 -mt-1 sm:w-7 sm:mr-3 md:hidden" aria-hidden="true" />
             Movies</a>
         </li>
         <li className="nav-link">
@@ -74,10 +76,11 @@ export default function Navbar() {
         </li>
       </ul>
       {/* Search bar */}
-      <div className={`${searchBarOpen ? 'z-20' : 'z-0'} absolute inset-x-0 px-4 sm:px-6 md:hidden transition-all`}>
+      <div className={`${searchBarOpen ? 'z-30' : 'z-0'} absolute inset-x-0 px-4 transition-all sm:px-6 md:hidden`}>
         <label htmlFor="search-input" className="sr-only">search bar</label>
         <input
           className={`${searchBarOpen ? '' : 'scale-x-0 -translate-x-5'} w-full bg-gray-100 text-gray-900 p-2 sm:p-4 rounded-full origin-right transition-transform`}
+          ref={searchInput}
           type="search"
           id="search-input"
           placeholder="Search"
@@ -85,7 +88,7 @@ export default function Navbar() {
       </div>
       {/* Search button */}
       <button
-        className={`w-10 bg-gray-800 border-gray-100 rounded-full z-20 aspect-square transition-all sm:w-14 md:hidden ${searchBarOpen ? 'border-2' : ''}`}
+        className={`w-10 bg-gray-800 border-gray-100 rounded-full z-30 aspect-square transition-all sm:w-14 md:hidden ${searchBarOpen ? 'border-2' : ''}`}
         aria-controls="search-input"
         aria-expanded={searchBarOpen}
         onClick={toggleSearchBar}

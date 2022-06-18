@@ -13,6 +13,11 @@
   @apply scale-110 -rotate-6 transition-transform;
 }
 
+/* .wtf {
+  background: conic-gradient(radial-gradient(#e66465, #9198e5) 25%, transparent 0 100%);
+} */
+
+
 /*==================*/
 
 @tailwind utilities;
