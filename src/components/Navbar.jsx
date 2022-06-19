@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react"
+import { Link } from 'react-router-dom'
 
 import Logo from "../images/navbar/logo.svg"
 import Hamburger from "../images/navbar/hamburger.svg"
@@ -55,24 +56,24 @@ export default function Navbar() {
         className={`bg-inherit absolute inset-0 z-20 right-1/4 flex flex-col gap-10 py-32 px-4 transition-transform sm:py-40 sm:px-6 sm:gap-12 md:static md:flex-row md:gap-x-1 md:p-0 md:translate-x-0 overflow-hidden ${mobileMenuOpen ? '' : '-translate-x-full'}`}
       >
         <li className="nav-link">
-          <a className="block p-2 sm:p-3" href="#">
+          <a href="#" className="block p-2 sm:p-3">
             <Movie className="inline-block fill-primary w-6 mr-2 -mt-1 sm:w-7 sm:mr-3 md:hidden" aria-hidden="true" />
             Movies</a>
         </li>
         <li className="nav-link">
-          <a className="block p-2 sm:p-3" href="#">
+          <a href="#" className="block p-2 sm:p-3">
             <Tv className="inline-block fill-primary w-6 mr-2 -mt-1 sm:w-7 sm:mr-3 md:hidden" aria-hidden="true" />
             TV Shows</a>
         </li>
         <li className="nav-link">
-          <a className="block p-2 sm:p-3" href="#">
+          <a href="#" className="block p-2 sm:p-3">
             <Bookmark className="inline-block fill-primary w-6 mr-2 -mt-1 sm:w-7 sm:mr-3 md:hidden" aria-hidden="true" />
             Watch List</a>
         </li>
         <li className="nav-link md:hidden text-primary">
-          <a className="block p-2 sm:p-3" href="#">
+          <Link to="/login" className="block p-2 sm:p-3">
             <Login className="inline-block fill-primary w-6 mr-2 -mt-1 sm:w-7 sm:mr-3 md:hidden" aria-hidden="true" />
-            Login</a>
+            Login</Link>
         </li>
       </ul>
       {/* Search bar */}
@@ -96,9 +97,9 @@ export default function Navbar() {
         <Search className="w-full stroke-primary fill-gray-800" aria-hidden="true"/>
       </button>
       {/* logIn button */}
-      <a href="#" className="hidden md:block text-gray-900 bg-primary px-3 py-1 rounded-md">
+      <Link to="/login" className="hidden md:block text-gray-900 bg-primary px-3 py-1 rounded-md">
         Log In
-      </a>
+      </Link>
     </nav>
   )
 }

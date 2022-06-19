@@ -48,7 +48,7 @@ function getTrendingItems() {
       } else {
         return data.results.slice(0, 5).map(item => ({
           id: item.id,
-          title: item.original_title || item.original_name ,
+          title: item.title || item.name ,
           media: item.media_type,
           backdrop: `${imgUrl}${backdropSize}${item.backdrop_path}`,
           poster: `${imgUrl}${posterSize}${item.poster_path}`,
@@ -83,7 +83,7 @@ function getPopularItems(media='movie') {
       } else {
         return data.results.slice(0, 5).map(item => ({
           id: item.id,
-          title: item.original_title || item.original_name,
+          title: item.title || item.name,
           poster: `${imgUrl}${posterSize}${item.poster_path}`,
           score: item.vote_average,
         }))
@@ -97,4 +97,35 @@ function getPopularItems(media='movie') {
   )
 }
 
-export { getTrendingItems, getPopularItems }
+
+function getTopRatedItems(media='movie') {
+  const url_movie = 'http://localhost:8000/movie_api?method=/movie/top_rated'
+  const url_tv = 'http://localhost:8000/movie_api?method=/tv/top_rated'
+
+  const url = media === 'movie' ? url_movie : url_tv
+
+  return (
+    fetch(url)
+    .then(res => res.json())
+    .then(data => {
+
+      if (data.status_message) {
+        throw new Error(data.status_message)
+      } else {
+        return data.results.slice(0, 5).map(item => ({
+          id: item.id,
+          title: item.title || item.name,
+          poster: `${imgUrl}${posterSize}${item.poster_path}`,
+          score: item.vote_average,
+        }))
+      }
+      
+    })
+    .catch((err => {
+      console.log(err)
+      return null
+    }))
+  )
+}
+
+export { getTrendingItems, getPopularItems, getTopRatedItems }
