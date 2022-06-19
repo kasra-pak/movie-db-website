@@ -68,10 +68,7 @@ function getTrendingItems() {
 
 
 function getPopularItems(media='movie') {
-  const url_movie = 'http://localhost:8000/movie_api?method=/movie/popular'
-  const url_tv = 'http://localhost:8000/movie_api?method=/tv/popular'
-
-  const url = media === 'movie' ? url_movie : url_tv
+  const url = `http://localhost:8000/movie_api?method=/${media}/popular`
 
   return (
     fetch(url)
@@ -86,6 +83,7 @@ function getPopularItems(media='movie') {
           title: item.title || item.name,
           poster: `${imgUrl}${posterSize}${item.poster_path}`,
           score: item.vote_average,
+          media: media,
         }))
       }
       
@@ -99,10 +97,8 @@ function getPopularItems(media='movie') {
 
 
 function getTopRatedItems(media='movie') {
-  const url_movie = 'http://localhost:8000/movie_api?method=/movie/top_rated'
-  const url_tv = 'http://localhost:8000/movie_api?method=/tv/top_rated'
+  const url = `http://localhost:8000/movie_api?method=/${media}/top_rated`
 
-  const url = media === 'movie' ? url_movie : url_tv
 
   return (
     fetch(url)
@@ -117,6 +113,7 @@ function getTopRatedItems(media='movie') {
           title: item.title || item.name,
           poster: `${imgUrl}${posterSize}${item.poster_path}`,
           score: item.vote_average,
+          media: media,
         }))
       }
       
@@ -128,4 +125,33 @@ function getTopRatedItems(media='movie') {
   )
 }
 
-export { getTrendingItems, getPopularItems, getTopRatedItems }
+
+function getDetail(media='movie', id) {
+  const url = `http://localhost:8000/movie_api?method=/${media}/${id}`
+
+  return (
+    fetch(url)
+    .then(res => res.json())
+    .then(data => {
+
+      if (data.status_message) {
+        throw new Error(data.status_message)
+      } else {
+        return {
+          title: data.title || data.name,
+          // id: data.id,
+          // poster: `${imgUrl}${posterSize}${data.poster_path}`,
+          // score: data.vote_average,
+          // ...data
+        }
+      }
+    })
+    .catch((err => {
+      console.log(err)
+      return null
+    }))
+  )
+}
+
+
+export { getTrendingItems, getPopularItems, getTopRatedItems, getDetail }

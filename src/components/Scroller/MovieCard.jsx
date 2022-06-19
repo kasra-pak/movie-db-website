@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import Star from '../../images/home/star.svg'
 
 export default function({ data }) {
@@ -14,7 +15,7 @@ export default function({ data }) {
     scoreColor = 'text-red-500 border-red-500'
 
   return (
-    <div className='bg-slate-700 text-slate-200 rounded-md w-36 shrink-0 shadow-lg overflow-hidden hover:shadow-xl hover:scale-[102%] xs:w-52 sm:w-64 '>
+    <Link to={`/detail/${data.media}/${data.id}`} className='bg-slate-700 text-slate-200 rounded-md w-36 shrink-0 shadow-lg overflow-hidden hover:shadow-xl hover:scale-[102%] xs:w-52 sm:w-64 '>
       <div className='relative'>
         <img className='w-full rounded-md' src={data.poster} alt={data.title} />
         <div className="absolute inset-0 top-3/4 bg-gradient-to-t	from-slate-700"></div>
@@ -28,6 +29,6 @@ export default function({ data }) {
           {data.title}
         </h3>
       </div>
-    </div>
+    </Link>
   )
 }
