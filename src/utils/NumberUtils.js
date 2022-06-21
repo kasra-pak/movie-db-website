@@ -5,6 +5,14 @@ function preventOverflow(num, limit) {
     return (limit - 1)
   else 
     return num
-} 
+}
 
-export { preventOverflow }
+function convertToHour(minutes) {
+  if (minutes < 60) {
+    return minutes + 'min'
+  } else {
+    return `${Math.floor(minutes / 60)}h ${minutes % 60}min` 
+  }
+}
+
+export { preventOverflow, convertToHour }

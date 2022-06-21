@@ -11,7 +11,7 @@ export default function ScoreCircle({ score }) {
   else if (score >= 6 )
     color = 'bg-lime-500'
   else if (score >= 4 )
-    color = 'bg-orange-500'
+    color = 'bg-yellow-500'
   else 
     color = 'bg-red-500'
 

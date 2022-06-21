@@ -137,12 +137,40 @@ function getDetail(media='movie', id) {
       if (data.status_message) {
         throw new Error(data.status_message)
       } else {
-        return {
-          title: data.title || data.name,
-          // id: data.id,
-          // poster: `${imgUrl}${posterSize}${data.poster_path}`,
-          // score: data.vote_average,
-          // ...data
+
+        if (media === 'movie') {
+
+          return {
+            title: data.title,
+            poster: `${imgUrl}${posterSize}${data.poster_path}`,
+            backdrop: `${imgUrl}${backdropSize}${data.backdrop_path}`,
+            genres: data.genres.map(genre => genre.name),
+            overview: data.overview,
+            score: data.vote_average,
+            runtime: data.runtime,
+            release: data.release_date,
+            tagline: data.tagline,
+          }
+
+        } else {
+          
+          return {
+            title: data.name,
+            poster: `${imgUrl}${posterSize}${data.poster_path}`,
+            backdrop: `${imgUrl}${backdropSize}${data.backdrop_path}`,
+            genres: data.genres.map(genre => genre.name),
+            overview: data.overview,
+            score: data.vote_average,
+            runtime: data.runtime,
+            first_air: data.first_air_date,
+            last_air: data.last_air_date,
+            tagline: data.tagline,
+            seasons: data.seasons,
+            seasons_num: data.number_of_seasons,
+            episodes_num: data.number_of_episodes,
+            in_production: data.in_production,
+          }
+
         }
       }
     })

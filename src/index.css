@@ -4,6 +4,9 @@
 /*====================*/
 /*   Custom Styles   */
 /*==================*/
+body {
+  @apply bg-secondary;
+}
 
 .nav-link {
   @apply border-2 border-l-0 border-transparent rounded-r-full hover:border-primary md:border-0;
