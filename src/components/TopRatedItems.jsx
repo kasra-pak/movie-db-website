@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from "react"
 import Scroller from "./Scroller";
 import { getTopRatedItems } from "../api/functions";
+import LoadingImg from '../images/loading/loading.svg'
 
 export default function TopRatedItems() {
+  const [loading, setLoading] = useState(true)
   const [mediaType, setMediaType] = useState('movie')
   const [topRatedItems, setTopRatedItems] = useState(null)
 
   useEffect(() => {
-    getTopRatedItems(mediaType).then(items => setTopRatedItems(items))
+    setLoading(true)
+    getTopRatedItems(mediaType).then(items => {
+      setTopRatedItems(items)
+      setLoading(false)
+    })
   }, [mediaType])
 
   function handleMediaChange(event) {
@@ -15,7 +21,6 @@ export default function TopRatedItems() {
   }
 
   return (
-    topRatedItems && 
     <section className="bg-secondary text-gray-100 mt-4 p-4">
 
       <div className="flex justify-between items-center">
@@ -37,7 +42,12 @@ export default function TopRatedItems() {
         <label htmlFor="top_tv" className={`${mediaType === 'tv' ? 'text-slate-200 font-semibold' : 'text-orange-600'} w-full grow px-2 py-1 tracking-wider uppercase cursor-pointer xs:px-2.5`}>Tv</label>
       </div>
       
-      <Scroller data={topRatedItems} />
+      {loading ?
+        <div className="h-72 flex justify-center items-center">
+          <LoadingImg className="fill-primary w-12 mx-auto" />
+        </div> :
+        <Scroller data={topRatedItems} /> 
+      }
     </section>
   )
 }

@@ -1,13 +1,20 @@
 import React, { useState, useEffect } from "react"
 import Scroller from "./Scroller";
 import { getPopularItems } from "../api/functions";
+import LoadingImg from '../images/loading/loading.svg'
+
 
 export default function Populars() {
+  const [loading, setLoading] = useState(true)
   const [mediaType, setMediaType] = useState('movie')
   const [populars, setPopulars] = useState(null)
 
   useEffect(() => {
-    getPopularItems(mediaType).then(items => setPopulars(items))
+    setLoading(true)
+    getPopularItems(mediaType).then(items => {
+      setPopulars(items)
+      setLoading(false)
+    })
   }, [mediaType])
 
   function handleMediaChange(event) {
@@ -15,7 +22,6 @@ export default function Populars() {
   }
 
   return (
-    populars && 
     <section className="bg-secondary text-gray-100 mt-4 p-4">
 
       <div className="flex justify-between items-center">
@@ -37,7 +43,12 @@ export default function Populars() {
         <label htmlFor="tv" className={`${mediaType === 'tv' ? 'text-slate-200 font-semibold' : 'text-orange-600'} w-full grow px-2 py-1 tracking-wider uppercase cursor-pointer xs:px-2.5`}>Tv</label>
       </div>
       
-      <Scroller data={populars} />
+      {loading ?
+        <div className="h-72 flex justify-center items-center">
+          <LoadingImg className="fill-primary w-12 mx-auto" />
+        </div> :
+        <Scroller data={populars} /> 
+      }
     </section>
   )
 }
