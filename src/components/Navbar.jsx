@@ -84,6 +84,9 @@ export default function Navbar() {
         </li>
       </ul>
 
+teasjj;<aside>
+  
+</aside>
       {/* Search bar */}
       <div className={`${searchBarOpen ? 'z-30' : 'z-0'} absolute inset-x-0 px-4 transition-all sm:px-6 md:hidden`}>
         <label htmlFor="search-input" className="sr-only">search bar</label>
