@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react"
 import { Link } from 'react-router-dom'
+import { useSearchContext } from "../contexts/SearchContext"
 
 import Logo from "../images/navbar/logo.svg"
 import Hamburger from "../images/navbar/hamburger.svg"
@@ -11,22 +12,27 @@ import Bookmark from "../images/mobile-menu/bookmark.svg"
 import Login from "../images/mobile-menu/login.svg"
 
 export default function Navbar() {
+  const { searchTerm, setSearchTerm, searchBarOpen, setSearchBarOpen } = useSearchContext()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [searchBarOpen, setSearchBarOpen] = useState(false)
   const searchInput = useRef()
 
   function toggleMobileMenu() {
     setMobileMenuOpen(prevState => !prevState)
   }
 
-  function toggleSearchBar() {
+  function handleSearchBtnClick() {
     setSearchBarOpen(prevState => !prevState)
     setMobileMenuOpen(false)
     if (!searchBarOpen) searchInput.current.focus()
   }
 
+  function handleSearchInputChange(e) {
+    setSearchTerm(e.target.value)
+  }
+
   return (
     <nav className="bg-gray-800 text-gray-100 text-xl font-semibold tracking-wider flex justify-between items-center p-4 sm:text-2xl sm:p-6 md:tracking-wide">
+
       {/* Hamburger button */}
       <button
         className="relative z-30 w-10 sm:w-14 md:hidden"
@@ -40,16 +46,17 @@ export default function Navbar() {
         }
         
       </button>
+
       {/* Logo */}
       <a href="#" className={`flex gap-x-2.5 items-center ${searchBarOpen ? 'z-0' : 'z-30'} transition-all`}>
         <div className="w-7 sm:w-8">
-          {/* <img src={LogoImg} alt="Website Logo" /> */}
           <Logo className='fill-primary' />
         </div>
         <p className="text-4xl font-semibold space text-primary">
           M<span className="hidden sm:inline">OVIE </span>DB
         </p>
       </a>
+
       {/* Links */}
       <ul
         id="mobile-menu"
@@ -76,6 +83,7 @@ export default function Navbar() {
             Login</Link>
         </li>
       </ul>
+
       {/* Search bar */}
       <div className={`${searchBarOpen ? 'z-30' : 'z-0'} absolute inset-x-0 px-4 transition-all sm:px-6 md:hidden`}>
         <label htmlFor="search-input" className="sr-only">search bar</label>
@@ -85,17 +93,21 @@ export default function Navbar() {
           type="search"
           id="search-input"
           placeholder="Search"
+          value={searchTerm}
+          onChange={handleSearchInputChange}
         />
       </div>
+
       {/* Search button */}
       <button
         className={`w-10 bg-gray-800 border-gray-100 rounded-full z-30 aspect-square transition-all sm:w-14 md:hidden ${searchBarOpen ? 'border-2' : ''}`}
         aria-controls="search-input"
         aria-expanded={searchBarOpen}
-        onClick={toggleSearchBar}
+        onClick={handleSearchBtnClick}
       >
         <Search className="w-full stroke-primary fill-gray-800" aria-hidden="true"/>
       </button>
+
       {/* logIn button */}
       <Link to="/login" className="hidden md:block text-gray-900 bg-primary px-3 py-1 rounded-md">
         Log In

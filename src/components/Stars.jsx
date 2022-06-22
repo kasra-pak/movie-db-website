@@ -8,12 +8,12 @@ export default function Stars({ score }) {
 
   for(let i = 1; i <= 10; i++) {
     if (i < score) {
-      stars.push(<StarImg className="fill-primary w-2.5" />)
+      stars.push(<StarImg key={i} className="fill-primary w-2.5" />)
     } else if (decimal_flag) {
-      stars.push(<StarImg className="fill-slate-500 w-2.5" />)
+      stars.push(<StarImg key={i} className="fill-slate-500 w-2.5" />)
       decimal_flag = false
     } else {
-      stars.push(<StarImg className="fill-slate-500 w-2.5" />)
+      stars.push(<StarImg key={i} className="fill-slate-500 w-2.5" />)
     }
   }
 

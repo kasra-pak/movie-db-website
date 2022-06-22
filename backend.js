@@ -12,9 +12,11 @@ app.get('/movie_api', (req, res) => {
   const keyValue = process.env.API_KEY_VALUE
   const baseURL = process.env.API_BASE_URL
   const method = req.query.method
+  const query = req.query.q
 
   const params = {
     [keyName]: keyValue,
+    'query': query,
   }
 
   // 'https://api.themoviedb.org/3/trending/all/week'

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom";
 import { convertToHour } from "../utils/NumberUtils";
 import { getDetail } from "../api/functions"
+
 import Navbar from "../components/Navbar";
 import Stars from "../components/Stars";
 import BookmarkImg from '../images/mobile-menu/bookmark.svg'

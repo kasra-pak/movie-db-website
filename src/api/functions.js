@@ -182,4 +182,39 @@ function getDetail(media='movie', id) {
 }
 
 
-export { getTrendingItems, getPopularItems, getTopRatedItems, getDetail }
+function searchItems(searchTerm) {
+  const url = `http://localhost:8000/movie_api?method=/search/multi&q=${searchTerm}`
+
+  if (!searchTerm) {
+    const promise = new Promise(resolve => resolve(null))
+    return promise
+  } 
+
+  return (
+    fetch(url)
+    .then(res => res.json())
+    .then(data => {
+
+      if (data.status_message) {
+        throw new Error(data.status_message)
+      } else {
+        return data.results.slice(0, 5).map(item => ({
+          // id: item.id,
+          title: item.title || item.name,
+          // poster: `${imgUrl}${posterSize}${item.poster_path}`,
+          // score: item.vote_average,
+          // media: media,
+          // ...item
+        }))
+      }
+      
+    })
+    .catch((err => {
+      console.log(err)
+      return null
+    }))
+  )
+}
+
+
+export { getTrendingItems, getPopularItems, getTopRatedItems, getDetail, searchItems }
