@@ -1,7 +1,7 @@
 import React from 'react'
 import Navbar from '../components/Navbar';
 import Trends from '../components/Trends'
-import SearchBar from '../components/SearchBar'
+import SearchBarTemp from '../components/SearchBarTemp'
 import Populars from '../components/Populars';
 import TopRatedItems from '../components/TopRatedItems';
 
@@ -12,7 +12,9 @@ export default function Home() {
       <Navbar />
       <main className='bg-secondary'>
         <Trends />
-        <SearchBar />
+        <div className='hidden max-w-md justify-center mx-auto md:flex'>
+          <SearchBarTemp />
+        </div>
         <Populars />
         <TopRatedItems />
       </main>

@@ -22,6 +22,14 @@ function SearchProvider({ children }) {
     return (() => clearTimeout(searchingTimeout))
   }, [searchTerm])
 
+  function toggleSearchBarOpen(inputEl) {
+    setSearchBarOpen(prevState => !prevState)
+    if (!searchBarOpen) inputEl.focus()
+  }
+
+  function handleSearchTermChange(e) {
+    setSearchTerm(e.target.value)
+  }
 
   console.log(results)
 
@@ -29,9 +37,9 @@ function SearchProvider({ children }) {
     <SearchContext.Provider
       value={{
         searchTerm,
-        setSearchTerm,
+        handleSearchTermChange,
         searchBarOpen,
-        setSearchBarOpen,
+        toggleSearchBarOpen,
       }}
     >
       {children}
