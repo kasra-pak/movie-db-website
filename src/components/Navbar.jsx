@@ -42,7 +42,7 @@ export default function Navbar() {
       </button>
 
       {/* Logo */}
-      <a href="#" className={`flex gap-x-2.5 items-center ${searchBarOpen ? 'z-0' : 'z-30'} transition-all`}>
+      <a href="#" className={`flex gap-x-2.5 items-center ${searchBarOpen ? 'z-10' : 'z-30'} transition-all`}>
         <div className="w-7 sm:w-8">
           <Logo className='fill-primary' />
         </div>
@@ -79,8 +79,10 @@ export default function Navbar() {
       </ul>
       
       {/* SearchBar */}
-      <div className="md:hidden flex justify-end">
-        <SearchBarTemp />
+      <div className="md:hidden w-12 sm:w-14 ">
+        <div className={`${searchBarOpen ? 'absolute z-30' : ''} inset-4 flex justify-end sm:inset-6`}>
+          <SearchBarTemp />
+        </div>
       </div>
 
       {/* logIn button */}
