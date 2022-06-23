@@ -25,7 +25,7 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="bg-gray-800 text-gray-100 text-xl font-semibold tracking-wider flex justify-between items-center p-4 sm:text-2xl sm:p-6 md:tracking-wide">
+    <nav className="sticky top-0 z-40 bg-gray-800 text-gray-100 text-xl font-semibold tracking-wider flex justify-between items-center p-4 sm:text-2xl sm:p-6 md:tracking-wide">
 
       {/* Hamburger button */}
       <button
@@ -54,7 +54,7 @@ export default function Navbar() {
       {/* Links */}
       <ul
         id="mobile-menu"
-        className={`bg-inherit absolute inset-0 z-20 right-1/4 flex flex-col gap-10 py-32 px-4 transition-transform sm:py-40 sm:px-6 sm:gap-12 md:static md:flex-row md:gap-x-1 md:p-0 md:translate-x-0 overflow-hidden ${mobileMenuOpen ? '' : '-translate-x-full'}`}
+        className={`bg-inherit absolute h-screen inset-0 z-20 right-1/4 right flex flex-col gap-10 py-32 px-4 transition-transform xs:right-1/3 sm:right-1/2 sm:py-40 sm:px-6 sm:gap-12 md:static md:h-auto md:flex-row md:gap-x-1 md:p-0 md:translate-x-0 ${mobileMenuOpen ? '' : '-translate-x-full'}`}
       >
         <li className="nav-link">
           <a href="#" className="block p-2 sm:p-3">
@@ -77,8 +77,11 @@ export default function Navbar() {
             Login</Link>
         </li>
       </ul>
-
-      <SearchBarTemp />
+      
+      {/* SearchBar */}
+      <div className="md:hidden flex justify-end">
+        <SearchBarTemp />
+      </div>
 
       {/* logIn button */}
       <Link to="/login" className="hidden md:block text-gray-900 bg-primary px-3 py-1 rounded-md">
