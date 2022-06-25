@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import Scroller from "./Scroller";
-import { getPopularItems } from "../api/functions";
+import { getPopularItems } from "../api/functions"
+import FadingLine from "./FadingLine"
 import LoadingImg from '../images/loading/loading.svg'
 
 
@@ -31,7 +32,7 @@ export default function Populars() {
         </a>
       </div>
 
-      <div className="bg-gradient-to-r from-orange-600 to-transparent h-1 w-full my-2 rounded-l-sm xs:mb-4"></div>
+      <FadingLine />
 
       <div
         onChange={handleMediaChange}

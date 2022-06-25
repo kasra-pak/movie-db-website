@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom";
 import { getDetail } from "../api/functions"
 
-import Navbar from "../components/Navbar";
-import Intro from "../components/Detail/Intro";
+import Navbar from "../components/Navbar"
+import Intro from "../components/Detail/Intro"
+import InfoSection from "../components/Detail/InfoSection"
 import Cast from "../components/Detail/Cast";
 
 import LoadingImg from '../images/loading/loading.svg'
@@ -18,10 +19,7 @@ export default function Detail() {
       setData(data)
       setLoading(false)
     })
-    
   }, [])
-
-  console.log(data)
 
   return (
     <>
@@ -34,13 +32,13 @@ export default function Detail() {
         <main className="bg-secondary text-gray-100">
           <Intro media={media} data={data} />
 
-          <div className="text-gray-100 p-4">
-            <h1 className="text-xs-2xl font-semibold tracking-wider capitalize">storyline</h1>
-            <div className="bg-gradient-to-r from-orange-600 to-transparent h-1 w-full my-2 rounded-l-sm xs:mb-4"></div>
+          <InfoSection SectionHeader='Storyline'>
             <p>{data.overview}</p>
-          </div>
+          </InfoSection>
 
-          <Cast></Cast>
+          <InfoSection SectionHeader={'cast'}>
+            <Cast {...{media, id}} />
+          </InfoSection>
         </main>}
     </>
   )

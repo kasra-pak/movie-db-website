@@ -3,6 +3,7 @@
 const imgUrl = 'https://image.tmdb.org/t/p/'
 const posterSize = 'original'
 const backdropSize = 'original'
+const profileSize = 'original'
 
 const genres = {
   12: "Adventure",
@@ -217,4 +218,41 @@ function searchItems(searchTerm) {
 }
 
 
-export { getTrendingItems, getPopularItems, getTopRatedItems, getDetail, searchItems }
+function getCast(media='movie', id) {
+  const url = `http://localhost:8000/movie_api?method=/${media}/${id}/credits`
+
+
+  return (
+    fetch(url)
+    .then(res => res.json())
+    .then(data => {
+
+      if (data.status_message) {
+        throw new Error(data.status_message)
+      } else {
+        return data.cast.map(item => ({
+          id: item.id,
+          name: item.name,
+          profile: `${imgUrl}${profileSize}${item.profile_path}`,
+          character: item.character,
+          order: item.order,
+        }))
+      }
+      
+    })
+    .catch((err => {
+      console.log(err)
+      return null
+    }))
+  )
+}
+
+
+export {
+  getTrendingItems,
+  getPopularItems,
+  getTopRatedItems,
+  getDetail,
+  searchItems,
+  getCast,
+}
