@@ -56,7 +56,7 @@ export default function ImageSlider({ data, activeSlide, setActiveSlide }) {
                       <p key={idx} className="capitalize">{`${genre}${idx === item.genres.length - 1 ? '' : ' |'}`}</p>
                     ))}
                   </div>
-                  <ScoreCircle score={item.score} />
+                  <ScoreCircle score={(item.score).toFixed(1)} />
                 </div>
                 <p className="max-w-md hidden text-sm xs:line-clamp-2 xs:block sm:line-clamp-4">{item.overview}</p>
               </div>

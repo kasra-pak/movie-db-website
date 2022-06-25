@@ -148,8 +148,8 @@ function getDetail(media='movie', id) {
             overview: data.overview,
             score: data.vote_average,
             runtime: data.runtime,
-            release: data.release_date,
             tagline: data.tagline,
+            release: data.release_date.split('-')[0],
           }
 
         } else {
@@ -161,10 +161,10 @@ function getDetail(media='movie', id) {
             genres: data.genres.map(genre => genre.name),
             overview: data.overview,
             score: data.vote_average,
-            runtime: data.runtime,
-            first_air: data.first_air_date,
-            last_air: data.last_air_date,
+            runtime: data.episode_run_time,
             tagline: data.tagline,
+            first_air: data.first_air_date.split('-')[0],
+            last_air: data.last_air_date.split('-')[0],
             seasons: data.seasons,
             seasons_num: data.number_of_seasons,
             episodes_num: data.number_of_episodes,

@@ -22,7 +22,7 @@ export default function Stars({ score }) {
       <div className='flex gap-0.5'>
         {stars}
       </div>
-      <p className='text-slate-300 text-xs font-semibold w-max'>{score} / 10</p>
+      <p className='text-slate-300 text-xs tracking-wider font-semibold w-max'>{score} / 10</p>
     </div>
   )
 }
