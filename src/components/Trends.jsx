@@ -18,9 +18,9 @@ export default function Trends() {
 
   if (loading)
     return (
-      <main className="min-h-[90vh] flex justify-center items-center">
+      <section className="aspect-[9/5] flex justify-center items-center">
         <LoadingImg className="fill-primary w-12 mx-auto" />
-      </main>
+      </section>
     )
 
   return(

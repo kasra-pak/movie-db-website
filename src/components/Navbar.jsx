@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { Link } from 'react-router-dom'
 import { useSearchContext } from "../contexts/SearchContext"
-import SearchBarTemp from "./SearchBarTemp"
+import SearchBar from "./SearchBar"
 
 import Logo from "../images/navbar/logo.svg"
 import Hamburger from "../images/navbar/hamburger.svg"
@@ -81,7 +81,7 @@ export default function Navbar() {
       {/* SearchBar */}
       <div className="md:hidden w-12 sm:w-14 ">
         <div className={`${searchBarOpen ? 'absolute z-30' : ''} inset-4 flex justify-end sm:inset-6`}>
-          <SearchBarTemp />
+          <SearchBar />
         </div>
       </div>
 
