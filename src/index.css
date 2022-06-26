@@ -16,6 +16,25 @@ body {
   @apply scale-110 -rotate-6 transition-transform;
 }
 
+.scroller::-webkit-scrollbar {
+  height: 1em;
+}
+
+.scroller::-webkit-scrollbar-track {
+  @apply bg-primary rounded-full;
+}
+
+.scroller::-webkit-scrollbar-thumb {
+  @apply bg-orange-900 rounded-full;
+}
+
+@supports (scrollbar-color: #f97316 #7c2d12) {
+  .scroller {
+    scrollbar-color: #f97316 #7c2d12;
+    scrollbar-width: thin;
+  }
+}
+
 /* .wtf {
   background: conic-gradient(radial-gradient(#e66465, #9198e5) 25%, transparent 0 100%);
 } */
