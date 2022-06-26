@@ -1,10 +1,14 @@
-import React, { useRef } from "react"
+import React, { useEffect, useRef } from "react"
 import Search from "../../images/navbar/search.svg"
 import { useSearchContext } from "../../contexts/SearchContext"
 
 export default function SearchBarTemp() {
   const { searchTerm, handleSearchTermChange, searchBarOpen, toggleSearchBarOpen } = useSearchContext()
   const searchInput = useRef()
+
+  useEffect(() => {
+    if (searchBarOpen) searchInput.current.focus()
+  }, [])
   
   return (
     <div className={`${searchBarOpen ? 'w-full' : 'w-12 delay-300 sm:w-14'} transition-[width] duration-300 relative h-12 sm:h-14`}>

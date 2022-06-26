@@ -200,11 +200,18 @@ function searchItems(searchTerm) {
         throw new Error(data.status_message)
       } else {
         return data.results.slice(0, 5).map(item => ({
-          // id: item.id,
+          id: item.id,
+          media: item.media_type,
           title: item.title || item.name,
-          // poster: `${imgUrl}${posterSize}${item.poster_path}`,
+          picture:
+            item.poster_path && `${imgUrl}${posterSize}${item.poster_path}` ||
+            item.profile_path && `${imgUrl}${profileSize}${item.profile_path}` ||
+            'https://us.123rf.com/450wm/pavelstasevich/pavelstasevich1811/pavelstasevich181101028/112815904-no-image-available-icon-flat-vector-illustration.jpg?ver=6',
+          release: (item.release_date || item.first_air_date || '').split('-')[0],
+          known_for: item.known_for_department,
           // score: item.vote_average,
           // media: media,
+          // ...item
           // ...item
         }))
       }

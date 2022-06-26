@@ -51,7 +51,7 @@ export default function StickySearchBar() {
   }
 
   return (
-    <div ref={searchEl} className={`max-w-md rounded-full hidden justify-center mx-auto md:flex`}>
+    <div ref={searchEl} className={`relative max-w-md rounded-full hidden justify-center mx-auto md:flex`}>
 
       <div className='absolute inset-0 top-1/2 -translate-y-1/2 h-1 bg-gradient-to-l from-transparent via-primary to-transparent'></div>
 

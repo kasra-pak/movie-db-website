@@ -10,15 +10,13 @@ function SearchProvider({ children }) {
   const [results, setResults] = useState(null)
 
   useEffect(() => {
-    
     const searchingTimeout = setTimeout(() => {
       setSearching(true)
       searchItems(searchTerm).then(data => {
         setResults(data)
         setSearching(false)
       })
-    }, 1000);
-
+    }, 400);
     return (() => clearTimeout(searchingTimeout))
   }, [searchTerm])
 
@@ -31,8 +29,6 @@ function SearchProvider({ children }) {
     setSearchTerm(e.target.value)
   }
 
-  console.log(results)
-
   return (
     <SearchContext.Provider
       value={{
@@ -40,6 +36,8 @@ function SearchProvider({ children }) {
         handleSearchTermChange,
         searchBarOpen,
         toggleSearchBarOpen,
+        results,
+        searching,
       }}
     >
       {children}
