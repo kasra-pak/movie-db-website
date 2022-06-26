@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react"
 import { Link } from 'react-router-dom'
 import { useSearchContext } from "../contexts/SearchContext"
 import SearchBar from "./SearchBar"
+import Logo from "./Logo"
 
-import Logo from "../images/navbar/logo.svg"
 import Hamburger from "../images/navbar/hamburger.svg"
 import Close from "../images/navbar/close.svg"
 import Tv from "../images/mobile-menu/tv.svg"
@@ -42,13 +42,8 @@ export default function Navbar() {
       </button>
 
       {/* Logo */}
-      <a href="#" className={`flex gap-x-2.5 items-center ${searchBarOpen ? 'z-10' : 'z-30'} transition-all`}>
-        <div className="w-7 sm:w-8">
-          <Logo className='fill-primary' />
-        </div>
-        <p className="text-4xl font-semibold space text-primary">
-          M<span className="hidden sm:inline">OVIE </span>DB
-        </p>
+      <a href="#" className={`flex gap-x-2.5 items-center text-primary fill-primary ${searchBarOpen ? 'z-10' : 'z-30'} transition-all`}>
+        <Logo />
       </a>
 
       {/* Links */}

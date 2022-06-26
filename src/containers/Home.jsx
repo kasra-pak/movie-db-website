@@ -4,6 +4,7 @@ import Trends from '../components/Trends'
 import StickySearchBar from '../components/SearchBar/StickySearchBar'
 import Populars from '../components/Populars';
 import TopRatedItems from '../components/TopRatedItems';
+import Footer from '../components/Footer';
 
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
         <Populars />
         <TopRatedItems />
       </main>
+      <Footer />
   </>
   )
 }
