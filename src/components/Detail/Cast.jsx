@@ -36,7 +36,6 @@ export default function Cast({ media, id}) {
     ))
   }
 
-  console.log(cast)
 
   return (
     loading ?
