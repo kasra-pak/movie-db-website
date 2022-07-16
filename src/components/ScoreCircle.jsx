@@ -1,26 +1,38 @@
-import React, { useState } from 'react'
+import React from "react";
 
 export default function ScoreCircle({ score }) {
-  // const [color, setColor] = useState()
-
-  // const style = `background: conic-gradient(green 50%, transparent 0 100%)`
-
   let color;
-  if (score >= 8)
-    color = 'bg-green-500'
-  else if (score >= 6 )
-    color = 'bg-lime-500'
-  else if (score >= 4 )
-    color = 'bg-yellow-500'
-  else 
-    color = 'bg-red-500'
+  if (score >= 8) color = "#22c55e";
+  else if (score >= 6) color = "#84cc16";
+  else if (score >= 4) color = "#eab308";
+  else color = "#ef4444";
+
+  const styles = {
+    background: `conic-gradient(${color} ${score * 10}%, rgb(31 41 55) 0 100%)`,
+  };
 
   return (
-    <div className={`flex text-xs ${color} justify-center items-center w-6 aspect-square rounded-full py-px px-2 xs:text-base xs:px-4`}>
-      {/* <div className='wtf rounded-full absolute inset-0 '></div> */}
-      {score}
-    </div>
-  )
-}
+    <>
+      <div
+        className='hidden relative justify-center items-center w-11 border-2 border-secondary aspect-square rounded-full xs:flex'
+        style={styles}
+      >
+        <div className='absolute w-9 bg-secondary aspect-square rounded-full border-2 border-secondary flex justify-center items-center'>
+          <p
+            className='text-text-xs font-semibold xs:text-sm'
+            style={{ color }}
+          >
+            {score}
+          </p>
+        </div>
+      </div>
 
-// pre class: `flex text-xs ${color} justify-center items-center w-6 rounded-md py-px px-2 xs:text-base xs:px-4`
+      <div
+        className='text-xs rounded-full p-1 xs:hidden'
+        style={{ backgroundColor: color }}
+      >
+        {score}
+      </div>
+    </>
+  );
+}

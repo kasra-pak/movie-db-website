@@ -37,7 +37,7 @@ const genres = {
 }
 
 function getTrendingItems() {
-  const url = 'http://localhost:8000/movie_api?method=/trending/movie,tv/week'
+  const url = 'http://localhost:8000/movie_api?method=/trending/movie/week'
 
   return (
     fetch(url)
