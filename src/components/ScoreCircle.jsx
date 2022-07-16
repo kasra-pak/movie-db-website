@@ -14,24 +14,14 @@ export default function ScoreCircle({ score }) {
   return (
     <>
       <div
-        className='hidden relative justify-center items-center w-11 border-2 border-secondary aspect-square rounded-full xs:flex'
+        className='relative flex justify-center items-center w-8 border-2 border-secondary aspect-square rounded-full xs:w-11'
         style={styles}
       >
-        <div className='absolute w-9 bg-secondary aspect-square rounded-full border-2 border-secondary flex justify-center items-center'>
-          <p
-            className='text-text-xs font-semibold xs:text-sm'
-            style={{ color }}
-          >
+        <div className='absolute bg-secondary flex justify-center items-center w-6 aspect-square rounded-full border-2 border-secondary xs:w-9'>
+          <p className='text-xs xs:font-semibold xs:text-sm' style={{ color }}>
             {score}
           </p>
         </div>
-      </div>
-
-      <div
-        className='text-xs rounded-full p-1 xs:hidden'
-        style={{ backgroundColor: color }}
-      >
-        {score}
       </div>
     </>
   );
