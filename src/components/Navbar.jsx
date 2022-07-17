@@ -24,7 +24,7 @@ export default function Navbar() {
   }
 
   return (
-    <nav className='sticky top-0 z-40 bg-gray-800 text-gray-100 text-lg font-semibold tracking-wider flex justify-between items-center px-4 py-2 sm:text-xl md:tracking-wide'>
+    <nav className='sticky top-0 z-40 bg-gray-800 text-gray-100 text-lg font-semibold tracking-wider flex justify-between items-center px-4 py-2 sm:text-xl sm:px-6 md:tracking-wide'>
       {/* Hamburger button */}
       <button
         className='relative z-30 w-8 sm:w-11 md:hidden'

@@ -9,7 +9,17 @@ body {
 }
 
 .nav-link {
-  @apply border-2 border-l-0 border-transparent rounded-r-full hover:border-primary md:border-0;
+  @apply relative border-2 border-l-0 border-transparent rounded-r-full md:border-0;
+}
+
+.nav-link:hover {
+  @apply border-primary bg-gradient-to-l from-primary;
+}
+
+.nav-link:hover::before {
+  content: "";
+  transform: perspective(100px) rotateX(-25deg);
+  @apply hidden absolute inset-0 top-[15%] -z-10 bg-gradient-to-t from-primary md:rounded-none;
 }
 
 .nav-link:hover svg {
