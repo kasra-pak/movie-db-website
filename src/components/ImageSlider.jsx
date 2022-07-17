@@ -14,9 +14,7 @@ export default function ImageSlider({ data, activeSlide, setActiveSlide }) {
         else child.classList.remove("opacity-0");
       });
 
-      setActiveSlide((prevSlide) =>
-        preventOverflow(prevSlide + 1, data.length)
-      );
+      setActiveSlide(prevSlide => preventOverflow(prevSlide + 1, data.length));
     }, 6000);
 
     return () => clearInterval(sliderTimer);
@@ -24,13 +22,9 @@ export default function ImageSlider({ data, activeSlide, setActiveSlide }) {
 
   function handleSkip(direction) {
     if (direction === "backward")
-      setActiveSlide((prevSlide) =>
-        preventOverflow(prevSlide - 1, data.length)
-      );
+      setActiveSlide(prevSlide => preventOverflow(prevSlide - 1, data.length));
     else
-      setActiveSlide((prevSlide) =>
-        preventOverflow(prevSlide + 1, data.length)
-      );
+      setActiveSlide(prevSlide => preventOverflow(prevSlide + 1, data.length));
   }
 
   return (
@@ -56,7 +50,7 @@ export default function ImageSlider({ data, activeSlide, setActiveSlide }) {
                 <p className=' font-bold tracking-wide text-sm-3xl capitalize truncate sm:text-3xl'>
                   {item.title}
                 </p>
-                <div className='grid grid-cols-[1fr_auto] items-center my-2 xs:gap-y-2'>
+                <div className='grid grid-cols-[1fr_auto] items-center my-2 xs:gap-2'>
                   <div className='flex flex-wrap h-5 gap-1 text-xs font-medium tracking-wider text-slate-200 opacity-90 overflow-hidden xs:text-sm xs:gap-2 '>
                     {item.genres.map((genre, idx) => (
                       <p key={idx} className='capitalize'>{`${genre}${
@@ -64,7 +58,9 @@ export default function ImageSlider({ data, activeSlide, setActiveSlide }) {
                       }`}</p>
                     ))}
                   </div>
-                  <ScoreCircle score={item.score.toFixed(1)} />
+                  <div className='text-xs w-8 self-start xs:font-semibold xs:text-sm xs:w-12 xs:row-span-2 sm:w-16 sm:self-center'>
+                    <ScoreCircle score={item.score.toFixed(1)} />
+                  </div>
                   <p className='max-w-md hidden text-sm xs:line-clamp-2 xs:block sm:line-clamp-4'>
                     {item.overview}
                   </p>
