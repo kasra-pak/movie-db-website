@@ -24,10 +24,10 @@ export default function Navbar() {
   }
 
   return (
-    <nav className='sticky top-0 z-40 bg-gray-800 text-gray-100 text-xl font-semibold tracking-wider flex justify-between items-center p-4 sm:text-2xl sm:p-6 md:tracking-wide'>
+    <nav className='sticky top-0 z-40 bg-gray-800 text-gray-100 text-lg font-semibold tracking-wider flex justify-between items-center px-4 py-2 sm:text-xl md:tracking-wide'>
       {/* Hamburger button */}
       <button
-        className='relative z-30 w-10 sm:w-14 md:hidden'
+        className='relative z-30 w-8 sm:w-11 md:hidden'
         aria-controls='mobile-menu'
         aria-expanded={mobileMenuOpen}
         onClick={toggleMobileMenu}
@@ -45,7 +45,7 @@ export default function Navbar() {
       {/* Logo */}
       <a
         href='#'
-        className={`flex gap-x-2.5 items-center text-primary fill-primary ${
+        className={`flex gap-x-1.5 items-center text-primary fill-primary ${
           searchBarOpen ? "z-10" : "z-30"
         } transition-all`}
       >
@@ -98,11 +98,11 @@ export default function Navbar() {
       </ul>
 
       {/* SearchBar */}
-      <div className='md:hidden w-12 sm:w-14 '>
+      <div className='md:hidden w-8 sm:w-11'>
         <div
           className={`${
             searchBarOpen ? "absolute z-30" : ""
-          } inset-4 flex justify-end sm:inset-6`}
+          } inset-x-4 inset-y-2 flex justify-end`}
         >
           <SearchBar />
         </div>
