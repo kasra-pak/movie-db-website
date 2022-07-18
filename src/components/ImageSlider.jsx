@@ -34,24 +34,27 @@ export default function ImageSlider({ data, activeSlide, setActiveSlide }) {
           key={idx}
           className={`${
             activeSlide !== idx ? "h-0 opacity-0" : ""
-          } inset-0 transition-opacity text`}
+          } inset-0 transition-opacity`}
         >
           <div className='relative'>
             <SlideControl skip={handleSkip} direction='backward' />
             <SlideControl skip={handleSkip} direction='forward' />
-            <Link to={`/detail/${item.media}/${item.id}`}>
+            <Link
+              className='cursor-pointer'
+              to={`/detail/${item.media}/${item.id}`}
+            >
               <img
                 src={item.backdrop}
                 className='w-full max-h-[80vh] object-cover'
                 aria-hidden='true'
               />
               <div className='absolute inset-0 top-1/3 bg-gradient-to-t	from-gray-800'></div>
-              <div className='absolute top-1/2 p-4 w-full text-gray-100'>
+              <div className='absolute top-1/2 w-full text-gray-100 p-4 sm:p-6'>
                 <p className=' font-bold tracking-wide text-sm-3xl capitalize truncate sm:text-3xl'>
                   {item.title}
                 </p>
                 <div className='grid grid-cols-[1fr_auto] items-center my-2 xs:gap-2'>
-                  <div className='flex flex-wrap h-5 gap-1 text-xs font-medium tracking-wider text-slate-200 opacity-90 overflow-hidden xs:text-sm xs:gap-2 '>
+                  <div className='flex flex-wrap h-5 gap-1 text-xs font-medium tracking-wider text-slate-200 opacity-90 overflow-hidden xs:text-sm xs:gap-2'>
                     {item.genres.map((genre, idx) => (
                       <p key={idx} className='capitalize'>{`${genre}${
                         idx === item.genres.length - 1 ? "" : " |"
