@@ -9,21 +9,25 @@ body {
 }
 
 .nav-link {
-  @apply relative border-2 border-l-0 border-transparent rounded-r-full md:border-0;
+  @apply relative border-2 border-l-0 border-transparent rounded-r-full transition-all md:border-0;
 }
 
 .nav-link:hover {
-  @apply border-primary bg-gradient-to-l from-primary;
-}
-
-.nav-link:hover::before {
-  content: "";
-  transform: perspective(100px) rotateX(-25deg);
-  @apply hidden absolute inset-0 top-[15%] -z-10 bg-gradient-to-t from-primary md:rounded-none;
+  @apply border-primary bg-gradient-to-l from-primary md:bg-none;
 }
 
 .nav-link:hover svg {
   @apply scale-110 -rotate-6 transition-transform;
+}
+
+.nav-link::before {
+  content: "";
+  transform: perspective(100px) rotateX(-25deg);
+  @apply hidden opacity-0 absolute inset-0 top-[15%] -z-10 bg-gradient-to-t from-primary transition-opacity md:block md:rounded-none;
+}
+
+.nav-link:hover::before {
+  @apply opacity-100;
 }
 
 .scroller::-webkit-scrollbar {

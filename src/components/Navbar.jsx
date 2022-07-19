@@ -43,14 +43,14 @@ export default function Navbar() {
       </button>
 
       {/* Logo */}
-      <a
-        href='#'
+      <Link
+        to='/'
         className={`flex gap-x-1.5 items-center text-primary fill-primary ${
           searchBarOpen ? "z-10" : "z-30"
         } transition-all`}
       >
         <Logo />
-      </a>
+      </Link>
 
       {/* Links */}
       <ul
@@ -102,7 +102,7 @@ export default function Navbar() {
         <div
           className={`${
             searchBarOpen ? "absolute z-30" : ""
-          } inset-x-4 inset-y-2 flex justify-end`}
+          } inset-x-4 inset-y-2 flex justify-end sm:inset-x-6`}
         >
           <SearchBar />
         </div>

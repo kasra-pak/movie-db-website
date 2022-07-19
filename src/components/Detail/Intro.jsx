@@ -1,7 +1,7 @@
 import React from "react";
 import { convertToHour } from "../../utils/NumberUtils";
 
-import Stars from "../Stars";
+import Stars from "./Stars";
 import BookmarkImg from "../../images/mobile-menu/bookmark.svg";
 
 export default function Intro({ media, data }) {

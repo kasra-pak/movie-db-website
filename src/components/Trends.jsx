@@ -44,18 +44,18 @@ export default function Trends() {
                     <p className='font-bold tracking-wide text-sm-3xl capitalize truncate sm:text-3xl'>
                       {item.title}
                     </p>
-                    <div className='grid grid-cols-[1fr_auto] items-center my-2 xs:gap-2'>
-                      <div className='flex flex-wrap h-5 gap-1 text-xs font-medium tracking-wider text-slate-200 opacity-90 overflow-hidden xs:text-sm xs:gap-2'>
+                    <div className='grid grid-cols-[1fr_auto] items-center max-w-xl text-xs  my-2 xs:text-sm xs:gap-2 sm:text-base sm:gap-3'>
+                      <div className='flex flex-wrap h-5 gap-1 font-medium tracking-wider text-slate-200 opacity-90 overflow-hidden xs:gap-2'>
                         {item.genres.map((genre, idx) => (
                           <p key={idx} className='capitalize'>{`${genre}${
                             idx === item.genres.length - 1 ? "" : " |"
                           }`}</p>
                         ))}
                       </div>
-                      <div className='text-xs w-8 self-start xs:font-semibold xs:text-sm xs:w-12 xs:row-span-2 sm:w-16 sm:self-center'>
+                      <div className='w-8 self-start xs:font-semibold xs:w-12 xs:row-span-2 sm:w-16 sm:self-center sm:text-lg'>
                         <ScoreCircle score={item.score.toFixed(1)} />
                       </div>
-                      <p className='hidden max-w-md text-sm xs:line-clamp-2 xs:block sm:line-clamp-4'>
+                      <p className='hidden max-w-md text-sm xs:line-clamp-2 xs:block sm:text-base sm:line-clamp-3'>
                         {item.overview}
                       </p>
                     </div>
