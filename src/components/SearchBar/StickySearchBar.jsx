@@ -3,10 +3,11 @@ import { useSearchContext } from "../../contexts/SearchContext";
 import SearchBar from "./index";
 
 export default function StickySearchBar() {
-  const { searchBarOpen } = useSearchContext;
+  const { searchBarOpen } = useSearchContext();
   const [searchBarTop, setSearchBarTop] = useState(null);
   const [navbarHeight, setNavbarHeight] = useState(null);
   const searchEl = useRef();
+  const lineEl = useRef();
 
   useEffect(() => {
     setValues();
@@ -24,7 +25,7 @@ export default function StickySearchBar() {
     window.addEventListener("scroll", checkStick);
 
     return () => window.removeEventListener("scroll", checkStick);
-  }, [searchBarTop]);
+  }, [searchBarTop, searchBarOpen]);
 
   function setValues() {
     const topValue = searchEl.current.offsetTop;
@@ -38,22 +39,30 @@ export default function StickySearchBar() {
   }
 
   function checkStick() {
-    const classes = ["sticky", "inset-x-0", "top-[68px]", "z-40"];
+    const classes = ["sticky", "top-[68px]", "z-40", "border-b-[4px]"];
 
     if (window.scrollY > searchBarTop - navbarHeight) {
       searchEl.current.classList.add(...classes);
+      lineEl.current.classList.add("hidden");
     } else {
       searchEl.current.classList.remove(...classes);
+      lineEl.current.classList.remove("hidden");
     }
   }
 
   return (
     <div
       ref={searchEl}
-      className={`relative max-w-md rounded-full hidden justify-center mx-auto md:flex`}
+      className={`relative bg-secondary border-primary rounded-b-full hidden px-8 justify-center mx-auto transition-[opacity,_max-width] duration-300 md:flex ${
+        searchBarOpen
+          ? "opacity-100 max-w-md"
+          : "opacity-80 max-w-[8rem] delay-300"
+      }`}
     >
-      <div className='absolute inset-0 top-1/2 -translate-y-1/2 h-1 bg-gradient-to-l from-transparent via-primary to-transparent'></div>
-
+      <div
+        ref={lineEl}
+        className='absolute w-96 top-1/2 -translate-y-1/2 h-1 bg-gradient-to-l from-transparent via-primary to-transparent'
+      ></div>
       <SearchBar />
     </div>
   );
