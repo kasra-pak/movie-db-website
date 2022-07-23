@@ -4,9 +4,9 @@
   "description": "",
   "private": true,
   "scripts": {
-    "start:front": "webpack-dev-server --mode development",
-    "start:back": "nodemon backend.js",
-    "start:back-node": "node backend.js",
+    "front": "webpack-dev-server --mode development",
+    "back": "nodemon backend.js",
+    "back-node": "node backend.js",
     "lint": "npx eslint src/**"
   },
   "keywords": [],

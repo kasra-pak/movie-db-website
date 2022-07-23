@@ -3,7 +3,7 @@ import { useSearchContext } from "../../contexts/SearchContext";
 import SearchBar from "./index";
 
 export default function StickySearchBar() {
-  const { searchBarOpen } = useSearchContext();
+  const { searchBarOpen, searchTerm } = useSearchContext();
   const [searchBarTop, setSearchBarTop] = useState(null);
   const [navbarHeight, setNavbarHeight] = useState(null);
   const searchEl = useRef();
@@ -25,7 +25,7 @@ export default function StickySearchBar() {
     window.addEventListener("scroll", checkStick);
 
     return () => window.removeEventListener("scroll", checkStick);
-  }, [searchBarTop, searchBarOpen]);
+  }, [searchBarTop, searchBarOpen, searchTerm]);
 
   function setValues() {
     const topValue = searchEl.current.offsetTop;
@@ -39,26 +39,35 @@ export default function StickySearchBar() {
   }
 
   function checkStick() {
-    const classes = ["sticky", "top-[68px]", "z-40", "border-b-[4px]"];
+    const searchBarPassed = window.scrollY > searchBarTop - navbarHeight;
 
-    if (window.scrollY > searchBarTop - navbarHeight) {
-      searchEl.current.classList.add(...classes);
+    // "sticky-searchbar", "fix-to-top" and "stick" are custom classes
+    const baseClassNames = `sticky-searchbar ${
+      searchBarOpen
+        ? "opacity-100 max-w-md w-full"
+        : "opacity-80 max-w-[8rem] delay-300"
+    }`;
+
+    let finalClassNames = "";
+
+    if (searchBarPassed) {
       lineEl.current.classList.add("hidden");
+      finalClassNames = `${baseClassNames} stick`;
     } else {
-      searchEl.current.classList.remove(...classes);
       lineEl.current.classList.remove("hidden");
+
+      if (searchBarOpen && searchTerm) {
+        finalClassNames = `${baseClassNames} fix-to-top`;
+      } else {
+        finalClassNames = `relative ${baseClassNames}`;
+      }
     }
+
+    searchEl.current.classList = finalClassNames;
   }
 
   return (
-    <div
-      ref={searchEl}
-      className={`relative bg-secondary border-primary rounded-b-full hidden px-8 justify-center mx-auto transition-[opacity,_max-width] duration-300 md:flex ${
-        searchBarOpen
-          ? "opacity-100 max-w-md"
-          : "opacity-80 max-w-[8rem] delay-300"
-      }`}
-    >
+    <div ref={searchEl} className='opacity-0'>
       <div
         ref={lineEl}
         className='absolute w-96 top-1/2 -translate-y-1/2 h-1 bg-gradient-to-l from-transparent via-primary to-transparent'

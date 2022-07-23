@@ -49,6 +49,20 @@ body {
   }
 }
 
+.sticky-searchbar {
+  @apply hidden bg-secondary justify-center mx-auto px-8 border-primary rounded-b-full transition-[opacity,_max-width] duration-300 md:flex;
+}
+
+.stick {
+  /* Navbar height is 68px so, "top-[68px]" */
+  @apply sticky top-[68px] z-40 border-b-[4px];
+}
+
+.fix-to-top {
+  /* Navbar height is 68px so, "top-[68px]" */
+  @apply fixed top-[68px] z-40 border-b-[4px] left-1/2 -translate-x-1/2;
+}
+
 /*==================*/
 
 @tailwind utilities;
