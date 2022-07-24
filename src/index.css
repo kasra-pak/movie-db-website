@@ -35,7 +35,7 @@ body {
 }
 
 .scroller::-webkit-scrollbar-track {
-  @apply bg-primary rounded-full;
+  @apply bg-primary rounded-full my-4;
 }
 
 .scroller::-webkit-scrollbar-thumb {
