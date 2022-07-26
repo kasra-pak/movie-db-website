@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useSearchContext } from "../contexts/SearchContext";
+import { auth, logOutUser, getUserData } from "../firebase";
 import SearchBar from "./SearchBar";
 import Logo from "./Logo";
 
@@ -14,6 +16,14 @@ import Login from "../images/mobile-menu/login.svg";
 export default function Navbar() {
   const { searchBarOpen } = useSearchContext();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [user] = useAuthState(auth);
+  const [userData, setUserData] = useState(null);
+
+  useEffect(() => {
+    if (!user) return;
+
+    getUserData(user).then(data => setUserData(data));
+  }, [user, auth]);
 
   useEffect(() => {
     if (searchBarOpen && mobileMenuOpen) toggleMobileMenu();
@@ -41,7 +51,6 @@ export default function Navbar() {
           <Hamburger className='w-full stroke-primary' aria-hidden='true' />
         )}
       </button>
-
       {/* Logo */}
       <Link
         to='/'
@@ -51,7 +60,6 @@ export default function Navbar() {
       >
         <Logo />
       </Link>
-
       {/* Links */}
       <ul
         id='mobile-menu'
@@ -96,7 +104,6 @@ export default function Navbar() {
           </Link>
         </li>
       </ul>
-
       {/* SearchBar */}
       <div className='md:hidden w-8 sm:w-11'>
         <div
@@ -107,14 +114,20 @@ export default function Navbar() {
           <SearchBar />
         </div>
       </div>
-
       {/* logIn button */}
-      <Link
-        to='/login'
-        className='hidden md:block text-gray-900 bg-primary px-3 py-1 rounded-md'
-      >
-        Log In
-      </Link>
+      {userData ? (
+        <div>
+          Hey, {userData.name}
+          <button onClick={logOutUser}>Log Out</button>
+        </div>
+      ) : (
+        <Link
+          to='/login'
+          className='hidden md:block text-gray-900 bg-primary px-3 py-1 rounded-md'
+        >
+          Log In
+        </Link>
+      )}
     </nav>
   );
 }
