@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useAuthState } from "react-firebase-hooks/auth";
+
+import { logOutUser } from "../firebase";
 import { useSearchContext } from "../contexts/SearchContext";
-import { auth, logOutUser, getUserData } from "../firebase";
+import { useCurrentUserData } from "../hooks/UserHooks";
 import SearchBar from "./SearchBar";
 import Logo from "./Logo";
 
@@ -16,14 +17,8 @@ import Login from "../images/mobile-menu/login.svg";
 export default function Navbar() {
   const { searchBarOpen } = useSearchContext();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [user] = useAuthState(auth);
-  const [userData, setUserData] = useState(null);
 
-  useEffect(() => {
-    if (!user) return;
-
-    getUserData(user).then(data => setUserData(data));
-  }, [user, auth]);
+  const [userData] = useCurrentUserData();
 
   useEffect(() => {
     if (searchBarOpen && mobileMenuOpen) toggleMobileMenu();
@@ -115,7 +110,7 @@ export default function Navbar() {
         </div>
       </div>
       {/* logIn button */}
-      {userData ? (
+      {Object.entries(userData).length ? (
         <div>
           Hey, {userData.name}
           <button onClick={logOutUser}>Log Out</button>

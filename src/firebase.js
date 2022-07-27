@@ -69,12 +69,4 @@ function logOutUser() {
     });
 }
 
-async function getUserData(user) {
-  console.log(user.uid);
-  const q = query(collection(db, "users"), where("uid", "==", user?.uid));
-
-  const querySnapshot = await getDocs(q);
-  return querySnapshot.docs[0].data();
-}
-
-export { app, auth, db, registerUser, logInUser, logOutUser, getUserData };
+export { app, auth, db, registerUser, logInUser, logOutUser };

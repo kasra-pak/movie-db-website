@@ -2,3 +2,4 @@ node_modules/
 dist/
 readme.md
 .env
+src/api_temp
