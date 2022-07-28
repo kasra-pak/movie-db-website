@@ -44,21 +44,34 @@ export default function Intro({ media, data }) {
             </p>
           </div>
 
-          <div className='text-slate-300 flex gap-x-2.5 items-baseline'>
-            <p className='text-sm'>{firstAndLastRelease}</p>
-            {Runtime && (
-              <>
-                <div>•</div>
-                <p className='text-sm w-max'>{Runtime}</p>
-              </>
-            )}
-            {media === "tv" && (
-              <>
-                <div>•</div>
-                <p className='text-sm w-max'>{numberOfEpisodes}</p>
-              </>
-            )}
-            <ListTogglerButtons className='w-5 ml-auto xs:w-6' />
+          <div className='text-slate-300 h-16 grid grid-cols-[1fr,_auto] items-center gap-x-2'>
+            <div className='flex gap-x-2 items-center'>
+              <p className='text-sm'>{firstAndLastRelease}</p>
+              {Runtime && (
+                <>
+                  <div>•</div>
+                  <p className='text-sm w-max'>{Runtime}</p>
+                </>
+              )}
+              {media === "tv" && (
+                <>
+                  <div>•</div>
+                  <p className='text-sm w-max'>{numberOfEpisodes}</p>
+                </>
+              )}
+            </div>
+            <div className='row-start-2 flex gap-2 text-xs uppercase font-semibold tracking-wider opacity-80'>
+              {data.genres.map((genre, idx) => (
+                <span
+                  key={idx}
+                  className='px-1 py-px border border-primary rounded-md'
+                >
+                  {genre}
+                </span>
+              ))}
+            </div>
+
+            <ListTogglerButtons className='row-span-2 w-5 xs:w-6' />
           </div>
         </div>
       </div>

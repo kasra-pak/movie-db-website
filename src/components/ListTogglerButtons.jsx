@@ -26,7 +26,11 @@ function ListTogglerButtons({ className }) {
     });
 
   return (
-    <div className={`flex flex-col gap-3 ${className}`}>
+    <div
+      className={`flex flex-col h-full ${
+        state === "notAdded" ? "justify-center" : "justify-around"
+      } ${className}`}
+    >
       <Tooltip label={toolTips[state]}>
         <button
           aria-label={toolTips[state]}
@@ -46,7 +50,7 @@ function ListTogglerButtons({ className }) {
           aria-label={toolTips.dismiss}
           aria-hidden={state === "notAdded"}
           className={`bg-slate-300 p-1 rounded-full aspect-square w-full shadow-lg xs:p-1.5 ${
-            state === "notAdded" ? "invisible" : "visible"
+            state === "notAdded" ? "hidden" : "block"
           }`}
         >
           <Minus className='fill-rose-600' />

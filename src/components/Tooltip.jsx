@@ -2,7 +2,7 @@ import React from "react";
 
 function Tooltip({ children, label, hidden }) {
   return (
-    <div className={`tooltip-container relative ${hidden ? "opacity-0" : ""}`}>
+    <div className={`tooltip-container relative `}>
       <span className={`tooltip ${hidden ? "hidden" : ""}`}>{label}</span>
       {children}
     </div>
