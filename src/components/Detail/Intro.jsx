@@ -2,7 +2,8 @@ import React from "react";
 import { convertToHour } from "../../utils/NumberUtils";
 
 import Stars from "./Stars";
-import BookmarkImg from "../../images/mobile-menu/bookmark.svg";
+import ListTogglerButtons from "../ListTogglerButtons";
+// import BookmarkImg from "../../images/mobile-menu/bookmark.svg";
 
 export default function Intro({ media, data }) {
   const Runtime = convertToHour(data.runtime);
@@ -24,10 +25,10 @@ export default function Intro({ media, data }) {
       </div>
 
       <div className='relative p-4'>
-        <div className='absolute bottom-0 left-[5%] w-3/12'>
+        <div className='absolute bottom-0 left-[5%] w-3/12 shadow-lg'>
           <img src={data.poster} alt={data.title} className='rounded-md' />
           <div className='absolute w-1/5 top-0 right-[7%] cursor-pointer'>
-            <BookmarkImg className='fill-orange-300 stroke-primary stroke-[10px] hover:fill-primary' />
+            {/* <BookmarkImg className='fill-orange-300 stroke-primary stroke-[10px] hover:fill-primary' /> */}
           </div>
         </div>
 
@@ -43,7 +44,7 @@ export default function Intro({ media, data }) {
             </p>
           </div>
 
-          <div className='text-slate-300 flex flex-wrap gap-x-2.5 items-center'>
+          <div className='text-slate-300 flex gap-x-2.5 items-baseline'>
             <p className='text-sm'>{firstAndLastRelease}</p>
             {Runtime && (
               <>
@@ -57,6 +58,7 @@ export default function Intro({ media, data }) {
                 <p className='text-sm w-max'>{numberOfEpisodes}</p>
               </>
             )}
+            <ListTogglerButtons className='w-5 ml-auto xs:w-6' />
           </div>
         </div>
       </div>
