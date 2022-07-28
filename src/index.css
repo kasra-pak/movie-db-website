@@ -63,6 +63,31 @@ body {
   @apply fixed top-[68px] z-40 border-b-[4px] left-1/2 -translate-x-1/2;
 }
 
+.tooltip {
+  @apply absolute hidden bg-slate-200 text-zinc-900 text-xs w-max right-full top-1/2 mr-2 px-2 py-0.5 rounded-sm -translate-y-1/2 shadow-md md:text-sm;
+}
+
+.tooltip::after {
+  content: "";
+  position: absolute;
+  background-color: inherit;
+  height: 50%;
+  aspect-ratio: 1/1;
+  right: -1px;
+  top: 0;
+  z-index: -1;
+  transform-origin: center;
+  transform: translateY(50%) rotate(45deg);
+}
+
+.tooltip-container:hover .tooltip
+/* .tooltip-container:focus .tooltip, */
+/* .tooltip-container:focus- .tooltip */
+/* .tooltip-container:focus-visible .tooltip */ {
+  display: block;
+  /* opacity: 1; */
+}
+
 /*==================*/
 
 @tailwind utilities;
