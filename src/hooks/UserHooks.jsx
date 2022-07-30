@@ -1,5 +1,12 @@
 import { useState, useEffect } from "react";
-import { query, getDocs, collection, where } from "firebase/firestore";
+import {
+  query,
+  getDocs,
+  doc,
+  collection,
+  where,
+  updateDoc,
+} from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { db, auth } from "../firebase";
 
@@ -16,6 +23,12 @@ function useCurrentUserData() {
       setUserData({});
     }
   }, [user]);
+
+  useEffect(() => {
+    if (Object.keys(userData).length) {
+      updateDoc(doc(db, "users", user.uid), "watchlist", userData.watchlist);
+    }
+  }, [userData]);
 
   return [userData, setUserData];
 }

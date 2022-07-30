@@ -9,14 +9,7 @@ import {
   sendPasswordResetEmail,
   signOut,
 } from "firebase/auth";
-import {
-  getFirestore,
-  query,
-  getDocs,
-  collection,
-  where,
-  addDoc,
-} from "firebase/firestore";
+import { getFirestore, doc, collection, setDoc } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAlstpW-BZ5lT3ry_hyYwZyW4hcVHdu5Sg",
@@ -42,10 +35,11 @@ async function registerUser(name, email, password) {
 
       const user = userCredential.user;
 
-      addDoc(collection(db, "users"), {
+      setDoc(doc(db, "users", user.uid), {
         uid: user.uid,
         name,
         email,
+        watchlist: [],
       });
     })
     .catch(err => {

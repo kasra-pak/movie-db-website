@@ -71,7 +71,10 @@ export default function Intro({ media, data }) {
               ))}
             </div>
 
-            <ListTogglerButtons className='row-span-2 w-5 xs:w-6' />
+            <ListTogglerButtons
+              mediaId={data.id}
+              className='row-span-2 w-5 xs:w-6'
+            />
           </div>
         </div>
       </div>

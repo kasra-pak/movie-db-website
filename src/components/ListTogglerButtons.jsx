@@ -5,9 +5,11 @@ import Minus from "../images/list-togglers/minus.svg";
 import Plus from "../images/list-togglers/plus.svg";
 import Check from "../images/list-togglers/check.svg";
 import Clapper from "../images/list-togglers/clapper.svg";
+import { useMediaWatchlist } from "../hooks/ListHooks";
 
-function ListTogglerButtons({ className }) {
-  const [state, setState] = useState("notAdded");
+function ListTogglerButtons({ mediaId, className }) {
+  const [state, userData, addToWatchlist, removeFromWatchlist] =
+    useMediaWatchlist(mediaId);
 
   const toolTips = {
     notAdded: "Add to watchlist",
@@ -16,16 +18,19 @@ function ListTogglerButtons({ className }) {
     dismiss: "Remove from list",
   };
 
-  const dismiss = () => setState("notAdded");
+  const dismiss = () => removeFromWatchlist(mediaId);
 
-  const changeState = () =>
-    setState(prevState => {
-      if (prevState === "notAdded") return "added";
-      else if (prevState === "added") return "watched";
-      else if (prevState === "watched") return "added";
-    });
+  const changeState = () => {
+    if (state === "notAdded") {
+      addToWatchlist({ id: mediaId, watchedDate: null });
+    } else if (state === "added") {
+      addToWatchlist({ id: mediaId, watchedDate: Date.now() });
+    } else if (state === "watched") {
+      addToWatchlist({ id: mediaId, watchedDate: null });
+    }
+  };
 
-  return (
+  return Object.keys(userData).length ? (
     <div
       className={`flex flex-col h-full ${
         state === "notAdded" ? "justify-center" : "justify-around"
@@ -58,7 +63,7 @@ function ListTogglerButtons({ className }) {
         </button>
       </Tooltip>
     </div>
-  );
+  ) : null;
 }
 
 export default ListTogglerButtons;

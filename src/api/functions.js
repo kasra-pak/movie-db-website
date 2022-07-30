@@ -123,6 +123,7 @@ function getDetail(media = "movie", id) {
       } else {
         if (media === "movie") {
           return {
+            id: data.id,
             title: data.title,
             poster: `${imgUrl}${posterSize}${data.poster_path}`,
             backdrop: `${imgUrl}${backdropSize}${data.backdrop_path}`,
@@ -135,6 +136,7 @@ function getDetail(media = "movie", id) {
           };
         } else {
           return {
+            id: data.id,
             title: data.name,
             poster: `${imgUrl}${posterSize}${data.poster_path}`,
             backdrop: `${imgUrl}${backdropSize}${data.backdrop_path}`,
