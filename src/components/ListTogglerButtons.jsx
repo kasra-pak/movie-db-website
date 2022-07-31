@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Tooltip from "./Tooltip";
 
 import Minus from "../images/list-togglers/minus.svg";
@@ -7,7 +7,7 @@ import Check from "../images/list-togglers/check.svg";
 import Clapper from "../images/list-togglers/clapper.svg";
 import { useMediaWatchlist } from "../hooks/ListHooks";
 
-function ListTogglerButtons({ mediaId, className }) {
+function ListTogglerButtons({ mediaId, className, direction }) {
   const [state, userData, addToWatchlist, removeFromWatchlist] =
     useMediaWatchlist(mediaId);
 
@@ -32,15 +32,20 @@ function ListTogglerButtons({ mediaId, className }) {
 
   return Object.keys(userData).length ? (
     <div
-      className={`flex flex-col h-full ${
+      className={`${className} ${
         state === "notAdded" ? "justify-center" : "justify-around"
-      } ${className}`}
+      }`}
     >
-      <Tooltip label={toolTips[state]}>
+      <Tooltip
+        className={`${direction === "row" ? "h-full" : "w-full"}`}
+        label={toolTips[state]}
+      >
         <button
           aria-label={toolTips[state]}
           onClick={changeState}
-          className={`bg-slate-300 p-1 rounded-full aspect-square w-full shadow-lg xs:p-1.5`}
+          className={`block bg-slate-300 aspect-square ${
+            direction === "row" ? "h-full" : "w-full"
+          } p-1 rounded-full shadow-lg xs:p-1.5`}
         >
           {state === "notAdded" && <Plus className='fill-green-700' />}
           {state === "added" && <Check className='fill-emerald-900' />}
@@ -49,12 +54,17 @@ function ListTogglerButtons({ mediaId, className }) {
         </button>
       </Tooltip>
 
-      <Tooltip label={toolTips.dismiss} hidden={state === "notAdded"}>
+      <Tooltip
+        className={`${direction === "row" ? "h-full" : "w-full"}`}
+        label={toolTips.dismiss}
+      >
         <button
           onClick={dismiss}
           aria-label={toolTips.dismiss}
           aria-hidden={state === "notAdded"}
-          className={`bg-slate-300 p-1 rounded-full aspect-square w-full shadow-lg xs:p-1.5 ${
+          className={`bg-slate-300 aspect-square ${
+            direction === "row" ? "h-full" : "w-full"
+          } p-1 rounded-full shadow-lg xs:p-1.5 ${
             state === "notAdded" ? "hidden" : "block"
           }`}
         >

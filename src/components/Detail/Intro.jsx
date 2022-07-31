@@ -73,7 +73,8 @@ export default function Intro({ media, data }) {
 
             <ListTogglerButtons
               mediaId={data.id}
-              className='row-span-2 w-5 xs:w-6'
+              direction='col'
+              className='flex flex-col h-full row-span-2 w-5 xs:w-6'
             />
           </div>
         </div>

@@ -14,9 +14,7 @@ import Tv from "../images/mobile-menu/tv.svg";
 import Movie from "../images/mobile-menu/movie.svg";
 import Bookmark from "../images/mobile-menu/bookmark.svg";
 import Login from "../images/mobile-menu/login.svg";
-import Logout1 from "../images/login/logout1.svg";
-import Logout2 from "../images/login/logout2.svg";
-import Logout3 from "../images/login/logout3.svg";
+import Logout from "../images/login/logout.svg";
 
 export default function Navbar() {
   const { searchBarOpen } = useSearchContext();
@@ -124,7 +122,7 @@ export default function Navbar() {
               onClick={logOutUser}
               className='block rounded-r-sm text-gray-900 px-2 py-1 bg-primary'
             >
-              <Logout1 className='w-7 fill-secondary' />
+              <Logout className='w-7 fill-secondary' />
             </button>
           </Tooltip>
         </div>
