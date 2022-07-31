@@ -1,8 +1,8 @@
 import React from "react";
 
-function Tooltip({ children, label, hidden }) {
+function Tooltip({ children, label, hidden, className }) {
   return (
-    <div className={`tooltip-container relative `}>
+    <div className={`tooltip-container relative ${className}`}>
       <span className={`tooltip ${hidden ? "hidden" : ""}`}>{label}</span>
       {children}
     </div>

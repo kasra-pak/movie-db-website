@@ -11,8 +11,6 @@ export default function Modal({ show, children }) {
 
   const dismiss = () => setIsOpen(prevState => !prevState);
 
-  console.log(isOpen);
-
   return isOpen && show ? (
     <div
       onClick={dismiss}

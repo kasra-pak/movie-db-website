@@ -6,6 +6,7 @@ import { useSearchContext } from "../contexts/SearchContext";
 import { useCurrentUserData } from "../hooks/UserHooks";
 import SearchBar from "./SearchBar";
 import Logo from "./Logo";
+import Tooltip from "./Tooltip";
 
 import Hamburger from "../images/navbar/hamburger.svg";
 import Close from "../images/navbar/close.svg";
@@ -13,6 +14,9 @@ import Tv from "../images/mobile-menu/tv.svg";
 import Movie from "../images/mobile-menu/movie.svg";
 import Bookmark from "../images/mobile-menu/bookmark.svg";
 import Login from "../images/mobile-menu/login.svg";
+import Logout1 from "../images/login/logout1.svg";
+import Logout2 from "../images/login/logout2.svg";
+import Logout3 from "../images/login/logout3.svg";
 
 export default function Navbar() {
   const { searchBarOpen } = useSearchContext();
@@ -111,9 +115,18 @@ export default function Navbar() {
       </div>
       {/* logIn button */}
       {Object.entries(userData).length ? (
-        <div>
-          Hey, {userData.name}
-          <button onClick={logOutUser}>Log Out</button>
+        <div className='hidden justify-around items- border border-primary rounded-md overflow-hidden md:flex'>
+          <p className='w-max text-primary capitalize px-2 py-1'>
+            {userData.name}
+          </p>
+          <Tooltip label='Logout' className='px-2 py-1 h-full'>
+            <button
+              onClick={logOutUser}
+              className='text-gray-900 bg-primary h-full'
+            >
+              <Logout1 className='w-5 fill-secondary' />
+            </button>
+          </Tooltip>
         </div>
       ) : (
         <Link
