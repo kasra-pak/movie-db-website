@@ -115,16 +115,16 @@ export default function Navbar() {
       </div>
       {/* logIn button */}
       {Object.entries(userData).length ? (
-        <div className='hidden justify-around items- border border-primary rounded-md overflow-hidden md:flex'>
+        <div className='hidden justify-around items-center border-2 border-primary rounded-md md:flex'>
           <p className='w-max text-primary capitalize px-2 py-1'>
             {userData.name}
           </p>
-          <Tooltip label='Logout' className='px-2 py-1 h-full'>
+          <Tooltip label='Logout' className=''>
             <button
               onClick={logOutUser}
-              className='text-gray-900 bg-primary h-full'
+              className='block rounded-r-sm text-gray-900 px-2 py-1 bg-primary'
             >
-              <Logout1 className='w-5 fill-secondary' />
+              <Logout1 className='w-7 fill-secondary' />
             </button>
           </Tooltip>
         </div>
