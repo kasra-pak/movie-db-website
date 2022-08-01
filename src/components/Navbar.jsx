@@ -15,6 +15,7 @@ import Movie from "../images/mobile-menu/movie.svg";
 import Bookmark from "../images/mobile-menu/bookmark.svg";
 import Login from "../images/mobile-menu/login.svg";
 import Logout from "../images/login/logout.svg";
+import LogoutMobileMenu from "../images/mobile-menu/logout.svg";
 
 export default function Navbar() {
   const { searchBarOpen } = useSearchContext();
@@ -41,7 +42,7 @@ export default function Navbar() {
       >
         {mobileMenuOpen ? (
           <Close
-            className='w-full stroke-primary fill-primary'
+            className='w-[90%] stroke-primary fill-primary'
             aria-hidden='true'
           />
         ) : (
@@ -91,14 +92,27 @@ export default function Navbar() {
             Watch List
           </a>
         </li>
-        <li className='nav-link md:hidden text-primary'>
-          <Link to='/login' className='block p-2 sm:p-3'>
-            <Login
-              className='inline-block fill-primary w-6 mr-2 -mt-1 sm:w-7 sm:mr-3 md:hidden'
-              aria-hidden='true'
-            />
-            Login
-          </Link>
+        <li className='nav-link md:hidden'>
+          {Object.entries(userData).length ? (
+            <button
+              onClick={logOutUser}
+              className='block w-full text-inherit text-lg font-semibold tracking-wider capitalize p-2 sm:text-xl md:tracking-wide sm:p-3'
+            >
+              <div className='flex flex-wrap items-end'>
+                <LogoutMobileMenu className='fill-primary shrink-0 w-7 mr-1 -mt-1 sm:w-8 sm:mr-2' />
+                <p>logout</p>
+                <p className='w-max ml-auto'>{userData.name}</p>
+              </div>
+            </button>
+          ) : (
+            <Link to='/login' className='block p-2 sm:p-3'>
+              <Login
+                className='inline-block fill-primary w-6 mr-2 -mt-1 sm:w-7 sm:mr-3 md:hidden'
+                aria-hidden='true'
+              />
+              <span className='text-primary'>Login</span>
+            </Link>
+          )}
         </li>
       </ul>
       {/* SearchBar */}

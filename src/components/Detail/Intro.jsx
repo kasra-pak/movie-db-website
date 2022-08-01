@@ -27,9 +27,7 @@ export default function Intro({ media, data }) {
       <div className='relative p-4'>
         <div className='absolute bottom-0 left-[5%] w-3/12 shadow-lg'>
           <img src={data.poster} alt={data.title} className='rounded-md' />
-          <div className='absolute w-1/5 top-0 right-[7%] cursor-pointer'>
-            {/* <BookmarkImg className='fill-orange-300 stroke-primary stroke-[10px] hover:fill-primary' /> */}
-          </div>
+          <div className='absolute w-1/5 top-0 right-[7%] cursor-pointer'></div>
         </div>
 
         <div className='w-8/12 ml-auto'>
