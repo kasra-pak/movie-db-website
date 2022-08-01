@@ -7,7 +7,12 @@ import Check from "../images/list-togglers/check.svg";
 import Clapper from "../images/list-togglers/clapper.svg";
 import { useMediaWatchlist } from "../hooks/ListHooks";
 
-function ListTogglerButtons({ mediaId, className, direction }) {
+function ListTogglerButtons({
+  mediaId,
+  className,
+  direction,
+  tooltipPosition = "bottom",
+}) {
   const [state, userData, addToWatchlist, removeFromWatchlist] =
     useMediaWatchlist(mediaId);
 
@@ -37,8 +42,9 @@ function ListTogglerButtons({ mediaId, className, direction }) {
       }`}
     >
       <Tooltip
-        className={`${direction === "row" ? "h-full" : "w-full"}`}
+        position={tooltipPosition}
         label={toolTips[state]}
+        className={`${direction === "row" ? "h-full" : "w-full"}`}
       >
         <button
           aria-label={toolTips[state]}
@@ -55,8 +61,9 @@ function ListTogglerButtons({ mediaId, className, direction }) {
       </Tooltip>
 
       <Tooltip
-        className={`${direction === "row" ? "h-full" : "w-full"}`}
+        position={tooltipPosition}
         label={toolTips.dismiss}
+        className={`${direction === "row" ? "h-full" : "w-full"}`}
       >
         <button
           onClick={dismiss}

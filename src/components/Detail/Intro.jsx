@@ -34,7 +34,7 @@ export default function Intro({ media, data }) {
           <Stars score={data.score.toFixed(1)} />
 
           <div className='my-2.5'>
-            <h1 className='text-sm-3xl font-semibold capitalize truncate'>
+            <h1 className='scroller text-sm-3xl font-semibold capitalize truncate hover:overflow-x-scroll'>
               {data.title}
             </h1>
             <p className='text-xs tracking-wider opacity-80 xs:text-sm'>
@@ -42,7 +42,7 @@ export default function Intro({ media, data }) {
             </p>
           </div>
 
-          <div className='text-slate-300 h-16 grid grid-cols-[1fr,_auto] items-center gap-x-2'>
+          <div className='text-slate-300 h-16 grid grid-cols-[1fr,_auto] items-center gap-2'>
             <div className='flex gap-x-2 items-center'>
               <p className='text-sm'>{firstAndLastRelease}</p>
               {Runtime && (
@@ -58,7 +58,7 @@ export default function Intro({ media, data }) {
                 </>
               )}
             </div>
-            <div className='row-start-2 flex gap-2 text-xs uppercase font-semibold tracking-wider opacity-80'>
+            <div className='row-start-2 flex flex-wrap gap-2 text-xs uppercase font-semibold tracking-wider opacity-80'>
               {data.genres.map((genre, idx) => (
                 <span
                   key={idx}
@@ -71,6 +71,7 @@ export default function Intro({ media, data }) {
 
             <ListTogglerButtons
               mediaId={data.id}
+              tooltipPosition='left'
               direction='col'
               className='flex flex-col h-full row-span-2 w-5 xs:w-6'
             />
