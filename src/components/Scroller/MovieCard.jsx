@@ -11,7 +11,7 @@ export default function MovieCard({ data }) {
   else scoreColor = "text-red-500 border-red-500";
 
   return (
-    <div className='relative shadow-lg  hover:shadow-xl hover:scale-[102%]'>
+    <div className='relative shadow-lg  hover:shadow-xl hover:scale-[101%]'>
       <Link
         to={`/detail/${data.media}/${data.id}`}
         className='block bg-slate-700 text-slate-200 rounded-md w-36  xs:w-52 sm:w-64'
@@ -32,7 +32,7 @@ export default function MovieCard({ data }) {
             </span>
           </div>
         </div>
-        <div className='p-2 pb-6 xs:mt-2'>
+        <div className='p-2 pb-4 xs:pb-6 xs:mt-2 sm:pb-8'>
           <h3 className='text-xs-2xl font-bold tracking-wider capitalize truncate xs:font-semibold xs:tracking-wide'>
             {data.title}
           </h3>
@@ -41,7 +41,7 @@ export default function MovieCard({ data }) {
       <ListTogglerButtons
         mediaId={data.id}
         direction='row'
-        className='absolute -bottom-3 w-full flex items-center h-5 xs:h-6'
+        className='absolute -bottom-3 w-full flex items-center h-5 xs:h-7 sm:h-8 sm:-bottom-4'
       />
     </div>
   );
