@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Scroller from "./Scroller";
 import { getPopularItems } from "../api/functions";
 import FadingLine from "./FadingLine";
+import SlideButton from "./SlideButton";
 import LoadingImg from "../images/loading/loading.svg";
 
 export default function Populars() {
@@ -37,49 +38,7 @@ export default function Populars() {
 
       <FadingLine />
 
-      <div
-        onChange={handleMediaChange}
-        className={`from-orange-600 ${
-          mediaType === "movie" ? "bg-gradient-to-r" : "bg-gradient-to-l"
-        } text-xs flex justify-around border border-primary rounded-full max-w-fit gap-5 transition-colors xs:text-base ${
-          mediaType === "movie" ? "bg-gradient-to-r" : "bg-gradient-to-l"
-        }`}
-      >
-        <input
-          id='movie'
-          type='radio'
-          value='movie'
-          name='media-type'
-          className='hidden'
-        />
-        <label
-          htmlFor='movie'
-          className={`${
-            mediaType === "movie"
-              ? "text-slate-200 font-semibold"
-              : "text-orange-600"
-          } px-2 py-1 shrink-0 tracking-wider uppercase cursor-pointer xs:px-2.5`}
-        >
-          Movie
-        </label>
-        <input
-          id='tv'
-          type='radio'
-          value='tv'
-          name='media-type'
-          className='hidden'
-        />
-        <label
-          htmlFor='tv'
-          className={`${
-            mediaType === "tv"
-              ? "text-slate-200 font-semibold"
-              : "text-orange-600"
-          } w-full grow px-2 py-1 tracking-wider uppercase cursor-pointer xs:px-2.5`}
-        >
-          Tv
-        </label>
-      </div>
+      <SlideButton leftText='movie' rightText='tv' toggle={setMediaType} />
 
       {loading ? (
         <div className='h-72 flex justify-center items-center'>
