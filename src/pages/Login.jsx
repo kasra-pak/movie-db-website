@@ -19,8 +19,8 @@ export default function Login() {
 
   useEffect(() => {
     if (user) {
-      navigate("/", { replace: true });
-      // navigate(-1) // same as hitting the back button
+      // navigate("/", { replace: true });
+      navigate(-1);
     }
   }, [user]);
 

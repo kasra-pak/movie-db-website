@@ -64,7 +64,7 @@ body {
 }
 
 .tooltip {
-  @apply absolute hidden bg-slate-200 text-zinc-900 text-xs w-max px-2 py-0.5 rounded-sm shadow-md md:text-sm;
+  @apply absolute hidden bg-slate-200 text-zinc-900 text-xs w-max px-2 py-0.5 rounded-sm shadow-md sm:text-sm md:text-base;
 }
 
 .tooltip::after {

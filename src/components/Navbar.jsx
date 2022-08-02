@@ -84,13 +84,13 @@ export default function Navbar() {
           </a>
         </li>
         <li className='nav-link'>
-          <a href='#' className='block p-2 sm:p-3'>
+          <Link to='/watchlist' className='block p-2 sm:p-3'>
             <Bookmark
               className='inline-block fill-primary w-6 mr-2 -mt-1 sm:w-7 sm:mr-3 md:hidden'
               aria-hidden='true'
             />
             Watch List
-          </a>
+          </Link>
         </li>
         <li className='nav-link md:hidden'>
           {Object.entries(userData).length ? (

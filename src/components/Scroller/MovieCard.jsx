@@ -40,7 +40,7 @@ export default function MovieCard({ data }) {
       </Link>
       <ListTogglerButtons
         mediaId={data.id}
-        tooltipPosition='right'
+        tooltipPosition='top'
         direction='row'
         className='absolute -bottom-3 w-full flex items-center h-5 xs:h-7 sm:h-8 sm:-bottom-4'
       />
