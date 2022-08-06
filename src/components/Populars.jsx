@@ -18,10 +18,6 @@ export default function Populars() {
     });
   }, [mediaType]);
 
-  function handleMediaChange(event) {
-    setMediaType(event.target.value);
-  }
-
   return (
     <section className='bg-secondary text-gray-100 mt-4 p-4 sm:p-6'>
       <div className='flex justify-between items-center'>
@@ -38,7 +34,12 @@ export default function Populars() {
 
       <FadingLine />
 
-      <SlideButton leftText='movie' rightText='tv' toggle={setMediaType} />
+      <SlideButton
+        id='popular_slider'
+        leftText='movie'
+        rightText='tv'
+        toggle={setMediaType}
+      />
 
       {loading ? (
         <div className='h-72 flex justify-center items-center'>

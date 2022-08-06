@@ -70,7 +70,7 @@ export default function Intro({ media, data }) {
             </div>
 
             <ListTogglerButtons
-              mediaId={data.id}
+              mediaData={{ id: data.id, type: media, title: data.title }}
               tooltipPosition='left'
               direction='col'
               className='flex flex-col h-full row-span-2 w-5 xs:w-6'

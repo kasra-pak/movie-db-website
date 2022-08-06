@@ -8,13 +8,13 @@ import Clapper from "../images/list-togglers/clapper.svg";
 import { useMediaWatchlist } from "../hooks/ListHooks";
 
 function ListTogglerButtons({
-  mediaId,
+  mediaData,
   className,
   direction,
   tooltipPosition = "bottom",
 }) {
   const [state, userData, addToWatchlist, removeFromWatchlist] =
-    useMediaWatchlist(mediaId);
+    useMediaWatchlist(mediaData.id);
 
   const toolTips = {
     notAdded: "Add to watchlist",
@@ -23,15 +23,21 @@ function ListTogglerButtons({
     dismiss: "Remove from list",
   };
 
-  const dismiss = () => removeFromWatchlist(mediaId);
+  const dismiss = () => removeFromWatchlist(mediaData.id);
 
   const changeState = () => {
-    if (state === "notAdded") {
-      addToWatchlist({ id: mediaId, watchedDate: null });
+    if (state === "notAdded" || state === "watched") {
+      addToWatchlist({
+        media: mediaData.type,
+        watchedDate: null,
+        title: mediaData.title,
+      });
     } else if (state === "added") {
-      addToWatchlist({ id: mediaId, watchedDate: Date.now() });
-    } else if (state === "watched") {
-      addToWatchlist({ id: mediaId, watchedDate: null });
+      addToWatchlist({
+        media: mediaData.type,
+        watchedDate: Date.now(),
+        title: mediaData.title,
+      });
     }
   };
 

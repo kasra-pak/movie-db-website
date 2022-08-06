@@ -34,7 +34,12 @@ export default function TopRatedItems() {
 
       <FadingLine />
 
-      <SlideButton leftText='movie' rightText='tv' toggle={setMediaType} />
+      <SlideButton
+        id='top_rated_slider'
+        leftText='movie'
+        rightText='tv'
+        toggle={setMediaType}
+      />
 
       {loading ? (
         <div className='h-72 flex justify-center items-center'>
