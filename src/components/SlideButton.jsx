@@ -1,12 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
-function SlideButton({ leftText = "left", rightText = "right", toggle }) {
+function SlideButton({
+  leftText = "left",
+  rightText = "right",
+  id = `${leftText}_${rightText}_slider`,
+  toggle,
+  className = "",
+}) {
   const [state, setState] = useState(leftText);
 
   const handleChange = event => {
     setState(event.target.value);
     toggle(event.target.value);
   };
+
   return (
     <div
       onChange={handleChange}
@@ -14,17 +21,17 @@ function SlideButton({ leftText = "left", rightText = "right", toggle }) {
         state === leftText ? "bg-gradient-to-r" : "bg-gradient-to-l"
       } text-xs flex justify-around border border-primary rounded-full max-w-fit gap-5 transition-colors xs:text-base ${
         state === leftText ? "bg-gradient-to-r" : "bg-gradient-to-l"
-      }`}
+      } ${className}`}
     >
       <input
-        id='left'
+        id={`${id}_${leftText}_input`}
         type='radio'
         value={leftText}
         name='media-type'
         className='hidden'
       />
       <label
-        htmlFor='left'
+        htmlFor={`${id}_${leftText}_input`}
         className={`${
           state === leftText
             ? "text-slate-200 font-semibold"
@@ -34,14 +41,14 @@ function SlideButton({ leftText = "left", rightText = "right", toggle }) {
         {leftText}
       </label>
       <input
-        id='right'
+        id={`${id}_${rightText}_input`}
         type='radio'
         value={rightText}
         name='media-type'
         className='hidden'
       />
       <label
-        htmlFor='right'
+        htmlFor={`${id}_${rightText}_input`}
         className={`${
           state === rightText
             ? "text-slate-200 font-semibold"
