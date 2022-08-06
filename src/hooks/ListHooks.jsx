@@ -54,8 +54,14 @@ function useCurrentUserWatchlist() {
       userData.watchlist.forEach(item => {
         getDetail(item.media, item.id).then(data => {
           item.watchedDate
-            ? setWatched(prevState => [...prevState, data])
-            : setUnwatched(prevState => [...prevState, data]);
+            ? setWatched(prevState => [
+                ...prevState,
+                { ...data, media: item.media },
+              ])
+            : setUnwatched(prevState => [
+                ...prevState,
+                { ...data, media: item.media },
+              ]);
         });
       });
     }
