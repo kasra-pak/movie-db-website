@@ -11,7 +11,7 @@ export default function MovieCard({ data }) {
   else scoreColor = "text-red-500 border-red-500";
 
   return (
-    <div className='relative shadow-lg  hover:shadow-xl hover:scale-[101%]'>
+    <div className='show-toggle-btns relative shadow-lg transition-transform hover:shadow-xl hover:scale-[101%]'>
       <Link
         to={`/detail/${data.media}/${data.id}`}
         className='block bg-slate-700 text-slate-200 rounded-md w-36  xs:w-52 sm:w-64'
@@ -42,7 +42,7 @@ export default function MovieCard({ data }) {
         mediaData={{ id: data.id, type: data.media, title: data.title }}
         tooltipPosition='top'
         direction='row'
-        className='absolute -bottom-3 w-full flex items-center h-5 xs:h-7 sm:h-8 sm:-bottom-4'
+        className='list-toggler-btns absolute -bottom-3 w-full flex items-center h-5 transition-opacity xs:h-7 sm:h-8 sm:-bottom-4'
       />
     </div>
   );

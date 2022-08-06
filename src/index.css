@@ -125,6 +125,14 @@ body {
   /* opacity: 1; */
 }
 
+.list-toggler-btns {
+  opacity: 0;
+}
+
+.show-toggle-btns:hover .list-toggler-btns {
+  opacity: 1;
+}
+
 /*==================*/
 
 @tailwind utilities;
