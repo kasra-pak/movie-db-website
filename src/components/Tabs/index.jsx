@@ -14,7 +14,7 @@ function Tabs() {
   return (
     <section>
       <header className='text-slate-100 capitalize pt-5'>
-        <div className='flex items-center w-11/12 mx-auto '>
+        <div className='flex items-center gap-2 py-4'>
           <TabTitle
             content='watched'
             active={activeTab}
@@ -32,11 +32,11 @@ function Tabs() {
             leftText='list'
             rightText='grid'
             toggle={setViewMode}
-            className='ml-auto'
+            className='hidden ml-auto xs:block'
           />
         </div>
       </header>
-      <div className='bg-slate-600 border border-primary rounded-sm p-2'>
+      <div className='bg-primary rounded-md p-2 shadow-md shadow-[rgba(234,88,12,.2)]'>
         <TabContent
           data={activeTab === "watched" ? watched : unwatched}
           viewMode={viewMode}

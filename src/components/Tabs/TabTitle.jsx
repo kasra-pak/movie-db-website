@@ -3,13 +3,13 @@ import React from "react";
 function TabTitle({ content, active, toggleActive }) {
   const statusClasses =
     active === content
-      ? "text-primary shadow-[0_2px_0_-1px_rgb(31,41,55)]"
-      : "border-secondary hover:border-primary";
+      ? "bg-primary text-slate-200 shadow-[rgba(234,88,12,.2)] shadow-md hover:bg-[rgba(234,88,12,.95)] hover:shadow-lg hover:shadow-[rgba(234,88,12,.2)]"
+      : "hover:bg-slate-700";
 
   return (
     <button
       onClick={() => toggleActive(content)}
-      className={`shrink-0 border-primary border  border-b-0 rounded-t-sm py-1.5 px-4 ${statusClasses}`}
+      className={`text-xs text-primary font-semibold tracking-wide shrink-0 rounded-md px-2 py-1 xs:text-base transition-[background-color,_color,_box-shadow] ${statusClasses}`}
     >
       <h2 className='capitalize'>{content}</h2>
     </button>

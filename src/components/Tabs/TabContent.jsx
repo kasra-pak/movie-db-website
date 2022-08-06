@@ -32,14 +32,13 @@ function TabContent({ data, viewMode }) {
     </Link>
   ));
 
-  console.log(data);
   return (
     <div
       className={`grid gap-4 ${
         viewMode === "grid"
-          ? "grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))]"
+          ? "grid-cols-[repeat(auto-fit,_minmax(200px,_1fr))]"
           : "grid-cols-1"
-      } `}
+      }`}
     >
       {itemsList}
     </div>
