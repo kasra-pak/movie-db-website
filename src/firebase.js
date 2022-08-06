@@ -1,15 +1,13 @@
 import { initializeApp } from "firebase/app";
 import {
-  GoogleAuthProvider,
   getAuth,
   updateProfile,
-  signInWithPopup,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
-  sendPasswordResetEmail,
   signOut,
 } from "firebase/auth";
-import { getFirestore, doc, collection, setDoc } from "firebase/firestore";
+import { updateDoc } from "firebase/firestore";
+import { getFirestore, doc, setDoc } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAlstpW-BZ5lT3ry_hyYwZyW4hcVHdu5Sg",
@@ -26,7 +24,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-async function registerUser(name, email, password) {
+function registerUser(name, email, password) {
   createUserWithEmailAndPassword(auth, email, password)
     .then(userCredential => {
       updateProfile(userCredential.user, {
@@ -47,7 +45,7 @@ async function registerUser(name, email, password) {
     });
 }
 
-async function logInUser(email, password) {
+function logInUser(email, password) {
   signInWithEmailAndPassword(auth, email, password).catch(err => {
     console.error(err);
   });
@@ -58,9 +56,21 @@ function logOutUser() {
     .then(() => {
       // Sign-out successful.
     })
-    .catch(error => {
+    .catch(() => {
       // An error happened.
     });
 }
 
-export { app, auth, db, registerUser, logInUser, logOutUser };
+function updateUserWatchlist(newWatchlist) {
+  updateDoc(doc(db, "users", auth.currentUser.uid), "watchlist", newWatchlist);
+}
+
+export {
+  app,
+  auth,
+  db,
+  registerUser,
+  logInUser,
+  logOutUser,
+  updateUserWatchlist,
+};

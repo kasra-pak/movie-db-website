@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
+import { getDetail } from "../api/functions";
 import { useCurrentUserData } from "./UserHooks";
+import { updateUserWatchlist } from "../firebase";
 
 function useMediaWatchlist(id) {
-  const [userData, setUserData] = useCurrentUserData();
-  const [state, setState] = useState("notAdded");
+  const [userData] = useCurrentUserData();
+  const [status, setStatus] = useState("notAdded");
 
   useEffect(() => {
-    setState(() => {
+    setStatus(() => {
       if (!userData.watchlist) return "notAdded";
 
       for (const item of userData.watchlist) {
@@ -19,33 +21,47 @@ function useMediaWatchlist(id) {
     });
   }, [userData]);
 
-  function removeFromWatchlist(id) {
+  function removeFromWatchlist() {
     const newWatchlist = userData.watchlist.filter(item => item.id !== id);
 
-    setUserData(prevState => ({ ...prevState, watchlist: newWatchlist }));
-
-    setState("notAdded");
+    updateUserWatchlist(newWatchlist);
   }
 
-  function addToWatchlist({ id, watchedDate }) {
-    let newWatchlist = userData.watchlist;
+  function addToWatchlist({ media, watchedDate, title }) {
+    let newWatchlist = [...userData.watchlist];
 
     if (newWatchlist && newWatchlist.some(item => item.id === id)) {
       newWatchlist = newWatchlist.map(item =>
-        item.id === id ? { id, watchedDate } : item
+        item.id === id ? { id, media, watchedDate, title } : item
       );
     } else {
-      newWatchlist.push({ id, watchedDate });
+      newWatchlist.push({ id, media, watchedDate, title });
     }
 
-    setUserData(prevState => ({ ...prevState, watchlist: newWatchlist }));
-
-    watchedDate ? setState("watched") : setState("added");
+    updateUserWatchlist(newWatchlist);
   }
 
-  return [state, userData, addToWatchlist, removeFromWatchlist];
+  return [status, userData, addToWatchlist, removeFromWatchlist];
 }
 
-/////////
+function useCurrentUserWatchlist() {
+  const [userData] = useCurrentUserData();
+  const [watched, setWatched] = useState([]);
+  const [unWatched, setUnwatched] = useState([]);
 
-export { useMediaWatchlist };
+  useEffect(() => {
+    if (userData.watchlist) {
+      userData.watchlist.forEach(item => {
+        getDetail(item.media, item.id).then(data => {
+          item.watchedDate
+            ? setWatched(prevState => [...prevState, data])
+            : setUnwatched(prevState => [...prevState, data]);
+        });
+      });
+    }
+  }, [userData]);
+
+  return [watched, unWatched];
+}
+
+export { useMediaWatchlist, useCurrentUserWatchlist };

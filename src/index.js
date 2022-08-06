@@ -9,9 +9,11 @@ import App from "./App";
 const container = document.getElementById("root");
 const root = createRoot(container);
 root.render(
-  <Router>
-    <SearchProvider>
-      <App />
-    </SearchProvider>
-  </Router>
+  <React.StrictMode>
+    <Router>
+      <SearchProvider>
+        <App />
+      </SearchProvider>
+    </Router>
+  </React.StrictMode>
 );
