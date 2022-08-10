@@ -9,6 +9,8 @@ import {
 } from "../../validations/LoginFormValidationRules";
 import SubmitBtn from "./SubmitBtn";
 
+import Spinner from "../../images/loading/spinner.svg";
+
 function LoginForm({ userHasAcc, setUserHasAcc }) {
   const [name, nameErrors, updateName] = useControledInput(null, validateName);
   const [email, emailErrors, updateEmail] = useControledInput(
@@ -17,6 +19,7 @@ function LoginForm({ userHasAcc, setUserHasAcc }) {
   );
   const [pass, passErrors, updatePass] = useControledInput(null, validatePass);
   const [rePass, rePassErrors, updateRePass] = useControledInput(null);
+  const [loading, setLoading] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
 
   function toggleForm() {
@@ -26,15 +29,18 @@ function LoginForm({ userHasAcc, setUserHasAcc }) {
   function handleSubmit(e) {
     e.preventDefault();
 
+    setLoading(true);
     userHasAcc
       ? logInUser(email, pass).catch(err => {
           setSubmitStatus(err);
+          setLoading(false);
         })
       : registerUser(name, email, pass).catch(err => {
           setSubmitStatus(err);
+          setLoading(false);
         });
   }
-  console.log(nameErrors, emailErrors, passErrors, rePassErrors);
+  // console.log(nameErrors, emailErrors, passErrors, rePassErrors);
 
   return (
     <form
@@ -94,12 +100,17 @@ function LoginForm({ userHasAcc, setUserHasAcc }) {
       >
         {userHasAcc ? "Don't have an account?" : "Have an account?"}
       </button>
-      <input
+      <button
         type='submit'
         disabled={nameErrors || emailErrors || passErrors || rePassErrors}
-        className='text-gray-100 text-lg bg-primary self-center mt-4 px-10 py-2 rounded-full shadow-sm capitalize cursor-pointer hover:shadow-md hover:bg-orange-500'
-        value={`${userHasAcc ? "log in" : "sign up"}`}
-      />
+        className='text-gray-100 text-lg bg-primary self-center min-w-[130px] min-h-[50px] mt-4 px-10 py-2 rounded-full shadow-sm capitalize cursor-pointer hover:shadow-md hover:bg-orange-500'
+      >
+        {loading ? (
+          <Spinner className='fill-secondary w-8 mx-auto animate-spin' />
+        ) : (
+          `${userHasAcc ? "log in" : "sign up"}`
+        )}
+      </button>
     </form>
   );
 }
