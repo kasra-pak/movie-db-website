@@ -24,8 +24,8 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-function registerUser(name, email, password) {
-  createUserWithEmailAndPassword(auth, email, password)
+async function registerUser(name, email, password) {
+  return createUserWithEmailAndPassword(auth, email, password)
     .then(userCredential => {
       updateProfile(userCredential.user, {
         displayName: name,
@@ -41,13 +41,15 @@ function registerUser(name, email, password) {
       });
     })
     .catch(err => {
-      console.error(err);
+      const error = err.code.replace("auth/", "").split("-").join(" ");
+      throw error;
     });
 }
 
-function logInUser(email, password) {
-  signInWithEmailAndPassword(auth, email, password).catch(err => {
-    console.error(err);
+async function logInUser(email, password) {
+  return signInWithEmailAndPassword(auth, email, password).catch(err => {
+    const error = err.code.replace("auth/", "").split("-").join(" ");
+    throw error;
   });
 }
 

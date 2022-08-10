@@ -1,21 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { auth, registerUser, logInUser } from "../firebase";
+import { auth } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Navbar from "../components/Navbar";
 
 import FacebookLogo from "../images/login/facebook.svg";
 import TwitterLogo from "../images/login/twitter.svg";
 import GoogleLogo from "../images/login/google.svg";
+import LoginForm from "../components/Login/LoginForm";
 
 export default function Login() {
   const [userHasAcc, setUserHasAcc] = useState("true");
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
-
-  function toggleForm() {
-    setUserHasAcc(prevState => !prevState);
-  }
 
   useEffect(() => {
     if (user) {
@@ -24,17 +21,8 @@ export default function Login() {
     }
   }, [user]);
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    const email = e.target.children.email.value;
-    const password = e.target.children.password.value;
-
-    if (userHasAcc) {
-      logInUser(email, password);
-    } else {
-      const name = e.target.children.name.value;
-      registerUser(name, email, password);
-    }
+  function toggleForm() {
+    setUserHasAcc(prevState => !prevState);
   }
 
   return (
@@ -83,65 +71,7 @@ export default function Login() {
             <p className={`hidden ${userHasAcc ? "" : "md:block"}`}>
               or use your email for registration
             </p>
-            <form
-              onSubmit={handleSubmit}
-              className={`max-w-md flex flex-col gap-4 my-6 mx-auto md:w-full ${
-                userHasAcc ? "" : "md:mt-4"
-              }`}
-            >
-              <label htmlFor='name' className='sr-only'>
-                full name
-              </label>
-              <input
-                id='name'
-                type='text'
-                placeholder='Full Name'
-                className={`${
-                  userHasAcc ? "hidden" : "block"
-                } bg-orange-100 text-lg rounded-sm px-4 py-2 shadow-sm`}
-              />
-              <label htmlFor='email' className='sr-only'>
-                email address
-              </label>
-              <input
-                id='email'
-                type='email'
-                placeholder='Email'
-                className='bg-orange-100 text-lg rounded-sm px-4 py-2 shadow-sm'
-              />
-              <label htmlFor='password' className='sr-only'>
-                password
-              </label>
-              <input
-                id='password'
-                type='password'
-                placeholder='Password'
-                className='bg-orange-100 text-lg rounded-sm px-4 py-2 shadow-sm'
-              />
-              <label htmlFor='re-password' className='sr-only'>
-                repeat password
-              </label>
-              <input
-                id='re-password'
-                type='password'
-                placeholder='Repeat Password'
-                className={`${
-                  userHasAcc ? "hidden" : "block"
-                } bg-orange-100 text-lg rounded-sm px-4 py-2 shadow-sm`}
-              />
-              <button
-                type='button'
-                onClick={toggleForm}
-                className='self-center text-orange-100 underline md:hidden'
-              >
-                {userHasAcc ? "Don't have an account?" : "Have an account?"}
-              </button>
-              <input
-                type='submit'
-                className='text-gray-100 text-lg bg-primary self-center mt-4 px-10 py-2 rounded-full shadow-sm capitalize cursor-pointer hover:shadow-md hover:bg-orange-500'
-                value={`${userHasAcc ? "log in" : "sign up"}`}
-              />
-            </form>
+            <LoginForm userHasAcc={userHasAcc} setUserHasAcc={setUserHasAcc} />
           </div>
         </div>
       </main>

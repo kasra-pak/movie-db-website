@@ -133,6 +133,23 @@ body {
   opacity: 1;
 }
 
+.input-group.error {
+  @apply bg-[rgba(220,38,38,.8)] rounded-sm p-1 shadow-md;
+}
+
+.validation-msg {
+  @apply text-sm text-slate-100 text-right font-semibold tracking-wide rounded-sm p-0.5;
+}
+
+.input-group.error input {
+  @apply bg-red-100;
+}
+
+input:disabled,
+input[type="submit"]:disabled:hover {
+  @apply shadow-inner bg-neutral-300 text-gray-700 cursor-not-allowed;
+}
+
 /*==================*/
 
 @tailwind utilities;
