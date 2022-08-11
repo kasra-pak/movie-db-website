@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ListTogglerButtons from "../ListTogglerButtons";
+import ListTogglerButtons from "../Shared/ListTogglerButtons";
 import Star from "../../images/home/star.svg";
 
 export default function MovieCard({ data }) {

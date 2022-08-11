@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Scroller from "./Scroller";
 import { getPopularItems } from "../api/functions";
-import FadingLine from "./FadingLine";
-import SlideButton from "./SlideButton";
+import FadingLine from "./Shared/FadingLine";
+import SlideButton from "./Shared/SlideButton";
 import LoadingImg from "../images/loading/loading.svg";
 
 export default function Populars() {

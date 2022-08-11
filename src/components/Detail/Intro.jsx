@@ -2,8 +2,7 @@ import React from "react";
 import { convertToHour } from "../../utils/NumberUtils";
 
 import Stars from "./Stars";
-import ListTogglerButtons from "../ListTogglerButtons";
-// import BookmarkImg from "../../images/mobile-menu/bookmark.svg";
+import ListTogglerButtons from "../Shared/ListTogglerButtons";
 
 export default function Intro({ media, data }) {
   const Runtime = convertToHour(data.runtime);

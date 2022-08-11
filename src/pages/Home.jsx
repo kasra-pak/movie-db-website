@@ -4,7 +4,7 @@ import Trends from "../components/Trends";
 import StickySearchBar from "../components/SearchBar/StickySearchBar";
 import Populars from "../components/Populars";
 import TopRatedItems from "../components/TopRatedItems";
-import Footer from "../components/Footer";
+import Footer from "../components/Shared/Footer";
 import { useSearchContext } from "../contexts/SearchContext";
 import SearchResult from "../components/SearchResult";
 import Modal from "../components/Modal";
