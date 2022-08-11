@@ -21,7 +21,9 @@ export default function Navbar() {
   const { searchBarOpen } = useSearchContext();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const [userData] = useCurrentUserData();
+  const [userData, userDataStatus] = useCurrentUserData();
+
+  console.log(userDataStatus);
 
   useEffect(() => {
     if (searchBarOpen && mobileMenuOpen) toggleMobileMenu();
