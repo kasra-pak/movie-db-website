@@ -150,8 +150,15 @@ body {
 }
 
 input:disabled,
+button:disabled,
+button:disabled:hover,
 input[type="submit"]:disabled:hover {
-  @apply shadow-inner bg-neutral-300 text-gray-700 cursor-not-allowed;
+  @apply shadow-inner bg-neutral-300  cursor-not-allowed;
+}
+
+button:disabled,
+button:disabled:hover {
+  @apply text-gray-500 font-semibold;
 }
 
 /*==================*/

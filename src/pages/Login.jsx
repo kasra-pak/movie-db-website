@@ -34,7 +34,7 @@ export default function Login() {
             <h1 className='text-gray-100 text-4xl font-bold tracking-wider uppercase'>
               welcome!
             </h1>
-            <p className='text-gray-100 max-w-sm md:max-w-lg'>
+            <p className='text-gray-100 font-medium max-w-sm md:max-w-lg'>
               In order to use the editing and rating capabilities of MDB, as
               well as get personal recommendations you will need to login to
               your account.

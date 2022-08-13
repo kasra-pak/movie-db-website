@@ -26,7 +26,7 @@ function FormInput({
         placeholder={placeholder}
         autoComplete='off'
         disabled={disabled}
-        className='w-full bg-orange-100 text-lg rounded-sm px-4 py-2 shadow-sm'
+        className='w-full bg-orange-100 text-lg text-secondary font-semibold tracking-wide rounded-sm px-4 py-2 shadow-sm placeholder:text-secondary placeholder:opacity-70'
       />
       {errorMessage && !disabled && (
         <div className='validation-msg'>{errorMessage[0]}</div>
