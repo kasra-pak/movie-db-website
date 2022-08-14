@@ -5,7 +5,8 @@ import FormInput from "./FormInput";
 import {
   validateName,
   validateEmail,
-  validatePass,
+  validatePassword,
+  validateRePassword,
 } from "../../validations/LoginFormValidationRules";
 import SubmitResultAlert from "./SubmitResultAlert";
 
@@ -17,8 +18,14 @@ function LoginForm({ userHasAcc, setUserHasAcc }) {
     null,
     validateEmail
   );
-  const [pass, passErrors, updatePass] = useControledInput(null, validatePass);
-  const [rePass, rePassErrors, updateRePass] = useControledInput(null);
+  const [password, passwordErrors, updatePassword] = useControledInput(
+    null,
+    validatePassword
+  );
+  const [rePassword, rePasswordErrors, updateRePassword] = useControledInput(
+    null,
+    repeatedPassword => validateRePassword(password, repeatedPassword)
+  );
   const [submitStatus, setSubmitStatus] = useState("idle");
 
   function toggleForm() {
@@ -30,14 +37,17 @@ function LoginForm({ userHasAcc, setUserHasAcc }) {
 
     setSubmitStatus("submitting");
     userHasAcc
-      ? logInUser(email, pass).catch(err => {
+      ? logInUser(email, password).catch(err => {
           setSubmitStatus(`error: ${err}`);
         })
-      : registerUser(name, email, pass).catch(err => {
+      : registerUser(name, email, password).catch(err => {
           setSubmitStatus(`error: ${err}`);
         });
   }
-  console.log(Boolean(nameErrors || emailErrors || passErrors || rePassErrors));
+
+  // console.log(
+  //   Boolean(nameErrors || emailErrors || passwordErrors || rePasswordErrors)
+  // );
 
   return (
     <form
@@ -69,19 +79,19 @@ function LoginForm({ userHasAcc, setUserHasAcc }) {
           id={"password"}
           placeholder='Password'
           type='password'
-          value={pass}
-          handleChange={updatePass}
-          errorMessage={passErrors}
+          value={password}
+          handleChange={updatePassword}
+          errorMessage={passwordErrors}
         />
         {!userHasAcc && (
           <FormInput
             id={"passwordRepeat"}
             placeholder='Repeat Password'
             type='password'
-            value={rePass}
-            handleChange={updateRePass}
-            disabled={!pass || passErrors}
-            errorMessage={pass !== rePass ? ["Passwords Do not match"] : null}
+            value={rePassword}
+            handleChange={updateRePassword}
+            disabled={!password || passwordErrors}
+            errorMessage={rePasswordErrors}
           />
         )}
 
@@ -102,8 +112,8 @@ function LoginForm({ userHasAcc, setUserHasAcc }) {
         disabled={Boolean(
           nameErrors ||
             emailErrors ||
-            passErrors ||
-            rePassErrors ||
+            passwordErrors ||
+            rePasswordErrors ||
             submitStatus.startsWith("error: ")
         )}
         className='text-gray-100 text-lg font-semibold bg-primary self-center min-w-[130px] min-h-[50px] mt-4 px-10 py-2 rounded-full shadow-sm capitalize cursor-pointer hover:shadow-md hover:bg-orange-500'

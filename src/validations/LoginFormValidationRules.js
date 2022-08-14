@@ -23,7 +23,7 @@ function validateEmail(email) {
   return errors.length ? errors : null;
 }
 
-function validatePass(pass) {
+function validatePassword(pass) {
   let errors = [];
 
   if (!pass) errors.push("Password can not be empty");
@@ -34,4 +34,12 @@ function validatePass(pass) {
   return errors.length ? errors : null;
 }
 
-export { validateName, validateEmail, validatePass };
+function validateRePassword(mainPassword, confirmPassword) {
+  let errors = [];
+  console.log(mainPassword, confirmPassword);
+  if (mainPassword !== confirmPassword) errors.push("Passwords do not match");
+
+  return errors.length ? errors : null;
+}
+
+export { validateName, validateEmail, validatePassword, validateRePassword };
