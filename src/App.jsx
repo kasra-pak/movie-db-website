@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Detail from "./pages/Detail";
 import Watchlist from "./pages/Watchlist";
+import AllResults from "./pages/AllResult";
 import NotFound from "./pages/NotFound";
 
 export default function App() {
@@ -13,6 +14,7 @@ export default function App() {
       <Route path='/login' element={<Login />} />
       <Route path='/detail/:media/:id' element={<Detail />} />
       <Route path='/watchlist' element={<Watchlist />} />
+      <Route path='/all/:resultsFor/:media' element={<AllResults />} />
       <Route path='*' element={<NotFound />} />
     </Routes>
   );

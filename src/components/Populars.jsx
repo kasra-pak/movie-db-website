@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Scroller from "./Scroller";
 import { getPopularItems } from "../api/functions";
 import FadingLine from "./Shared/FadingLine";
@@ -13,7 +14,7 @@ export default function Populars() {
   useEffect(() => {
     setLoading(true);
     getPopularItems(mediaType).then(items => {
-      setPopulars(items);
+      setPopulars(items.slice(0, 6));
       setLoading(false);
     });
   }, [mediaType]);
@@ -24,12 +25,12 @@ export default function Populars() {
         <h2 className='text-sm-3xl text-slate-200 font-semibold tracking-wider'>
           Popular
         </h2>
-        <a
-          href='#'
+        <Link
+          to={`/all/popular/${mediaType}`}
           className='text-xs font-semibold tracking-wider text-orange-600 border-primary px-2 py-1 rounded-l-full hover:text-slate-200 hover:bg-gradient-to-r hover:from-orange-600 hover:border hover:border-r-0 xs:text-base xs:px-3'
         >
           Show All
-        </a>
+        </Link>
       </div>
 
       <FadingLine />

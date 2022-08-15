@@ -73,7 +73,7 @@ function getPopularItems(media = "movie") {
       if (data.status_message) {
         throw new Error(data.status_message);
       } else {
-        return data.results.slice(0, 5).map(item => ({
+        return data.results.map(item => ({
           id: item.id,
           title: item.title || item.name,
           poster: `${imgUrl}${posterSize}${item.poster_path}`,
@@ -97,7 +97,7 @@ function getTopRatedItems(media = "movie") {
       if (data.status_message) {
         throw new Error(data.status_message);
       } else {
-        return data.results.slice(0, 5).map(item => ({
+        return data.results.map(item => ({
           id: item.id,
           title: item.title || item.name,
           poster: `${imgUrl}${posterSize}${item.poster_path}`,

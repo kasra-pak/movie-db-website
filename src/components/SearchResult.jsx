@@ -12,7 +12,7 @@ export default function SearchResult() {
   };
 
   return (
-    <div className=''>
+    <div>
       {searching ? (
         <LoadingImg className='fill-primary w-12 mx-auto' />
       ) : (
@@ -41,6 +41,12 @@ export default function SearchResult() {
                 </div>
               </Link>
             ))}
+            <Link
+              to='/'
+              className='bg-primary text-gray-100 font-bold tracking-wide text-center mt-2 px-4 py-2 rounded-md shadow-sm hover:bg-orange-500 hover:shadow-md'
+            >
+              Show all results
+            </Link>
           </div>
         )
       )}

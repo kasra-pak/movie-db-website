@@ -4,6 +4,7 @@ import { getTopRatedItems } from "../api/functions";
 import FadingLine from "./Shared/FadingLine";
 import SlideButton from "./Shared/SlideButton";
 import LoadingImg from "../images/loading/loading.svg";
+import { Link } from "react-router-dom";
 
 export default function TopRatedItems() {
   const [loading, setLoading] = useState(true);
@@ -13,7 +14,7 @@ export default function TopRatedItems() {
   useEffect(() => {
     setLoading(true);
     getTopRatedItems(mediaType).then(items => {
-      setTopRatedItems(items);
+      setTopRatedItems(items.slice(0, 6));
       setLoading(false);
     });
   }, [mediaType]);
@@ -24,12 +25,12 @@ export default function TopRatedItems() {
         <h2 className='text-sm-3xl text-slate-200 font-semibold tracking-wider'>
           Top Rated
         </h2>
-        <a
-          href='#'
+        <Link
+          to={`/all/top/${mediaType}`}
           className='text-xs font-semibold tracking-wider text-orange-600 border-primary px-2 py-1 rounded-l-full hover:text-slate-200 hover:bg-gradient-to-r hover:from-orange-600 hover:border hover:border-r-0 xs:text-base xs:px-3'
         >
           Show All
-        </a>
+        </Link>
       </div>
 
       <FadingLine />

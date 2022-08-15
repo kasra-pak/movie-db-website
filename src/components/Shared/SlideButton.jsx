@@ -3,11 +3,12 @@ import React, { useState } from "react";
 function SlideButton({
   leftText = "left",
   rightText = "right",
+  activeSide,
   id = `${leftText}_${rightText}_slider`,
   toggle,
   className = "",
 }) {
-  const [state, setState] = useState(leftText);
+  const [state, setState] = useState(activeSide || leftText);
 
   const handleChange = event => {
     setState(event.target.value);
