@@ -1,23 +1,20 @@
 import React, { useState, useEffect } from "react";
-import Scroller from "./Scroller";
+import { Link } from "react-router-dom";
 import { getTopRatedItems } from "../api/functions";
+import useAsync from "../hooks/AsyncHooks";
+
+import Scroller from "./Scroller";
 import FadingLine from "./Shared/FadingLine";
 import SlideButton from "./Shared/SlideButton";
 import LoadingImg from "../images/loading/loading.svg";
-import { Link } from "react-router-dom";
 
 export default function TopRatedItems() {
-  const [loading, setLoading] = useState(true);
+  const { isLoading, data, run } = useAsync();
   const [mediaType, setMediaType] = useState("movie");
-  const [topRatedItems, setTopRatedItems] = useState(null);
 
   useEffect(() => {
-    setLoading(true);
-    getTopRatedItems(mediaType).then(items => {
-      setTopRatedItems(items.slice(0, 6));
-      setLoading(false);
-    });
-  }, [mediaType]);
+    run(getTopRatedItems(mediaType).then(items => items.slice(0, 6)));
+  }, [mediaType, run]);
 
   return (
     <section className='bg-secondary text-gray-100 mt-4 p-4 sm:p-6'>
@@ -42,12 +39,12 @@ export default function TopRatedItems() {
         toggle={setMediaType}
       />
 
-      {loading ? (
+      {isLoading ? (
         <div className='h-72 flex justify-center items-center'>
           <LoadingImg className='fill-primary w-12 mx-auto' />
         </div>
       ) : (
-        <Scroller data={topRatedItems} />
+        <Scroller data={data} />
       )}
     </section>
   );

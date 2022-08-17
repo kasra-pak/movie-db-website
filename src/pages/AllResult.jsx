@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import useAsync from "../hooks/AsyncHooks";
 import { getPopularItems, getTopRatedItems } from "../api/functions";
 
 import Navbar from "../components/Navbar";
@@ -9,31 +10,30 @@ import SlideButton from "../components/Shared/SlideButton";
 import LoadingImg from "../images/loading/loading.svg";
 
 function AllResults() {
-  const [loading, setLoading] = useState(true);
-  const [data, setData] = useState(null);
+  const { isLoading, isSuccess, data, run } = useAsync();
   const { resultsFor, media } = useParams();
   const [mediaFilter, setMediaFilter] = useState(media);
 
   useEffect(() => {
     if (resultsFor === "top") {
-      getTopRatedItems(mediaFilter).then(data => {
-        setData(data);
-        setLoading(false);
-      });
+      run(getTopRatedItems(mediaFilter));
     } else if (resultsFor === "popular") {
-      getPopularItems(mediaFilter).then(data => {
-        setData(data);
-        setLoading(false);
-      });
+      run(getPopularItems(mediaFilter));
     }
-  }, [mediaFilter]);
+  }, [mediaFilter, resultsFor, run]);
 
-  const itemsList = loading ? (
-    <div className='bg-secondary p-4'>
-      <LoadingImg className='w-10 mx-auto fill-primary' />
-    </div>
-  ) : (
-    data.map(item => (
+  let itemsList;
+
+  if (isLoading) {
+    itemsList = (
+      <div className='bg-secondary p-4'>
+        <LoadingImg className='w-10 mx-auto fill-primary' />
+      </div>
+    );
+  }
+
+  if (isSuccess) {
+    itemsList = data.map(item => (
       <Link
         to={`/detail/${item.media}/${item.id}`}
         className='bg-secondary min-h-[70px] flex items-center gap-3 rounded-md shadow-md overflow-hidden'
@@ -51,8 +51,8 @@ function AllResults() {
           <p className='text-slate-400'>{item.release}</p>
         </div>
       </Link>
-    ))
-  );
+    ));
+  }
 
   return (
     <>

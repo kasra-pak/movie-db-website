@@ -1,23 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Scroller from "./Scroller";
+import useAsync from "../hooks/AsyncHooks";
 import { getPopularItems } from "../api/functions";
+
+import Scroller from "./Scroller";
 import FadingLine from "./Shared/FadingLine";
 import SlideButton from "./Shared/SlideButton";
 import LoadingImg from "../images/loading/loading.svg";
 
 export default function Populars() {
-  const [loading, setLoading] = useState(true);
+  const { isLoading, data, run } = useAsync();
   const [mediaType, setMediaType] = useState("movie");
-  const [populars, setPopulars] = useState(null);
 
   useEffect(() => {
-    setLoading(true);
-    getPopularItems(mediaType).then(items => {
-      setPopulars(items.slice(0, 6));
-      setLoading(false);
-    });
-  }, [mediaType]);
+    run(getPopularItems(mediaType).then(items => items.slice(0, 6)));
+  }, [mediaType, run]);
 
   return (
     <section className='bg-secondary text-gray-100 mt-4 p-4 sm:p-6'>
@@ -42,12 +39,12 @@ export default function Populars() {
         toggle={setMediaType}
       />
 
-      {loading ? (
+      {isLoading ? (
         <div className='h-72 flex justify-center items-center'>
           <LoadingImg className='fill-primary w-12 mx-auto' />
         </div>
       ) : (
-        <Scroller data={populars} />
+        <Scroller data={data} />
       )}
     </section>
   );

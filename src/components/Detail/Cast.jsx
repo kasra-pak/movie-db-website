@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { getCast } from "../../api/functions";
+import useAsync from "../../hooks/AsyncHooks";
 import LoadingImg from "../../images/loading/loading.svg";
 import Spinner from "../../images/loading/spinner.svg";
 
 export default function Cast({ media, id }) {
-  const [loading, setLoading] = useState(true);
-  const [cast, setCast] = useState([]);
+  const { isLoding, isSuccess, data, run } = useAsync();
 
   const [passed, setPassed] = useState(false);
   const initialLimit = 6;
@@ -13,29 +13,26 @@ export default function Cast({ media, id }) {
   const castElRef = useRef();
 
   useEffect(() => {
-    getCast(media, id).then(data => {
-      setCast(data);
-      setLoading(false);
-    });
-  }, []);
+    run(getCast(media, id));
+  }, [id, media, run]);
 
   useEffect(() => {
     if (passed) {
       setTimeout(() => {
         setLimit(prevLimit =>
-          prevLimit + 10 < cast.length ? prevLimit + 10 : cast.length
+          prevLimit + 10 < data.length ? prevLimit + 10 : data.length
         );
       }, 1000);
     }
-  }, [passed]);
+  }, [data, passed]);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
 
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [handleScroll]);
 
-  function handleScroll() {
+  const handleScroll = useCallback(() => {
     const castElBottom = castElRef.current.getBoundingClientRect().bottom;
 
     if (window.innerHeight > castElBottom) {
@@ -47,7 +44,7 @@ export default function Cast({ media, id }) {
     } else {
       setPassed(false);
     }
-  }
+  }, [passed]);
 
   function collapseList() {
     setLimit(initialLimit);
@@ -55,8 +52,8 @@ export default function Cast({ media, id }) {
   }
 
   let castEl;
-  if (!loading) {
-    castEl = cast.map((item, idx) => (
+  if (isSuccess) {
+    castEl = data.map((item, idx) => (
       <div
         key={idx}
         className='bg-slate-700 flex items-center gap-3 rounded-lg overflow-hidden shadow-md'
@@ -77,31 +74,37 @@ export default function Cast({ media, id }) {
     ));
   }
 
-  return loading ? (
-    <div className='aspect[9/5] flex justify-center items-center'>
-      <LoadingImg className='w-12 fill-primary' />
-    </div>
-  ) : (
-    <div
-      ref={castElRef}
-      className='grid grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] gap-4'
-    >
-      {castEl.slice(0, limit)}
+  if (isLoding) {
+    return (
+      <div className='aspect[9/5] flex justify-center items-center'>
+        <LoadingImg className='w-12 fill-primary' />
+      </div>
+    );
+  }
 
-      {cast.length > initialLimit && cast.length > limit && (
-        <div className='col-span-full justify-self-center'>
-          <Spinner className='w-12 fill-primary animate-spin' />
-        </div>
-      )}
+  if (isSuccess) {
+    return (
+      <div
+        ref={castElRef}
+        className='grid grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] gap-4'
+      >
+        {castEl.slice(0, limit)}
 
-      {limit === cast.length && limit > initialLimit && (
-        <button
-          onClick={collapseList}
-          className='bg-orange-500 capitalize font-semibold tracking-wider min-w-max w-1/4 max-w-xs justify-self-center col-span-full px-4 py-1  rounded-lg shadow-md hover:bg-primary'
-        >
-          collapse all
-        </button>
-      )}
-    </div>
-  );
+        {data.length > initialLimit && data.length > limit && (
+          <div className='col-span-full justify-self-center'>
+            <Spinner className='w-12 fill-primary animate-spin' />
+          </div>
+        )}
+
+        {limit === data.length && limit > initialLimit && (
+          <button
+            onClick={collapseList}
+            className='bg-orange-500 capitalize font-semibold tracking-wider min-w-max w-1/4 max-w-xs justify-self-center col-span-full px-4 py-1  rounded-lg shadow-md hover:bg-primary'
+          >
+            collapse all
+          </button>
+        )}
+      </div>
+    );
+  }
 }

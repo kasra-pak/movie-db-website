@@ -19,7 +19,7 @@ function useMediaWatchlist(id) {
 
       return "notAdded";
     });
-  }, [userData]);
+  }, [id, userData]);
 
   function removeFromWatchlist() {
     const newWatchlist = userData.watchlist.filter(item => item.id !== id);

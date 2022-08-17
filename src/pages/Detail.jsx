@@ -1,35 +1,32 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getDetail } from "../api/functions";
+import useAsync from "../hooks/AsyncHooks";
 
 import Navbar from "../components/Navbar";
 import Intro from "../components/Detail/Intro";
 import InfoSection from "../components/Detail/InfoSection";
 import Cast from "../components/Detail/Cast";
-
-import LoadingImg from "../images/loading/loading.svg";
 import Footer from "../components/Shared/Footer";
+import LoadingImg from "../images/loading/loading.svg";
 
 export default function Detail() {
-  const [loading, setLoading] = useState(true);
-  const [data, setData] = useState(null);
+  const { isLoading, isSuccess, data, run } = useAsync();
   const { media, id } = useParams();
 
   useEffect(() => {
-    getDetail(media, id).then(data => {
-      setData(data);
-      setLoading(false);
-    });
-  }, []);
+    run(getDetail(media, id));
+  }, [id, media, run]);
 
   return (
     <>
       <Navbar />
-      {loading ? (
+      {isLoading && (
         <main className='min-h-[90vh] flex justify-center items-center'>
           <LoadingImg className='w-12 fill-primary' />
         </main>
-      ) : (
+      )}
+      {isSuccess && (
         <main className='bg-secondary text-gray-100'>
           <Intro media={media} data={data} />
 

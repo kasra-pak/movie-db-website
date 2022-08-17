@@ -1,22 +1,19 @@
-import React, { useState, useEffect } from "react";
-import { getTrendingItems } from "../api/functions";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import LoadingImg from "../images/loading/loading.svg";
+import { getTrendingItems } from "../api/functions";
+import useAsync from "../hooks/AsyncHooks";
 import Carousel from "./Carousel";
 import ScoreCircle from "./ScoreCircle";
+import LoadingImg from "../images/loading/loading.svg";
 
 export default function Trends() {
-  const [loading, setLoading] = useState(true);
-  const [trends, setTrends] = useState(null);
+  const { isLoading, isSuccess, run, data } = useAsync();
 
   useEffect(() => {
-    getTrendingItems().then(items => {
-      setTrends(items);
-      setLoading(false);
-    });
-  }, []);
+    run(getTrendingItems());
+  }, [run]);
 
-  if (loading)
+  if (isLoading)
     return (
       <section className='aspect-[16/9] flex justify-center items-center'>
         <LoadingImg className='fill-primary w-12 mx-auto' />
@@ -24,10 +21,10 @@ export default function Trends() {
     );
 
   return (
-    trends && (
+    isSuccess && (
       <section>
         <Carousel className='max-h-[80vh]'>
-          {trends.map(item => {
+          {data.map(item => {
             return (
               <div
                 key={item.id}
