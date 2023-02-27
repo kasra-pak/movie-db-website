@@ -1,5 +1,4 @@
 // import { ImgConfigs } from '../api/config'
-import { transformURL } from "../api_temp/direct_api_calls";
 import NoImageAvailable from "../../src/images/no-image/no-image-available.jpg";
 
 const imgUrl = "https://image.tmdb.org/t/p/";
@@ -40,7 +39,7 @@ const genres = {
 function getTrendingItems() {
   const url = "http://localhost:8000/movie_api?method=/trending/movie/week";
 
-  return fetch(transformURL(url))
+  return fetch(url)
     .then(res => res.json())
     .then(data => {
       if (data.status_message) {
@@ -67,7 +66,7 @@ function getTrendingItems() {
 function getPopularItems(media = "movie") {
   const url = `http://localhost:8000/movie_api?method=/${media}/popular`;
 
-  return fetch(transformURL(url))
+  return fetch(url)
     .then(res => res.json())
     .then(data => {
       if (data.status_message) {
@@ -91,7 +90,7 @@ function getPopularItems(media = "movie") {
 function getTopRatedItems(media = "movie") {
   const url = `http://localhost:8000/movie_api?method=/${media}/top_rated`;
 
-  return fetch(transformURL(url))
+  return fetch(url)
     .then(res => res.json())
     .then(data => {
       if (data.status_message) {
@@ -115,7 +114,7 @@ function getTopRatedItems(media = "movie") {
 function getDetail(media = "movie", id) {
   const url = `http://localhost:8000/movie_api?method=/${media}/${id}`;
 
-  return fetch(transformURL(url))
+  return fetch(url)
     .then(res => res.json())
     .then(data => {
       if (data.status_message) {
@@ -169,7 +168,7 @@ function searchItems(searchTerm) {
     return promise;
   }
 
-  return fetch(transformURL(url))
+  return fetch(url)
     .then(res => res.json())
     .then(data => {
       if (data.status_message) {
@@ -204,7 +203,7 @@ function searchItems(searchTerm) {
 function getCast(media = "movie", id) {
   const url = `http://localhost:8000/movie_api?method=/${media}/${id}/credits`;
 
-  return fetch(transformURL(url))
+  return fetch(url)
     .then(res => res.json())
     .then(data => {
       if (data.status_message) {
