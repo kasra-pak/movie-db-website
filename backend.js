@@ -22,7 +22,13 @@ app.get("/movie_api", (req, res) => {
   // 'https://api.themoviedb.org/3/trending/all/week'
 
   needle.request("get", `${baseURL}${method}`, params, (err, resp) => {
-    res.json(resp.body);
+    if (resp) {
+      res.json(resp.body);
+    }
+
+    if (err) {
+      console.log(err);
+    }
   });
 });
 
