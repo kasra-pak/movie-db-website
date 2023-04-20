@@ -6,7 +6,7 @@
   "scripts": {
     "netlify:funcs:locally": "npx netlify functions:serve --port 9999",
     "webpack:dev": "wait-on tcp:9999 && webpack serve --mode development",
-    "dev": "conc -n \"NetlifyFunc,DevServer\" -c \"cyan,green\" \"npm:netlify:funcs:locally\" \"npm:webpack:dev\"",
+    "dev": "conc -k -n \"NetlifyFunc,DevServer\" -c \"cyan,green\" \"npm:netlify:funcs:locally\" \"npm:webpack:dev\"",
     "netlify:dev": "npm run build && netlify dev",
     "front": "webpack-dev-server --mode development",
     "back": "nodemon backend.js",
