@@ -1,13 +1,12 @@
 const needle = require("needle");
 
-exports.handler = async function () {
+exports.handler = async function (event) {
   const keyName = process.env.API_KEY_NAME;
   const keyValue = process.env.API_KEY_VALUE;
   const baseURL = process.env.API_BASE_URL;
-  // const method = req.query.method;
-  // const query = req.query.q;
 
-  const url = `${baseURL}/trending/tv/week?${keyName}=${keyValue}`;
+  const { media } = event.queryStringParameters;
+  const url = `${baseURL}/${media}/popular?${keyName}=${keyValue}`;
 
   try {
     let response = await needle("get", url);

@@ -63,8 +63,7 @@ function getTrendingItems() {
 }
 
 function getPopularItems(media = "movie") {
-  const url = `http://localhost:8000/movie_api?method=/${media}/popular`;
-
+  const url = `/.netlify/functions/getPopular?media=${media}`;
   return fetch(url)
     .then(res => res.json())
     .then(data => {
