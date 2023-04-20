@@ -110,7 +110,7 @@ function getTopRatedItems(media = "movie") {
 }
 
 function getDetail(media = "movie", id) {
-  const url = `http://localhost:8000/movie_api?method=/${media}/${id}`;
+  const url = `/.netlify/functions/getDetail?media=${media}&id=${id}`;
 
   return fetch(url)
     .then(res => res.json())
