@@ -86,7 +86,7 @@ function getPopularItems(media = "movie") {
 }
 
 function getTopRatedItems(media = "movie") {
-  const url = `http://localhost:8000/movie_api?method=/${media}/top_rated`;
+  const url = `/.netlify/functions/getTopRated?media=${media}`;
 
   return fetch(url)
     .then(res => res.json())
