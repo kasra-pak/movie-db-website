@@ -37,8 +37,7 @@ const genres = {
 };
 
 function getTrendingItems() {
-  const url = "http://localhost:8000/movie_api?method=/trending/movie/week";
-
+  const url = "/.netlify/functions/getTrend";
   return fetch(url)
     .then(res => res.json())
     .then(data => {

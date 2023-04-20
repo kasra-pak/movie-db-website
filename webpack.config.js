@@ -46,6 +46,9 @@ module.exports = {
         name: "firefox",
       },
     },
+    proxy: {
+      "/.netlify": "http://localhost:9999",
+    },
     port: 3000,
     hot: true,
   },

@@ -1,30 +1,26 @@
-import needle from "needle";
+const needle = require("needle");
 
 exports.handler = async function (event, context) {
   const keyName = process.env.API_KEY_NAME;
   const keyValue = process.env.API_KEY_VALUE;
   const baseURL = process.env.API_BASE_URL;
-  const method = req.query.method;
-  const query = req.query.q;
+  // const method = req.query.method;
+  // const query = req.query.q;
 
-  const params = {
-    [keyName]: keyValue,
-    query: query,
-  };
+  const url = `${baseURL}/trending/tv/week?${keyName}=${keyValue}`;
 
-  needle.request("get", `${baseURL}${method}`, params, (err, resp) => {
-    if (resp) {
-      return {
-        statusCode: 200,
-        body: JSON.stringify(resp.body),
-      };
-    }
+  try {
+    let response = await needle("get", url);
+    const data = response.body;
 
-    if (err) {
-      return {
-        statusCode: 500,
-        body: err,
-      };
-    }
-  });
+    return {
+      statusCode: 200,
+      body: JSON.stringify(data),
+    };
+  } catch (error) {
+    return {
+      statusCode: 500,
+      body: JSON.stringify(error),
+    };
+  }
 };
