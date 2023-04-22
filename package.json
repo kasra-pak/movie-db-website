@@ -9,7 +9,8 @@
     "dev": "conc -k -n \"NetlifyFunc,DevServer\" -c \"cyan,green\" \"npm:netlify:funcs:locally\" \"npm:webpack:dev\"",
     "netlify:dev": "npm run build && netlify dev",
     "build": "webpack --mode production",
-    "lint": "npx eslint src/**"
+    "lint": "npx eslint src/**",
+    "format": "prettier --ignore-path ./.gitignore --write ."
   },
   "keywords": [],
   "author": "",
