@@ -1,9 +1,15 @@
 const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const Dotenv = require("dotenv-webpack");
 
 module.exports = {
   entry: "./src/index.js",
-  mode: "development",
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "bundle.js",
+    clean: true,
+    assetModuleFilename: "[base]",
+  },
   module: {
     rules: [
       {
@@ -27,17 +33,7 @@ module.exports = {
     ],
   },
   resolve: { extensions: ["*", ".js", ".jsx"] },
-  output: {
-    path: path.resolve(__dirname, "dist"),
-    publicPath: "/dist/",
-    filename: "bundle.js",
-    clean: true,
-  },
   devServer: {
-    // static: {
-    //   directory: path.join(__dirname, 'public'),
-    //   publicPath: "/",
-    // },
     client: {
       logging: "warn",
     },
@@ -52,5 +48,11 @@ module.exports = {
     port: 3000,
     hot: true,
   },
-  plugins: [new Dotenv()],
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, "public", "index.html"),
+      favicon: path.join(__dirname, "public", "logo.svg"),
+    }),
+    new Dotenv(),
+  ],
 };
