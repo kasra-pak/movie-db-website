@@ -199,7 +199,7 @@ function searchItems(searchTerm) {
 }
 
 function getCast(media = "movie", id) {
-  const url = `http://localhost:8000/movie_api?method=/${media}/${id}/credits`;
+  const url = `/.netlify/functions/getCast?media=${media}&id=${id}`;
 
   return fetch(url)
     .then(res => res.json())
