@@ -159,7 +159,7 @@ function getDetail(media = "movie", id) {
 }
 
 function searchItems(searchTerm) {
-  const url = `http://localhost:8000/movie_api?method=/search/multi&q=${searchTerm}`;
+  const url = `/.netlify/functions/search?searchTerm=${searchTerm}`;
 
   if (!searchTerm) {
     const promise = new Promise(resolve => resolve(null));
