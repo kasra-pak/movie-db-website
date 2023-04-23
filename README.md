@@ -2,7 +2,7 @@
 
 ## Demo link:
 
-Access the live website at [google.com](https://google.com)
+Access the live website at [movie-planet.netlify.app](https://movie-planet.netlify.app/)
 
 ## Table of Content:
 
@@ -18,7 +18,11 @@ Access the live website at [google.com](https://google.com)
 
 ## About
 
-MovieDB is an app that
+Users can find a wealth of movie-related information on the website. Also provides:
+
+- Watchlist customization.
+- Multi-search among (Movies, Tv shows, people, etc).
+- Comments and reviews (#todo)
 
 ## Screenshots
 
@@ -26,8 +30,11 @@ MovieDB is an app that
 
 ## Technologies
 
-`React` and `TailwindCSS` for frontend
-`TMDB API` and `Firebase` for backend
+- React
+- TailwindCSS
+- TMDB API
+- Firebase
+- Netlify
 
 ## Setup
 
@@ -37,8 +44,10 @@ MovieDB is an app that
 
 ## Approach
 
-I adopted the `BEM` naming style for my CSS class names and ...
+- The front end is fetching data from [TMDB API](https://www.themoviedb.org/documentation/api).
+
+- Netlify is used for deployment and hiding environment variables in the back end.
 
 ## Status
 
-[name of the project] is still in progress. `Version 2` will be out soon.
+The website is still in progress.
