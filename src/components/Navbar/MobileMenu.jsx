@@ -15,7 +15,7 @@ function MobileMenu({ mobileMenuOpen, ...rest }) {
 
   return (
     <ul
-      className={`bg-inherit absolute h-screen inset-0 z-20 right-1/4 right flex flex-col gap-10 px-4 py-32 transition-transform xs:right-1/3 sm:right-1/2 sm:gap-12 sm:px-6 sm:py-40 ${
+      className={`right absolute inset-0 right-1/4 z-20 flex h-screen flex-col gap-10 bg-inherit px-4 py-32 transition-transform xs:right-1/3 sm:right-1/2 sm:gap-12 sm:px-6 sm:py-40 ${
         mobileMenuOpen ? "md:-translate-x-full" : "-translate-x-full"
       }`}
       {...rest}
@@ -56,7 +56,7 @@ function MobileMenu({ mobileMenuOpen, ...rest }) {
         {userDataStatus === "success" && (
           <button
             onClick={logOutUser}
-            className='relative block w-full text-inherit text-lg font-semibold tracking-wider capitalize after:content-[""] after:absolute after:-inset-2 after:rounded-r-full sm:after:-inset-3 sm:text-xl md:tracking-wide'
+            className='relative block w-full text-lg font-semibold capitalize tracking-wider text-inherit after:absolute after:-inset-2 after:rounded-r-full after:content-[""] sm:text-xl sm:after:-inset-3 md:tracking-wide'
           >
             <div className='flex items-end'>
               <LogoutMobileMenu

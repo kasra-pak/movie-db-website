@@ -11,10 +11,10 @@ export default function MovieCard({ data }) {
   else scoreColor = "text-red-500 border-red-500";
 
   return (
-    <div className='show-toggle-btns relative shadow-lg transition-transform hover:shadow-xl hover:scale-[101%]'>
+    <div className='show-toggle-btns relative shadow-lg transition-transform hover:scale-[101%] hover:shadow-xl'>
       <Link
         to={`/detail/${data.media}/${data.id}`}
-        className='block bg-slate-700 text-slate-200 rounded-md w-36  xs:w-52 sm:w-64'
+        className='block w-36 rounded-md bg-slate-700 text-slate-200  xs:w-52 sm:w-64'
       >
         <div className='relative'>
           <img
@@ -24,16 +24,16 @@ export default function MovieCard({ data }) {
           />
           <div className='absolute inset-0 top-3/4 bg-gradient-to-t	from-slate-700'></div>
           <div
-            className={`flex items-center gap-0.5 absolute bottom-0 left-2 border ${scoreColor} rounded-md px-1 xs:gap-1.5 xs:px-1.5 xs:py-0.5`}
+            className={`absolute bottom-0 left-2 flex items-center gap-0.5 border ${scoreColor} rounded-md px-1 xs:gap-1.5 xs:px-1.5 xs:py-0.5`}
           >
-            <Star className='w-2.5 xs:w-3.5 fill-yellow-500' />
+            <Star className='w-2.5 fill-yellow-500 xs:w-3.5' />
             <span className='text-xs font-semibold xs:text-base'>
               {data.score.toFixed(1)}
             </span>
           </div>
         </div>
-        <div className='p-2 pb-4 xs:pb-6 xs:mt-2 sm:pb-8'>
-          <h3 className='text-xs-2xl font-bold tracking-wider capitalize truncate xs:font-semibold xs:tracking-wide'>
+        <div className='p-2 pb-4 xs:mt-2 xs:pb-6 sm:pb-8'>
+          <h3 className='truncate text-xs-2xl font-bold capitalize tracking-wider xs:font-semibold xs:tracking-wide'>
             {data.title}
           </h3>
         </div>
@@ -42,7 +42,7 @@ export default function MovieCard({ data }) {
         mediaData={{ id: data.id, type: data.media, title: data.title }}
         tooltipPosition='top'
         direction='row'
-        className='list-toggler-btns absolute -bottom-3 w-full flex items-center h-5 transition-opacity xs:h-7 sm:h-8 sm:-bottom-4'
+        className='list-toggler-btns absolute -bottom-3 flex h-5 w-full items-center transition-opacity xs:h-7 sm:-bottom-4 sm:h-8'
       />
     </div>
   );

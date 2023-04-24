@@ -7,7 +7,7 @@ export default function Logo() {
       <div className='w-5 sm:w-8'>
         <LogoImg />
       </div>
-      <p className='text-2xl font-semibold space'>
+      <p className='space text-2xl font-semibold'>
         M<span className='hidden xs:inline'>OVIE </span>DB
       </p>
     </>

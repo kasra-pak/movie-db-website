@@ -8,19 +8,19 @@ export default function Stars({ score }) {
 
   for (let i = 1; i <= 10; i++) {
     if (i < score) {
-      stars.push(<StarImg key={i} className='fill-primary w-2.5' />);
+      stars.push(<StarImg key={i} className='w-2.5 fill-primary' />);
     } else if (decimal_flag) {
-      stars.push(<StarImg key={i} className='fill-slate-500 w-2.5' />);
+      stars.push(<StarImg key={i} className='w-2.5 fill-slate-500' />);
       decimal_flag = false;
     } else {
-      stars.push(<StarImg key={i} className='fill-slate-500 w-2.5' />);
+      stars.push(<StarImg key={i} className='w-2.5 fill-slate-500' />);
     }
   }
 
   return (
-    <div className='w-full flex flex-wrap justify-between'>
+    <div className='flex w-full flex-wrap justify-between'>
       <div className='flex gap-0.5'>{stars}</div>
-      <p className='text-slate-300 text-xs tracking-wider font-semibold w-max'>
+      <p className='w-max text-xs font-semibold tracking-wider text-slate-300'>
         {score} / 10
       </p>
     </div>

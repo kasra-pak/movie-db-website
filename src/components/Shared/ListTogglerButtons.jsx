@@ -55,9 +55,9 @@ function ListTogglerButtons({
         <button
           aria-label={toolTips[state]}
           onClick={changeState}
-          className={`block bg-slate-300 aspect-square ${
+          className={`block aspect-square bg-slate-300 ${
             direction === "row" ? "h-full" : "w-full"
-          } p-1 rounded-full shadow-lg xs:p-1.5`}
+          } rounded-full p-1 shadow-lg xs:p-1.5`}
         >
           {state === "notAdded" && <Plus className='fill-green-700' />}
           {state === "added" && <Check className='fill-emerald-900' />}
@@ -75,9 +75,9 @@ function ListTogglerButtons({
           onClick={dismiss}
           aria-label={toolTips.dismiss}
           aria-hidden={state === "notAdded"}
-          className={`bg-slate-300 aspect-square ${
+          className={`aspect-square bg-slate-300 ${
             direction === "row" ? "h-full" : "w-full"
-          } p-1 rounded-full shadow-lg xs:p-1.5 ${
+          } rounded-full p-1 shadow-lg xs:p-1.5 ${
             state === "notAdded" ? "hidden" : "block"
           }`}
         >

@@ -61,7 +61,7 @@ export default function StickySearchBar() {
     <div ref={searchEl} className=''>
       <div
         ref={lineEl}
-        className='absolute w-96 top-1/2 -translate-y-1/2 h-1 bg-gradient-to-l from-transparent via-primary to-transparent'
+        className='absolute top-1/2 h-1 w-96 -translate-y-1/2 bg-gradient-to-l from-transparent via-primary to-transparent'
       ></div>
       <SearchBar />
     </div>

@@ -26,15 +26,15 @@ export default function Login() {
   }
 
   return (
-    <div className='min-h-screen flex flex-col'>
+    <div className='flex min-h-screen flex-col'>
       <Navbar />
-      <main className='bg-secondary grow flex justify-center items-center p-4'>
-        <div className='bg-gradient-to-b from-primary text-center rounded-md overflow-hidden p-4 pt-10 md:bg-none md:flex md:p-0'>
-          <div className='flex flex-col basis-1/2  justify-center items-center gap-3 md:bg-primary md:p-10 md:gap-10'>
-            <h1 className='text-gray-100 text-4xl font-bold tracking-wider uppercase'>
+      <main className='flex grow items-center justify-center bg-secondary p-4'>
+        <div className='overflow-hidden rounded-md bg-gradient-to-b from-primary p-4 pt-10 text-center md:flex md:bg-none md:p-0'>
+          <div className='flex basis-1/2 flex-col  items-center justify-center gap-3 md:gap-10 md:bg-primary md:p-10'>
+            <h1 className='text-4xl font-bold uppercase tracking-wider text-gray-100'>
               welcome!
             </h1>
-            <p className='text-gray-100 font-medium max-w-sm md:max-w-lg'>
+            <p className='max-w-sm font-medium text-gray-100 md:max-w-lg'>
               In order to use the editing and rating capabilities of MDB, as
               well as get personal recommendations you will need to login to
               your account.
@@ -46,26 +46,26 @@ export default function Login() {
             </p>
             <button
               onClick={toggleForm}
-              className='hidden text-gray-100 text-lg bg-primary self-center mt-4 px-10 py-2 rounded-full shadow-sm capitalize cursor-pointer hover:shadow-md hover:bg-orange-500 md:block md:border'
+              className='mt-4 hidden cursor-pointer self-center rounded-full bg-primary px-10 py-2 text-lg capitalize text-gray-100 shadow-sm hover:bg-orange-500 hover:shadow-md md:block md:border'
             >{`${userHasAcc ? "sign up" : "log in"}`}</button>
           </div>
-          <div className='md:flex flex-col justify-center basis-1/2 md:bg-orange-50 md:p-10'>
-            <h2 className='text-primary text-xl font-bold capitalize tracking-wider hidden md:block'>{`${
+          <div className='basis-1/2 flex-col justify-center md:flex md:bg-orange-50 md:p-10'>
+            <h2 className='hidden text-xl font-bold capitalize tracking-wider text-primary md:block'>{`${
               userHasAcc ? "log in with your account" : "sing up for an account"
             }`}</h2>
             <div
               className={`${
                 userHasAcc ? "hidden" : "flex"
-              } justify-center gap-6 my-8 md:mb-2`}
+              } my-8 justify-center gap-6 md:mb-2`}
             >
               <a href='#'>
-                <FacebookLogo className='fill-gray-100 w-12 md:fill-primary' />
+                <FacebookLogo className='w-12 fill-gray-100 md:fill-primary' />
               </a>
               <a href='#'>
-                <GoogleLogo className='fill-gray-100 w-12 md:fill-primary' />
+                <GoogleLogo className='w-12 fill-gray-100 md:fill-primary' />
               </a>
               <a href='#'>
-                <TwitterLogo className='fill-gray-100 w-12 md:fill-primary' />
+                <TwitterLogo className='w-12 fill-gray-100 md:fill-primary' />
               </a>
             </div>
             <p className={`hidden ${userHasAcc ? "" : "md:block"}`}>

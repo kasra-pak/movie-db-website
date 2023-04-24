@@ -14,9 +14,9 @@ export default function Modal({ show, children }) {
   return isOpen && show ? (
     <div
       onClick={dismiss}
-      className='fixed inset-0 top-[47px] bg-[rgba(0,0,0,.6)] flex justify-center items-start px-4 z-30 scroller overflow-y-scroll sm:top-[59px]'
+      className='scroller fixed inset-0 top-[47px] z-30 flex items-start justify-center overflow-y-scroll bg-[rgba(0,0,0,.6)] px-4 sm:top-[59px]'
     >
-      <div className='bg-slate-600 w-full max-w-md h-[min(80%,_fit-content)] min-h-[7rem] mt-4 p-6 rounded-md md:mt-20'>
+      <div className='mt-4 h-[min(80%,_fit-content)] min-h-[7rem] w-full max-w-md rounded-md bg-slate-600 p-6 md:mt-20'>
         {children}
       </div>
     </div>

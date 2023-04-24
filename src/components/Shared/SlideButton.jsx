@@ -20,7 +20,7 @@ function SlideButton({
       onChange={handleChange}
       className={`from-orange-600 ${
         state === leftText ? "bg-gradient-to-r" : "bg-gradient-to-l"
-      } text-xs flex justify-around border border-primary rounded-full max-w-fit gap-5 transition-colors xs:text-base ${
+      } flex max-w-fit justify-around gap-5 rounded-full border border-primary text-xs transition-colors xs:text-base ${
         state === leftText ? "bg-gradient-to-r" : "bg-gradient-to-l"
       } ${className}`}
     >
@@ -35,9 +35,9 @@ function SlideButton({
         htmlFor={`${id}_${leftText}_input`}
         className={`${
           state === leftText
-            ? "text-slate-200 font-semibold"
+            ? "font-semibold text-slate-200"
             : "text-orange-600"
-        } px-2 py-1 shrink-0 tracking-wider uppercase cursor-pointer xs:px-2.5`}
+        } shrink-0 cursor-pointer px-2 py-1 uppercase tracking-wider xs:px-2.5`}
       >
         {leftText}
       </label>
@@ -52,9 +52,9 @@ function SlideButton({
         htmlFor={`${id}_${rightText}_input`}
         className={`${
           state === rightText
-            ? "text-slate-200 font-semibold"
+            ? "font-semibold text-slate-200"
             : "text-orange-600"
-        } w-full grow px-2 py-1 tracking-wider uppercase cursor-pointer xs:px-2.5`}
+        } w-full grow cursor-pointer px-2 py-1 uppercase tracking-wider xs:px-2.5`}
       >
         {rightText}
       </label>

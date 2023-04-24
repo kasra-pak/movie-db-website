@@ -22,7 +22,7 @@ export default function Detail() {
     <>
       <Navbar />
       {isLoading && (
-        <main className='min-h-[90vh] flex justify-center items-center'>
+        <main className='flex min-h-[90vh] items-center justify-center'>
           <LoadingImg className='w-12 fill-primary' />
         </main>
       )}

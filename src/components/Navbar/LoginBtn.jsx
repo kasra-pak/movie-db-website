@@ -11,14 +11,14 @@ function LoginBtn() {
 
   if (userDataStatus === "success") {
     return (
-      <div className='hidden justify-around items-center border-2 border-primary rounded-md md:flex'>
-        <p className='w-max text-primary capitalize px-2 py-1'>
+      <div className='hidden items-center justify-around rounded-md border-2 border-primary md:flex'>
+        <p className='w-max px-2 py-1 capitalize text-primary'>
           {userData.name}
         </p>
         <Tooltip label='Logout' className=''>
           <button
             onClick={logOutUser}
-            className='block rounded-r-sm text-gray-900 px-2 py-1 bg-primary'
+            className='block rounded-r-sm bg-primary px-2 py-1 text-gray-900'
           >
             <Logout className='w-7 fill-secondary' />
           </button>
@@ -30,10 +30,10 @@ function LoginBtn() {
   return (
     <Link
       to='/login'
-      className='hidden min-w-[100px] justify-center text-gray-900 bg-primary px-3 py-2 rounded-md md:flex'
+      className='hidden min-w-[100px] justify-center rounded-md bg-primary px-3 py-2 text-gray-900 md:flex'
     >
       {userDataStatus === "loading" ? (
-        <Spinner className='fill-secondary w-7' />
+        <Spinner className='w-7 fill-secondary' />
       ) : (
         "Log In"
       )}

@@ -9,11 +9,11 @@ body {
 }
 
 .mobile-menu-icon {
-  @apply inline-block fill-primary w-6 mr-2 -mt-1 sm:w-7 sm:mr-3;
+  @apply mr-2 -mt-1 inline-block w-6 fill-primary sm:mr-3 sm:w-7;
 }
 
 .nav-link {
-  @apply relative border-2 border-l-0 border-transparent rounded-r-full transition-all md:border-0;
+  @apply relative rounded-r-full border-2 border-l-0 border-transparent transition-all md:border-0;
 }
 
 .nav-link:hover {
@@ -21,13 +21,13 @@ body {
 }
 
 .nav-link:hover .mobile-menu-icon {
-  @apply scale-110 -rotate-6 transition-transform;
+  @apply -rotate-6 scale-110 transition-transform;
 }
 
 .nav-link::before {
   content: "";
   transform: perspective(100px) rotateX(-25deg);
-  @apply hidden opacity-0 absolute inset-0 top-[15%] -z-10 bg-gradient-to-t from-primary transition-opacity md:block md:rounded-none;
+  @apply absolute inset-0 top-[15%] -z-10 hidden bg-gradient-to-t from-primary opacity-0 transition-opacity md:block md:rounded-none;
 }
 
 .nav-link:hover::before {
@@ -39,11 +39,11 @@ body {
 }
 
 .scroller::-webkit-scrollbar-track {
-  @apply bg-primary rounded-full my-4;
+  @apply my-4 rounded-full bg-primary;
 }
 
 .scroller::-webkit-scrollbar-thumb {
-  @apply bg-orange-900 rounded-full;
+  @apply rounded-full bg-orange-900;
 }
 
 @supports (scrollbar-color: #f97316 #7c2d12) {
@@ -54,7 +54,7 @@ body {
 }
 
 .sticky-searchbar {
-  @apply hidden bg-secondary justify-center mx-auto px-8 border-primary rounded-b-full transition-[opacity,_max-width] duration-300 md:flex;
+  @apply mx-auto hidden justify-center rounded-b-full border-primary bg-secondary px-8 transition-[opacity,_max-width] duration-300 md:flex;
 }
 
 .stick {
@@ -64,11 +64,11 @@ body {
 
 .fix-to-top {
   /* Navbar height is 68px so, "top-[68px]" */
-  @apply fixed top-[68px] z-40 border-b-[4px] left-1/2 -translate-x-1/2;
+  @apply fixed top-[68px] left-1/2 z-40 -translate-x-1/2 border-b-[4px];
 }
 
 .tooltip {
-  @apply absolute hidden bg-slate-200 text-zinc-900 text-xs w-max px-2 py-0.5 rounded-sm shadow-md sm:text-sm md:text-base;
+  @apply absolute hidden w-max rounded-sm bg-slate-200 px-2 py-0.5 text-xs text-zinc-900 shadow-md sm:text-sm md:text-base;
 }
 
 .tooltip::after {
@@ -82,7 +82,7 @@ body {
 }
 
 .top.tooltip {
-  @apply bottom-full left-1/2 -translate-x-1/2 mb-3;
+  @apply bottom-full left-1/2 mb-3 -translate-x-1/2;
 }
 
 .top.tooltip::after {
@@ -102,7 +102,7 @@ body {
 }
 
 .bottom.tooltip {
-  @apply top-full left-1/2 -translate-x-1/2 mt-3;
+  @apply top-full left-1/2 mt-3 -translate-x-1/2;
 }
 
 .bottom.tooltip::after {
@@ -138,11 +138,11 @@ body {
 }
 
 .input-group.error {
-  @apply bg-[rgba(220,38,38,.8)] rounded-sm p-1 shadow-md;
+  @apply rounded-sm bg-[rgba(220,38,38,.8)] p-1 shadow-md;
 }
 
 .validation-msg {
-  @apply text-sm text-slate-100 text-right font-semibold tracking-wide rounded-sm p-0.5;
+  @apply rounded-sm p-0.5 text-right text-sm font-semibold tracking-wide text-slate-100;
 }
 
 .input-group.error input {
@@ -153,12 +153,12 @@ input:disabled,
 button:disabled,
 button:disabled:hover,
 input[type="submit"]:disabled:hover {
-  @apply shadow-inner bg-neutral-300  cursor-not-allowed;
+  @apply cursor-not-allowed bg-neutral-300  shadow-inner;
 }
 
 button:disabled,
 button:disabled:hover {
-  @apply text-gray-500 font-semibold;
+  @apply font-semibold text-gray-500;
 }
 
 /*==================*/

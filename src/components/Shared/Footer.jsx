@@ -9,11 +9,11 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className='bg-gray-900 text-slate-100 flex flex-col justify-center items-center gap-4 p-10'>
-      <div className='fill-slate-100 flex items-center gap-3'>
+    <footer className='flex flex-col items-center justify-center gap-4 bg-gray-900 p-10 text-slate-100'>
+      <div className='flex items-center gap-3 fill-slate-100'>
         <Logo />
       </div>
-      <div className='fill-slate-100 flex gap-4'>
+      <div className='flex gap-4 fill-slate-100'>
         <a href='#' className='w-10 sm:w-12'>
           <FacebookLogo />
         </a>
@@ -24,7 +24,7 @@ export default function Footer() {
           <GoogleLogo />
         </a>
       </div>
-      <ul className='grid justify-items-center xs:grid-cols-3 capitalize my-3'>
+      <ul className='my-3 grid justify-items-center capitalize xs:grid-cols-3'>
         <li>
           <a className='hover:underline' href='#'>
             get the MDB App

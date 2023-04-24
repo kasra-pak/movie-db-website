@@ -26,14 +26,14 @@ export default function Intro({ media, data }) {
       <div className='relative p-4'>
         <div className='absolute bottom-0 left-[5%] w-3/12 shadow-lg'>
           <img src={data.poster} alt={data.title} className='rounded-md' />
-          <div className='absolute w-1/5 top-0 right-[7%] cursor-pointer'></div>
+          <div className='absolute top-0 right-[7%] w-1/5 cursor-pointer'></div>
         </div>
 
-        <div className='w-8/12 ml-auto'>
+        <div className='ml-auto w-8/12'>
           <Stars score={data.score.toFixed(1)} />
 
           <div className='my-2.5'>
-            <h1 className='scroller text-sm-3xl font-semibold capitalize truncate hover:overflow-x-scroll'>
+            <h1 className='scroller truncate text-sm-3xl font-semibold capitalize hover:overflow-x-scroll'>
               {data.title}
             </h1>
             <p className='text-xs tracking-wider opacity-80 xs:text-sm'>
@@ -41,27 +41,27 @@ export default function Intro({ media, data }) {
             </p>
           </div>
 
-          <div className='text-slate-300 h-16 grid grid-cols-[1fr,_auto] items-center gap-2'>
-            <div className='flex gap-x-2 items-center'>
+          <div className='grid h-16 grid-cols-[1fr,_auto] items-center gap-2 text-slate-300'>
+            <div className='flex items-center gap-x-2'>
               <p className='text-sm'>{firstAndLastRelease}</p>
               {Runtime && (
                 <>
                   <div>•</div>
-                  <p className='text-sm w-max'>{Runtime}</p>
+                  <p className='w-max text-sm'>{Runtime}</p>
                 </>
               )}
               {media === "tv" && (
                 <>
                   <div>•</div>
-                  <p className='text-sm w-max'>{numberOfEpisodes}</p>
+                  <p className='w-max text-sm'>{numberOfEpisodes}</p>
                 </>
               )}
             </div>
-            <div className='row-start-2 flex flex-wrap gap-2 text-xs uppercase font-semibold tracking-wider opacity-80'>
+            <div className='row-start-2 flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-wider opacity-80'>
               {data.genres.map((genre, idx) => (
                 <span
                   key={idx}
-                  className='px-1 py-px border border-primary rounded-md'
+                  className='rounded-md border border-primary px-1 py-px'
                 >
                   {genre}
                 </span>
@@ -72,7 +72,7 @@ export default function Intro({ media, data }) {
               mediaData={{ id: data.id, type: media, title: data.title }}
               tooltipPosition='left'
               direction='col'
-              className='flex flex-col h-full row-span-2 w-5 xs:w-6'
+              className='row-span-2 flex h-full w-5 flex-col xs:w-6'
             />
           </div>
         </div>

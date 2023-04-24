@@ -11,16 +11,16 @@ function TabContent({ data, viewMode }) {
   const itemsList = data.map(item => (
     <Link
       to={`/detail/${item.media}/${item.id}`}
-      className='bg-secondary min-h-[70px] flex items-center gap-3 rounded-md shadow-md overflow-hidden'
+      className='flex min-h-[70px] items-center gap-3 overflow-hidden rounded-md bg-secondary shadow-md'
       key={item.id}
     >
       <img
         src={item.poster}
         alt={item.title}
-        className='h-20 aspect-[8/10] object-cover'
+        className='aspect-[8/10] h-20 object-cover'
       />
-      <div className='text-gray-100 capitalize pr-3 w-9/12'>
-        <h3 className='font-semibold tracking-wider w-full truncate'>
+      <div className='w-9/12 pr-3 capitalize text-gray-100'>
+        <h3 className='w-full truncate font-semibold tracking-wider'>
           {item.title}
         </h3>
         <p className='text-slate-400'>

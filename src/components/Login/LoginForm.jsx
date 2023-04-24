@@ -52,7 +52,7 @@ function LoginForm({ userHasAcc, setUserHasAcc }) {
   return (
     <form
       onSubmit={handleSubmit}
-      className={`max-w-md flex flex-col gap-4 my-6 mx-auto md:w-full ${
+      className={`my-6 mx-auto flex max-w-md flex-col gap-4 md:w-full ${
         userHasAcc ? "" : "md:mt-4"
       }`}
     >
@@ -116,10 +116,10 @@ function LoginForm({ userHasAcc, setUserHasAcc }) {
             rePasswordErrors ||
             submitStatus.startsWith("error: ")
         )}
-        className='text-gray-100 text-lg font-semibold bg-primary self-center min-w-[130px] min-h-[50px] mt-4 px-10 py-2 rounded-full shadow-sm capitalize cursor-pointer hover:shadow-md hover:bg-orange-500'
+        className='mt-4 min-h-[50px] min-w-[130px] cursor-pointer self-center rounded-full bg-primary px-10 py-2 text-lg font-semibold capitalize text-gray-100 shadow-sm hover:bg-orange-500 hover:shadow-md'
       >
         {submitStatus === "submitting" ? (
-          <Spinner className='fill-secondary w-8 mx-auto animate-spin' />
+          <Spinner className='mx-auto w-8 animate-spin fill-secondary' />
         ) : (
           `${userHasAcc ? "log in" : "sign up"}`
         )}

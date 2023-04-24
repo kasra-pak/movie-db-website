@@ -56,11 +56,11 @@ export default function Cast({ media, id }) {
     castEl = data.map((item, idx) => (
       <div
         key={idx}
-        className='bg-slate-700 flex items-center gap-3 rounded-lg overflow-hidden shadow-md'
+        className='flex items-center gap-3 overflow-hidden rounded-lg bg-slate-700 shadow-md'
       >
         <img src={item.profile} alt={item.name} className='w-20' />
         <p>
-          <span className='text-slate-100 font-semibold tracking-wider'>
+          <span className='font-semibold tracking-wider text-slate-100'>
             {item.name}
           </span>
           <br />
@@ -76,7 +76,7 @@ export default function Cast({ media, id }) {
 
   if (isLoding) {
     return (
-      <div className='aspect[9/5] flex justify-center items-center'>
+      <div className='aspect[9/5] flex items-center justify-center'>
         <LoadingImg className='w-12 fill-primary' />
       </div>
     );
@@ -92,14 +92,14 @@ export default function Cast({ media, id }) {
 
         {data.length > initialLimit && data.length > limit && (
           <div className='col-span-full justify-self-center'>
-            <Spinner className='w-12 fill-primary animate-spin' />
+            <Spinner className='w-12 animate-spin fill-primary' />
           </div>
         )}
 
         {limit === data.length && limit > initialLimit && (
           <button
             onClick={collapseList}
-            className='bg-orange-500 capitalize font-semibold tracking-wider min-w-max w-1/4 max-w-xs justify-self-center col-span-full px-4 py-1  rounded-lg shadow-md hover:bg-primary'
+            className='col-span-full w-1/4 min-w-max max-w-xs justify-self-center rounded-lg bg-orange-500 px-4 py-1 font-semibold capitalize  tracking-wider shadow-md hover:bg-primary'
           >
             collapse all
           </button>

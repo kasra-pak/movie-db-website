@@ -36,7 +36,7 @@ export default function Carousel({ className, children }) {
   });
 
   return (
-    <div className={`${className} w-full relative aspect-[16/9]`}>
+    <div className={`${className} relative aspect-[16/9] w-full`}>
       {slides}
       <SlideControl variant='backward' handleClick={skipToPrevSlide} />
       <SlideControl variant='forward' handleClick={skipToNextSlide} />

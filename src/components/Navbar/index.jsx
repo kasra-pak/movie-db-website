@@ -24,7 +24,7 @@ export default function Navbar() {
   }
 
   return (
-    <nav className='sticky top-0 z-40 bg-gray-800 text-gray-100 text-lg font-semibold tracking-wider flex justify-between items-center px-4 py-2 sm:text-xl sm:px-6 md:tracking-wide'>
+    <nav className='sticky top-0 z-40 flex items-center justify-between bg-gray-800 px-4 py-2 text-lg font-semibold tracking-wider text-gray-100 sm:px-6 sm:text-xl md:tracking-wide'>
       {/* Mobile Menu */}
       <button
         className='relative z-30 w-8 sm:w-11 md:hidden'
@@ -34,7 +34,7 @@ export default function Navbar() {
       >
         {mobileMenuOpen ? (
           <Close
-            className='w-[90%] stroke-primary fill-primary'
+            className='w-[90%] fill-primary stroke-primary'
             aria-hidden='true'
           />
         ) : (
@@ -46,7 +46,7 @@ export default function Navbar() {
       {/* Logo */}
       <Link
         to='/'
-        className={`flex gap-x-1.5 items-center text-primary fill-primary ${
+        className={`flex items-center gap-x-1.5 fill-primary text-primary ${
           searchBarOpen ? "z-10" : "z-30"
         } transition-all`}
       >
@@ -56,7 +56,7 @@ export default function Navbar() {
       <Navigations />
 
       {/* SearchBar */}
-      <div className='md:hidden w-8 sm:w-11'>
+      <div className='w-8 sm:w-11 md:hidden'>
         <div
           className={`${
             searchBarOpen ? "absolute z-30" : ""

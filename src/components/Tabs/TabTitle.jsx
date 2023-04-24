@@ -9,7 +9,7 @@ function TabTitle({ content, active, toggleActive }) {
   return (
     <button
       onClick={() => toggleActive(content)}
-      className={`text-xs text-primary font-semibold tracking-wide shrink-0 rounded-md px-2 py-1 xs:text-base transition-[background-color,_color,_box-shadow] ${statusClasses}`}
+      className={`shrink-0 rounded-md px-2 py-1 text-xs font-semibold tracking-wide text-primary transition-[background-color,_color,_box-shadow] xs:text-base ${statusClasses}`}
     >
       <h2 className='capitalize'>{content}</h2>
     </button>
