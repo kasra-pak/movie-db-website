@@ -20,6 +20,8 @@ module.exports = {
       colors: {
         primary: "#ea580c",
         secondary: "#1f2937",
+        smashingPumpkins: "hsl(15 96% 55%)",
+        midnightExpress: "hsl(211 24% 17%)",
       },
     },
   },
