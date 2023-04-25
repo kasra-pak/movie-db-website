@@ -1,4 +1,3 @@
-const reactDom = require("react-dom");
 const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
@@ -10,6 +9,10 @@ module.exports = {
     },
 
     extend: {
+      fontFamily: {
+        sans: ["'Public Sans'", ...defaultTheme.fontFamily.sans],
+        barlow: ["Barlow", ...defaultTheme.fontFamily.sans],
+      },
       fontSize: {
         "sm-3xl": "clamp(.875rem, 6vw, 1.875rem)",
         "xs-2xl": "clamp(.75rem, 4vw, 1.5rem)",
