@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Logo from "../Shared/Logo";
 import HamburgerButton from "./HamburgerButton";
@@ -6,7 +6,19 @@ import SearchButton from "./SearchButton";
 import MobileMenu from "../Navbar/MobileMenu";
 
 function Header() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(true);
+
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      const scrollBarWidth = window.innerWidth - document.body.clientWidth;
+
+      document.body.style.overflow = "hidden";
+      document.body.style.paddingRight = `${scrollBarWidth}px`;
+    } else {
+      document.body.style.overflow = "";
+      document.body.style.paddingRight = "";
+    }
+  }, [mobileMenuOpen]);
 
   function toggleMobileMenu() {
     setMobileMenuOpen(prevState => !prevState);
@@ -17,7 +29,10 @@ function Header() {
       <Logo />
       <SearchButton />
       <HamburgerButton handleClick={toggleMobileMenu} />
-      <MobileMenu mobileMenuOpen={mobileMenuOpen} />
+      <MobileMenu
+        mobileMenuOpen={mobileMenuOpen}
+        toggleMobileMenu={toggleMobileMenu}
+      />
     </header>
   );
 }
