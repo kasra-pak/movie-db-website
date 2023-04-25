@@ -8,7 +8,6 @@ import MobileMenu from "./MobileMenu";
 import Navigations from "./Navigations";
 import LoginBtn from "./LoginBtn";
 
-import Hamburger from "../../images/navbar/hamburger.svg";
 import Close from "../../images/navbar/close.svg";
 
 export default function Navbar() {
