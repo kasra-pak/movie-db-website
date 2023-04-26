@@ -19,7 +19,7 @@ module.exports = {
       },
       colors: {
         primary: "#ea580c",
-        secondary: "#1f2937",
+        secondary: "#ffffff",
         smashingPumpkins: "hsl(15 96% 55%)",
         smashingPumpkins1: "hsl(15 96% 55% / .08)",
         midnightExpress: "hsl(211 24% 17%)",
@@ -29,5 +29,4 @@ module.exports = {
       },
     },
   },
-  plugins: [require("@tailwindcss/line-clamp")],
 };
