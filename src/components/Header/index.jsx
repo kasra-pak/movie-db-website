@@ -6,7 +6,7 @@ import SearchButton from "./SearchButton";
 import MobileMenu from "../Navbar/MobileMenu";
 
 function Header() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(true);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     if (mobileMenuOpen) {
