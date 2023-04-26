@@ -3,7 +3,7 @@ import React from "react";
 export default function Logo() {
   return (
     <>
-      <span className='flex items-baseline gap-x-px text-sm font-bold uppercase text-midnightExpress'>
+      <span className='flex items-baseline gap-x-px text-sm font-bold uppercase '>
         movie
         <svg
           className='aspect-square w-1 fill-smashingPumpkins'

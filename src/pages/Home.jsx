@@ -15,9 +15,11 @@ export default function Home() {
   return (
     <>
       {/* <Navbar /> */}
-      <Header />
-      <main className='bg-secondary'>
+      <div className='relative'>
+        <Header />
         <Trends />
+      </div>
+      <main>
         <StickySearchBar />
         <Populars />
         <TopRatedItems />
