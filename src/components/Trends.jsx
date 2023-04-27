@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { getTrendingItems } from "../api/functions";
 import useAsync from "../hooks/AsyncHooks";
 import Carousel from "./Carousel";
-import ScoreCircle from "./ScoreCircle";
 import LoadingImg from "../images/loading/loading.svg";
 
 export default function Trends() {
