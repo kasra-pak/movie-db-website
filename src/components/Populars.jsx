@@ -19,18 +19,26 @@ export default function Populars() {
   return (
     <section className='mt-4 bg-secondary p-4 text-gray-100 sm:p-6'>
       <div className='flex items-center justify-between'>
-        <h2 className='text-sm-3xl font-semibold tracking-wider text-slate-200'>
+        <h2 className='font-barlow text-2xl font-bold text-midnightExpress'>
           Popular
         </h2>
         <Link
           to={`/all/popular/${mediaType}`}
-          className='rounded-l-full border-primary px-2 py-1 text-xs font-semibold tracking-wider text-orange-600 hover:border hover:border-r-0 hover:bg-gradient-to-r hover:from-orange-600 hover:text-slate-200 xs:px-3 xs:text-base'
+          className='inline-flex gap-1.5 rounded-lg px-2 py-1.5 text-sm font-semibold text-midnightExpress hover:bg-lostAtSee1'
         >
-          Show All
+          View All
+          <span>
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              aria-hidden='true'
+              viewBox='0 0 32 32'
+              className='w-5 fill-current'
+            >
+              <path d='M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z' />
+            </svg>
+          </span>
         </Link>
       </div>
-
-      <FadingLine />
 
       <SlideButton
         id='popular_slider'
