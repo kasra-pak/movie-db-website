@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { preventOverflow } from "../../utils/NumberUtils";
 import Slide from "./Slide";
+import SlideControls from "./SlideControls";
 
 const NewCarousel = ({ data }) => {
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
@@ -32,6 +33,12 @@ const NewCarousel = ({ data }) => {
           data={item}
         />
       ))}
+      <SlideControls
+        activeSlideIndex={activeSlideIndex}
+        slideCount={data.length}
+        skipToNext={skipToNextSlide}
+        skipToPrev={skipToPrevSlide}
+      />
     </div>
   );
 };
