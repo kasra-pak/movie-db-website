@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { getTrendingItems } from "../api/functions";
 import useAsync from "../hooks/AsyncHooks";
 import Carousel from "./Carousel";
-import NewCarousel from "./NewCarousel";
 import ScoreCircle from "./ScoreCircle";
 import LoadingImg from "../images/loading/loading.svg";
 
@@ -24,7 +23,7 @@ export default function Trends() {
   return (
     isSuccess && (
       <section>
-        <NewCarousel data={data} />
+        <Carousel data={data} />
       </section>
     )
   );
