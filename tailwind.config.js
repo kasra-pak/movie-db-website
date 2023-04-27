@@ -29,6 +29,10 @@ module.exports = {
         lostAtSee1: "hsl(210 13% 62% / .08)",
         eigengrau: "hsl(214 24% 11% / .48)",
       },
+      boxShadow: {
+        multi:
+          "0 0 2px 0 hsl(210 13% 62% / .2), 0 12px 24px -4px hsl(210 13% 62% / .12)",
+      },
     },
   },
 };

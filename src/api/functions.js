@@ -76,6 +76,7 @@ function getPopularItems(media = "movie") {
           poster: `${imgUrl}${posterSize}${item.poster_path}`,
           score: item.vote_average,
           media: media,
+          date: item.release_date || item.first_air_date,
         }));
       }
     })
@@ -100,6 +101,7 @@ function getTopRatedItems(media = "movie") {
           poster: `${imgUrl}${posterSize}${item.poster_path}`,
           score: item.vote_average,
           media: media,
+          date: item.release_date || item.first_air_date,
         }));
       }
     })
