@@ -6,8 +6,10 @@ import { getPopularItems, getTopRatedItems } from "../api/functions";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Shared/Footer";
 import FadingLine from "../components/Shared/FadingLine";
-import SlideButton from "../components/Shared/SlideButton";
+import Tabs from "../components/Tabs";
 import LoadingImg from "../images/loading/loading.svg";
+
+const allMediaTypes = ["movie", "tv"];
 
 function AllResults() {
   const { isLoading, isSuccess, data, run } = useAsync();
@@ -65,12 +67,10 @@ function AllResults() {
             {resultsFor === "popular" && "popular"}
             {resultsFor === "search" && `all results for "searchTerm"`}
           </h1>
-          <SlideButton
-            id='media_slider'
-            leftText='movie'
-            rightText='tv'
-            activeSide={mediaFilter}
-            toggle={setMediaFilter}
+          <Tabs
+            names={allMediaTypes}
+            active={mediaFilter}
+            setActive={setMediaFilter}
           />
         </div>
         <FadingLine className='mx-auto max-w-2xl' />

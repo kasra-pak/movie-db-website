@@ -5,8 +5,10 @@ import useAsync from "../hooks/AsyncHooks";
 
 import Scroller from "./Scroller";
 import FadingLine from "./Shared/FadingLine";
-import SlideButton from "./Shared/SlideButton";
+import Tabs from "./Shared/Tabs";
 import LoadingImg from "../images/loading/loading.svg";
+
+const allMediaTypes = ["movie", "tv"];
 
 export default function TopRatedItems() {
   const { isLoading, data, run } = useAsync();
@@ -32,12 +34,7 @@ export default function TopRatedItems() {
 
       <FadingLine />
 
-      <SlideButton
-        id='top_rated_slider'
-        leftText='movie'
-        rightText='tv'
-        toggle={setMediaType}
-      />
+      <Tabs names={allMediaTypes} active={mediaType} setActive={setMediaType} />
 
       {isLoading ? (
         <div className='flex h-72 items-center justify-center'>

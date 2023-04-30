@@ -4,13 +4,14 @@ import useAsync from "../hooks/AsyncHooks";
 import { getPopularItems } from "../api/functions";
 
 import Scroller from "./Scroller";
-import FadingLine from "./Shared/FadingLine";
-import SlideButton from "./Shared/SlideButton";
+import Tabs from "./Shared/Tabs";
 import LoadingImg from "../images/loading/loading.svg";
+
+const allMediaTypes = ["movie", "tv"];
 
 export default function Populars() {
   const { isLoading, data, run } = useAsync();
-  const [mediaType, setMediaType] = useState("movie");
+  const [mediaType, setMediaType] = useState(allMediaTypes[0]);
 
   useEffect(() => {
     run(getPopularItems(mediaType).then(items => items.slice(0, 6)));
@@ -40,12 +41,7 @@ export default function Populars() {
         </Link>
       </div>
 
-      <SlideButton
-        id='popular_slider'
-        leftText='movie'
-        rightText='tv'
-        toggle={setMediaType}
-      />
+      <Tabs names={allMediaTypes} active={mediaType} setActive={setMediaType} />
 
       {isLoading ? (
         <div className='flex h-72 items-center justify-center'>
