@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { useCurrentUserWatchlist } from "../../hooks/ListHooks";
+import { useCurrentUserWatchlist } from "@/hooks/ListHooks";
 import TabTitle from "./TabTitle";
 import TabContent from "./TabContent";
-// import SlideButton from "../Shared/SlideButton";
+// import SlideButton from "@/components/Shared/SlideButton";
 
 function Tabs() {
   const [watched, unwatched] = useCurrentUserWatchlist();

@@ -1,5 +1,5 @@
-// import { ImgConfigs } from '../api/config'
-import NoImageAvailable from "../../src/images/no-image/no-image-available.jpg";
+// import { ImgConfigs } from '@/api/config'
+import NoImageAvailable from "@/images/no-image/no-image-available.jpg";
 
 const imgUrl = "https://image.tmdb.org/t/p/";
 const posterSize = "original";

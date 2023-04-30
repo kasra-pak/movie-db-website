@@ -1,6 +1,6 @@
 import React from "react";
-import LeftArrow from "../images/home/left-arrow.svg";
-import RightArrow from "../images/home/right-arrow.svg";
+import LeftArrow from "@/images/home/left-arrow.svg";
+import RightArrow from "@/images/home/right-arrow.svg";
 
 export default function SlideControl({ variant, handleClick }) {
   return (

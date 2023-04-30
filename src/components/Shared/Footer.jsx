@@ -1,9 +1,9 @@
 import React from "react";
 import Logo from "./Logo";
 
-import FacebookLogo from "../../images/login/facebook.svg";
-import TwitterLogo from "../../images/login/twitter.svg";
-import GoogleLogo from "../../images/login/google.svg";
+import FacebookLogo from "@/images/login/facebook.svg";
+import TwitterLogo from "@/images/login/twitter.svg";
+import GoogleLogo from "@/images/login/google.svg";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();

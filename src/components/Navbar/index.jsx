@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import { useSearchContext } from "../../contexts/SearchContext";
-import Logo from "../Shared/Logo";
-import SearchBar from "../SearchBar";
+import { useSearchContext } from "@/contexts/SearchContext";
+import Logo from "@/components/Shared/Logo";
+import SearchBar from "@/components/SearchBar";
 import MobileMenu from "./MobileMenu";
 import Navigations from "./Navigations";
 import LoginBtn from "./LoginBtn";
 
-import Close from "../../images/navbar/close.svg";
+import Close from "@/images/navbar/close.svg";
 
 export default function Navbar() {
   const { searchBarOpen } = useSearchContext();

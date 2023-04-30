@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { getTopRatedItems } from "../api/functions";
-import useAsync from "../hooks/AsyncHooks";
+import { getTopRatedItems } from "@/api/functions";
+import useAsync from "@/hooks/AsyncHooks";
 
-import Scroller from "./Scroller";
-import FadingLine from "./Shared/FadingLine";
-import Tabs from "./Shared/Tabs";
-import LoadingImg from "../images/loading/loading.svg";
+import Scroller from "@/components/Scroller";
+import FadingLine from "@/components/Shared/FadingLine";
+import Tabs from "@/components/Shared/Tabs";
+import LoadingImg from "@/images/loading/loading.svg";
 
 const allMediaTypes = ["movie", "tv"];
 

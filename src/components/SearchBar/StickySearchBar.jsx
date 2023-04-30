@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { useSearchContext } from "../../contexts/SearchContext";
+import { useSearchContext } from "@/contexts/SearchContext";
 import SearchBar from "./index";
 
 export default function StickySearchBar() {

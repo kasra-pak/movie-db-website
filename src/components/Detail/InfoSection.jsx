@@ -1,5 +1,5 @@
 import React from "react";
-import FadingLine from "../Shared/FadingLine";
+import FadingLine from "@/components/Shared/FadingLine";
 FadingLine;
 
 export default function InfoSection({ SectionHeader, children }) {

@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 
-import Logo from "../Shared/Logo";
+import Logo from "@/components/Shared/Logo";
 import HamburgerButton from "./HamburgerButton";
 import SearchButton from "./SearchButton";
-import MobileMenu from "../Navbar/MobileMenu";
+import MobileMenu from "@/components/Navbar/MobileMenu";
 
 function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);

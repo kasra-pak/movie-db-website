@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getDetail } from "../api/functions";
-import useAsync from "../hooks/AsyncHooks";
+import { getDetail } from "@/api/functions";
+import useAsync from "@/hooks/AsyncHooks";
 
-import Navbar from "../components/Navbar";
-import Intro from "../components/Detail/Intro";
-import InfoSection from "../components/Detail/InfoSection";
-import Cast from "../components/Detail/Cast";
-import Footer from "../components/Shared/Footer";
-import LoadingImg from "../images/loading/loading.svg";
+import Navbar from "@/components/Navbar";
+import Intro from "@/components/Detail/Intro";
+import InfoSection from "@/components/Detail/InfoSection";
+import Cast from "@/components/Detail/Cast";
+import Footer from "@/components/Shared/Footer";
+import LoadingImg from "@/images/loading/loading.svg";
 
 export default function Detail() {
   const { isLoading, isSuccess, data, run } = useAsync();

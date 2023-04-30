@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { searchItems } from "../api/functions";
+import { searchItems } from "@/api/functions";
 
 const SearchContext = React.createContext();
 

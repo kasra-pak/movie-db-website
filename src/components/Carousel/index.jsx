@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { preventOverflow } from "../../utils/NumberUtils";
+import { preventOverflow } from "@/utils/NumberUtils";
 import Slide from "./Slide";
 import SlideControls from "./SlideControls";
 

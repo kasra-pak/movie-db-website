@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { auth } from "../firebase";
+import { auth } from "@/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import Navbar from "../components/Navbar";
+import Navbar from "@/components/Navbar";
 
-import FacebookLogo from "../images/login/facebook.svg";
-import TwitterLogo from "../images/login/twitter.svg";
-import GoogleLogo from "../images/login/google.svg";
-import LoginForm from "../components/Login/LoginForm";
+import FacebookLogo from "@/images/login/facebook.svg";
+import TwitterLogo from "@/images/login/twitter.svg";
+import GoogleLogo from "@/images/login/google.svg";
+import LoginForm from "@/components/Login/LoginForm";
 
 export default function Login() {
   const [userHasAcc, setUserHasAcc] = useState("true");

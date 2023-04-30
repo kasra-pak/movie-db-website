@@ -1,11 +1,11 @@
 import React from "react";
 import Tooltip from "./Tooltip";
 
-import Minus from "../../images/list-togglers/minus.svg";
-import Plus from "../../images/list-togglers/plus.svg";
-import Check from "../../images/list-togglers/check.svg";
-import Clapper from "../../images/list-togglers/clapper.svg";
-import { useMediaWatchlist } from "../../hooks/ListHooks";
+import Minus from "@/images/list-togglers/minus.svg";
+import Plus from "@/images/list-togglers/plus.svg";
+import Check from "@/images/list-togglers/check.svg";
+import Clapper from "@/images/list-togglers/clapper.svg";
+import { useMediaWatchlist } from "@/hooks/ListHooks";
 
 function ListTogglerButtons({
   mediaData,

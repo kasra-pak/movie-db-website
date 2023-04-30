@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { logOutUser } from "../../firebase";
-import { useCurrentUserData } from "../../hooks/UserHooks";
-import Tooltip from "../Shared/Tooltip";
-import Logout from "../../images/login/logout.svg";
-import Spinner from "../../images/loading/spinner.svg";
+import { logOutUser } from "@/firebase";
+import { useCurrentUserData } from "@/hooks/UserHooks";
+import Tooltip from "@/components/Shared/Tooltip";
+import Logout from "@/images/login/logout.svg";
+import Spinner from "@/images/loading/spinner.svg";
 
 function LoginBtn() {
   const [userData, userDataStatus] = useCurrentUserData();

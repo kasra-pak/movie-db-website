@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import { getCast } from "../../api/functions";
-import useAsync from "../../hooks/AsyncHooks";
-import LoadingImg from "../../images/loading/loading.svg";
-import Spinner from "../../images/loading/spinner.svg";
+import { getCast } from "@/api/functions";
+import useAsync from "@/hooks/AsyncHooks";
+import LoadingImg from "@/images/loading/loading.svg";
+import Spinner from "@/images/loading/spinner.svg";
 
 export default function Cast({ media, id }) {
   const { isLoding, isSuccess, data, run } = useAsync();

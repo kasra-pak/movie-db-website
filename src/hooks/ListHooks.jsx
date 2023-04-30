@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { getDetail } from "../api/functions";
+import { getDetail } from "@/api/functions";
 import { useCurrentUserData } from "./UserHooks";
-import { updateUserWatchlist } from "../firebase";
+import { updateUserWatchlist } from "@/firebase";
 
 function useMediaWatchlist(id) {
   const [userData] = useCurrentUserData();

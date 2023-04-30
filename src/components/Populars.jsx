@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import useAsync from "../hooks/AsyncHooks";
-import { getPopularItems } from "../api/functions";
+import useAsync from "@/hooks/AsyncHooks";
+import { getPopularItems } from "@/api/functions";
 
-import Scroller from "./Scroller";
-import Tabs from "./Shared/Tabs";
-import LoadingImg from "../images/loading/loading.svg";
+import Scroller from "@/components/Scroller";
+import Tabs from "@/components/Shared/Tabs";
+import LoadingImg from "@/images/loading/loading.svg";
 
 const allMediaTypes = ["movie", "tv"];
 

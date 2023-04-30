@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import useAsync from "../hooks/AsyncHooks";
-import { getPopularItems, getTopRatedItems } from "../api/functions";
+import useAsync from "@/hooks/AsyncHooks";
+import { getPopularItems, getTopRatedItems } from "@/api/functions";
 
-import Navbar from "../components/Navbar";
-import Footer from "../components/Shared/Footer";
-import FadingLine from "../components/Shared/FadingLine";
-import Tabs from "../components/Tabs";
-import LoadingImg from "../images/loading/loading.svg";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Shared/Footer";
+import FadingLine from "@/components/Shared/FadingLine";
+import Tabs from "@/components/Tabs";
+import LoadingImg from "@/images/loading/loading.svg";
 
 const allMediaTypes = ["movie", "tv"];
 

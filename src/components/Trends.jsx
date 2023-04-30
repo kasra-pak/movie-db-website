@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import { getTrendingItems } from "../api/functions";
-import useAsync from "../hooks/AsyncHooks";
-import Carousel from "./Carousel";
-import LoadingImg from "../images/loading/loading.svg";
+import { getTrendingItems } from "@/api/functions";
+import useAsync from "@/hooks/AsyncHooks";
+import Carousel from "@/components/Carousel";
+import LoadingImg from "@/images/loading/loading.svg";
 
 export default function Trends() {
   const { isLoading, isSuccess, run, data } = useAsync();

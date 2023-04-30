@@ -1,5 +1,5 @@
 import React from "react";
-import StarImg from "../../images/home/star.svg";
+import StarImg from "@/images/home/star.svg";
 
 export default function Stars({ score }) {
   const stars = [];

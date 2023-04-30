@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ListTogglerButtons from "../Shared/ListTogglerButtons";
-import Star from "../../images/home/star.svg";
-import { parseDate } from "../../utils/DateUtils";
+import ListTogglerButtons from "@/components/Shared/ListTogglerButtons";
+import Star from "@/images/home/star.svg";
+import { parseDate } from "@/utils/DateUtils";
 
 export default function MovieCard({ data }) {
   let scoreColor;

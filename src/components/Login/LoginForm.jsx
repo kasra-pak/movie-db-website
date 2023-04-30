@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import { registerUser, logInUser } from "../../firebase";
-import useControledInput from "../../hooks/FormHooks";
+import { registerUser, logInUser } from "@/firebase";
+import useControledInput from "@/hooks/FormHooks";
 import FormInput from "./FormInput";
 import {
   validateName,
   validateEmail,
   validatePassword,
   validateRePassword,
-} from "../../validations/LoginFormValidationRules";
+} from "@/validations/LoginFormValidationRules";
 import SubmitResultAlert from "./SubmitResultAlert";
 
-import Spinner from "../../images/loading/spinner.svg";
+import Spinner from "@/images/loading/spinner.svg";
 
 function LoginForm({ userHasAcc, setUserHasAcc }) {
   const [name, nameErrors, updateName] = useControledInput(null, validateName);
@@ -52,7 +52,7 @@ function LoginForm({ userHasAcc, setUserHasAcc }) {
   return (
     <form
       onSubmit={handleSubmit}
-      className={`my-6 mx-auto flex max-w-md flex-col gap-4 md:w-full ${
+      className={`mx-auto my-6 flex max-w-md flex-col gap-4 md:w-full ${
         userHasAcc ? "" : "md:mt-4"
       }`}
     >

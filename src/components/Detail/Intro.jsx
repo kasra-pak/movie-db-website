@@ -1,8 +1,8 @@
 import React from "react";
-import { convertToHour } from "../../utils/NumberUtils";
+import { convertToHour } from "@/utils/NumberUtils";
 
 import Stars from "./Stars";
-import ListTogglerButtons from "../Shared/ListTogglerButtons";
+import ListTogglerButtons from "@/components/Shared/ListTogglerButtons";
 
 export default function Intro({ media, data }) {
   const Runtime = convertToHour(data.runtime);
@@ -26,7 +26,7 @@ export default function Intro({ media, data }) {
       <div className='relative p-4'>
         <div className='absolute bottom-0 left-[5%] w-3/12 shadow-lg'>
           <img src={data.poster} alt={data.title} className='rounded-md' />
-          <div className='absolute top-0 right-[7%] w-1/5 cursor-pointer'></div>
+          <div className='absolute right-[7%] top-0 w-1/5 cursor-pointer'></div>
         </div>
 
         <div className='ml-auto w-8/12'>

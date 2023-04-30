@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useSearchContext } from "../contexts/SearchContext";
-import LoadingImg from "../images/loading/loading.svg";
+import { useSearchContext } from "@/contexts/SearchContext";
+import LoadingImg from "@/images/loading/loading.svg";
 
 export default function SearchResult() {
   const { results, searching } = useSearchContext();

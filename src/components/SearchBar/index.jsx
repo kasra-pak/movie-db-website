@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
-import Search from "../../images/navbar/search.svg";
-import { useSearchContext } from "../../contexts/SearchContext";
+import Search from "@/images/navbar/search.svg";
+import { useSearchContext } from "@/contexts/SearchContext";
 
 export default function SearchBarTemp() {
   const {

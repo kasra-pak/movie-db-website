@@ -1,15 +1,15 @@
 import React from "react";
-import { logOutUser } from "../../firebase";
-import { useCurrentUserData } from "../../hooks/UserHooks";
+import { logOutUser } from "@/firebase";
+import { useCurrentUserData } from "@/hooks/UserHooks";
 import NavLink from "./NavLink";
 
-import Logo from "../Shared/Logo";
-import Tv from "../../images/mobile-menu/tv.svg";
-import Movie from "../../images/mobile-menu/movie.svg";
-import Bookmark from "../../images/mobile-menu/bookmark.svg";
-import Login from "../../images/mobile-menu/login.svg";
-import LogoutMobileMenu from "../../images/mobile-menu/logout.svg";
-import Spinner from "../../images/loading/spinner.svg";
+import Logo from "@/components/Shared/Logo";
+import Tv from "@/images/mobile-menu/tv.svg";
+import Movie from "@/images/mobile-menu/movie.svg";
+import Bookmark from "@/images/mobile-menu/bookmark.svg";
+import Login from "@/images/mobile-menu/login.svg";
+import LogoutMobileMenu from "@/images/mobile-menu/logout.svg";
+import Spinner from "@/images/loading/spinner.svg";
 
 function MobileMenu({ mobileMenuOpen, toggleMobileMenu }) {
   const [userData, userDataStatus] = useCurrentUserData();
@@ -37,7 +37,7 @@ function MobileMenu({ mobileMenuOpen, toggleMobileMenu }) {
           {navItems.map((item, idx) => (
             <a
               key={idx}
-              className='cursor-pointer py-3.5 px-8 text-sm text-nightRendezvous hover:bg-lostAtSee1'
+              className='cursor-pointer px-8 py-3.5 text-sm text-nightRendezvous hover:bg-lostAtSee1'
             >
               {item}
             </a>
