@@ -32,7 +32,14 @@ module.exports = {
       },
     ],
   },
-  resolve: { extensions: ["*", ".js", ".jsx"] },
+  resolve: {
+    extensions: ["*", ".js", ".jsx"],
+
+    alias: {
+      "@": path.resolve(__dirname, "src/"),
+    },
+  },
+
   devServer: {
     client: {
       logging: "warn",
