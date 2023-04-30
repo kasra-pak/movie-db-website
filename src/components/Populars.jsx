@@ -18,7 +18,7 @@ export default function Populars() {
   }, [mediaType, run]);
 
   return (
-    <section className='mt-4 bg-secondary p-4 text-gray-100 sm:p-6'>
+    <section className='mt-4 p-4 sm:p-6'>
       <div className='flex items-center justify-between'>
         <h2 className='font-barlow text-2xl font-bold text-midnightExpress'>
           Popular
