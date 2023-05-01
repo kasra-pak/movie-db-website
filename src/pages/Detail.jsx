@@ -34,7 +34,7 @@ export default function Detail() {
             <p>{data.overview}</p>
           </InfoSection>
 
-          <InfoSection SectionHeader={"cast"}>
+          <InfoSection SectionHeader='cast'>
             <Cast {...{ media, id }} />
           </InfoSection>
         </main>

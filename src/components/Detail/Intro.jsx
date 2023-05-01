@@ -20,62 +20,94 @@ export default function Intro({ media, data }) {
     <>
       <div className='relative'>
         <img src={data.backdrop} alt={data.title} />
-        <div className='absolute inset-0 bg-gradient-to-t from-secondary'></div>
+        <div className='absolute inset-0 bg-black/10 bg-gradient-to-b from-white/0 to-black/50'></div>
+        <img
+          src={data.poster}
+          alt={data.title}
+          className='absolute bottom-2 left-2 aspect-[2/3] h-4/6 rounded-md border border-white'
+        />
       </div>
 
-      <div className='relative p-4'>
-        <div className='absolute bottom-0 left-[5%] w-3/12 shadow-lg'>
-          <img src={data.poster} alt={data.title} className='rounded-md' />
-          <div className='absolute right-[7%] top-0 w-1/5 cursor-pointer'></div>
+      <div className='p-4 text-midnightExpress'>
+        <div className='my-8'>
+          <h1 className='font-barlow text-2xl font-bold capitalize'>
+            {data.title}
+          </h1>
+          <p className='text-xs tracking-wider opacity-80 xs:text-sm'>
+            {data.tagline}
+          </p>
         </div>
 
-        <div className='ml-auto w-8/12'>
-          <Stars score={data.score.toFixed(1)} />
+        <div className='space-y-6 text-sm'>
+          <div
+            className={`flex items-baseline gap-1 xs:gap-1.5 xs:px-1.5 xs:py-0.5`}
+          >
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              aria-hidden='true'
+              viewBox='0 0 32 32'
+              className='w-5 self-start fill-[#FFAB00]'
+            >
+              <path d='m16 2-4.55 9.22-10.17 1.47 7.36 7.18L6.9 30l9.1-4.78L25.1 30l-1.74-10.13 7.36-7.17-10.17-1.48Z' />
+            </svg>
 
-          <div className='my-2.5'>
-            <h1 className='scroller truncate text-sm-3xl font-semibold capitalize hover:overflow-x-scroll'>
-              {data.title}
-            </h1>
-            <p className='text-xs tracking-wider opacity-80 xs:text-sm'>
-              {data.tagline}
+            <p className='font-barlow text-nightRendezvous'>
+              <span className='text-[17px] font-semibold text-midnightExpress'>
+                {data.score.toFixed(1)}
+              </span>
+              {"/10"}
             </p>
+
+            <p className='text-nightRendezvous'>(12K reviews)</p>
           </div>
 
-          <div className='grid h-16 grid-cols-[1fr,_auto] items-center gap-2 text-slate-300'>
-            <div className='flex items-center gap-x-2'>
-              <p className='text-sm'>{firstAndLastRelease}</p>
-              {Runtime && (
-                <>
-                  <div>•</div>
-                  <p className='w-max text-sm'>{Runtime}</p>
-                </>
-              )}
-              {media === "tv" && (
-                <>
-                  <div>•</div>
-                  <p className='w-max text-sm'>{numberOfEpisodes}</p>
-                </>
-              )}
-            </div>
-            <div className='row-start-2 flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-wider opacity-80'>
-              {data.genres.map((genre, idx) => (
-                <span
-                  key={idx}
-                  className='rounded-md border border-primary px-1 py-px'
-                >
-                  {genre}
-                </span>
-              ))}
-            </div>
+          <div className='flex items-center gap-1 text-midnightExpress'>
+            <svg
+              viewBox='10 10 57 57'
+              xmlns='http://www.w3.org/2000/svg'
+              aria-hidden='true'
+              className='w-5 fill-current'
+            >
+              <path d='M50.448 17.781a3.167 3.167 0 0 1 3.798 2.373l1.78 7.714L19 36.417l-1.781-7.714a3.167 3.167 0 0 1 2.373-3.798l30.856-7.124ZM53.834 57H22.166A3.167 3.167 0 0 1 19 53.833V36.417h38v17.416A3.167 3.167 0 0 1 53.834 57Z' />
+            </svg>
 
-            <ListTogglerButtons
-              mediaData={{ id: data.id, type: media, title: data.title }}
-              tooltipPosition='left'
-              direction='col'
-              className='row-span-2 flex h-full w-5 flex-col xs:w-6'
-            />
+            <p>{firstAndLastRelease}</p>
+          </div>
+
+          <div className='flex items-center gap-1 text-midnightExpress'>
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              aria-hidden='true'
+              viewBox='0 0 32 32'
+              className='w-5 fill-current'
+            >
+              <path d='M16 30a14 14 0 1 1 14-14 14 14 0 0 1-14 14Zm0-26a12 12 0 1 0 12 12A12 12 0 0 0 16 4Z' />
+              <path d='M20.59 22 15 16.41V7h2v8.58l5 5.01L20.59 22z' />
+            </svg>
+
+            {media === "tv" && <p className='w-max'>{numberOfEpisodes}</p>}
+
+            {Runtime && <p className='w-max'>{Runtime}</p>}
+          </div>
+
+          <div className='flex flex-wrap gap-2 text-xs font-bold capitalize opacity-80'>
+            {data.genres.map((genre, idx) => (
+              <span
+                key={idx}
+                className='inline-flex h-6 cursor-default items-center rounded-md bg-lostAtSee/[0.16] px-2 text-midnightExpress'
+              >
+                {genre}
+              </span>
+            ))}
           </div>
         </div>
+
+        <ListTogglerButtons
+          mediaData={{ id: data.id, type: media, title: data.title }}
+          tooltipPosition='left'
+          direction='col'
+          className='row-span-2 flex h-full w-5 flex-col xs:w-6'
+        />
       </div>
     </>
   );
