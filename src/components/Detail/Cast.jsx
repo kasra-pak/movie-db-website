@@ -56,19 +56,18 @@ export default function Cast({ media, id }) {
     castEl = data.map((item, idx) => (
       <div
         key={idx}
-        className='flex items-center gap-3 overflow-hidden rounded-lg bg-slate-700 shadow-md'
+        className='flex items-start gap-5 rounded-lg border border-lostAtSee/[0.24] p-5'
       >
-        <img src={item.profile} alt={item.name} className='w-20' />
+        <div className='overflow-hidden rounded-lg'>
+          <img src={item.profile} alt={item.name} className='w-20' />
+        </div>
+
         <p>
-          <span className='font-semibold tracking-wider text-slate-100'>
+          <span className='font-semibold text-midnightExpress'>
             {item.name}
           </span>
           <br />
-          <span className='text-slate-300'>
-            as
-            <br />
-            {item.character}
-          </span>
+          <span className='text-sm text-nightRendezvous'>{item.character}</span>
         </p>
       </div>
     ));
@@ -86,7 +85,7 @@ export default function Cast({ media, id }) {
     return (
       <div
         ref={castElRef}
-        className='grid grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] gap-4'
+        className='grid grid-cols-[repeat(auto-fit,_minmax(300px,_1fr))] gap-4'
       >
         {castEl.slice(0, limit)}
 

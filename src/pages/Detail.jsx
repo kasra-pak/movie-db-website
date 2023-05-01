@@ -31,15 +31,15 @@ export default function Detail() {
 
           <span className='mx-4 my-6 block h-px border-b border-dashed border-lostAtSee/[0.24]'></span>
 
-          <section className='p-4 text-midnightExpress'>
-            <h2 className='mb-4 font-barlow text-lg font-semibold capitalize'>
+          <section className='my-6 p-4 text-midnightExpress'>
+            <h2 className='mb-4 font-barlow text-xl font-bold capitalize'>
               storyline
             </h2>
             <p>{data.overview}</p>
           </section>
 
-          <section className='p-4 text-midnightExpress'>
-            <h2 className='mb-4 font-barlow text-lg font-semibold capitalize'>
+          <section className='my-6 p-4 text-midnightExpress'>
+            <h2 className='mb-4 font-barlow text-xl font-bold capitalize'>
               cast
             </h2>
             <Cast {...{ media, id }} />
