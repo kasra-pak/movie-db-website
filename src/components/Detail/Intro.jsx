@@ -1,7 +1,6 @@
 import React from "react";
 import { convertToHour } from "@/utils/NumberUtils";
 
-import Stars from "./Stars";
 import ListTogglerButtons from "@/components/Shared/ListTogglerButtons";
 
 export default function Intro({ media, data }) {

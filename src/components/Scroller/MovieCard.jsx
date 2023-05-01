@@ -21,7 +21,7 @@ export default function MovieCard({ data }) {
         </Link>
       </div>
 
-      <span className='m block h-px border-b border-dashed border-lostAtSee/[0.24]'></span>
+      <span className='block h-px border-b border-dashed border-lostAtSee/[0.24]'></span>
 
       <div className='flex items-center justify-between p-2'>
         <p className='text-sm text-lostAtSee'>{parseDate(data.date)}</p>

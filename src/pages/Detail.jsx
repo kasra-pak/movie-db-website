@@ -5,7 +5,6 @@ import useAsync from "@/hooks/AsyncHooks";
 
 import Header from "@/components/Header";
 import Intro from "@/components/Detail/Intro";
-import InfoSection from "@/components/Detail/InfoSection";
 import Cast from "@/components/Detail/Cast";
 import Footer from "@/components/Shared/Footer";
 import LoadingImg from "@/images/loading/loading.svg";
@@ -30,13 +29,21 @@ export default function Detail() {
         <main className='bg-secondary text-gray-100'>
           <Intro media={media} data={data} />
 
-          <InfoSection SectionHeader='Storyline'>
-            <p>{data.overview}</p>
-          </InfoSection>
+          <span className='mx-4 my-6 block h-px border-b border-dashed border-lostAtSee/[0.24]'></span>
 
-          <InfoSection SectionHeader='cast'>
+          <section className='p-4 text-midnightExpress'>
+            <h2 className='mb-4 font-barlow text-lg font-semibold capitalize'>
+              storyline
+            </h2>
+            <p>{data.overview}</p>
+          </section>
+
+          <section className='p-4 text-midnightExpress'>
+            <h2 className='mb-4 font-barlow text-lg font-semibold capitalize'>
+              cast
+            </h2>
             <Cast {...{ media, id }} />
-          </InfoSection>
+          </section>
         </main>
       )}
       <Footer />
