@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { getDetail } from "@/api/functions";
 import useAsync from "@/hooks/AsyncHooks";
 
-import Navbar from "@/components/Navbar";
+import Header from "@/components/Header";
 import Intro from "@/components/Detail/Intro";
 import InfoSection from "@/components/Detail/InfoSection";
 import Cast from "@/components/Detail/Cast";
@@ -20,7 +20,7 @@ export default function Detail() {
 
   return (
     <>
-      <Navbar />
+      <Header />
       {isLoading && (
         <main className='flex min-h-[90vh] items-center justify-center'>
           <LoadingImg className='w-12 fill-primary' />
