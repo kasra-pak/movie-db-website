@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { logOutUser } from "@/firebase";
 import { useCurrentUserData } from "@/hooks/UserHooks";
 import NavLink from "./NavLink";
@@ -44,9 +45,12 @@ function MobileMenu({ mobileMenuOpen, toggleMobileMenu }) {
           ))}
         </nav>
         <div className='p-6'>
-          <button className='w-full rounded-lg bg-midnightExpress py-1.5 font-bold text-white'>
+          <Link
+            to='/login'
+            className='block w-full rounded-lg bg-midnightExpress py-1.5 text-center font-bold text-white'
+          >
             Login
-          </button>
+          </Link>
         </div>
         {/* <NavLink linkTo='/'>
               <Movie aria-hidden='true' />

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "@/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import Navbar from "@/components/Navbar";
+import Header from "@/components/Header";
 
 import FacebookLogo from "@/images/login/facebook.svg";
 import TwitterLogo from "@/images/login/twitter.svg";
@@ -27,7 +27,7 @@ export default function Login() {
 
   return (
     <div className='flex min-h-screen flex-col'>
-      <Navbar />
+      <Header />
       <main className='flex grow items-center justify-center bg-secondary p-4'>
         <div className='overflow-hidden rounded-md bg-gradient-to-b from-primary p-4 pt-10 text-center md:flex md:bg-none md:p-0'>
           <div className='flex basis-1/2 flex-col  items-center justify-center gap-3 md:gap-10 md:bg-primary md:p-10'>
