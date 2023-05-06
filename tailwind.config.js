@@ -32,6 +32,10 @@ module.exports = {
       boxShadow: {
         multi:
           "0 0 2px 0 hsl(210 13% 62% / .2), 0 12px 24px -4px hsl(210 13% 62% / .12)",
+        big: "-24px 24px 72px -8px hsl(210 13% 62% / 0.24)",
+      },
+      backgroundImage: {
+        overlay: `linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),url(./images/login/overlay.jpg)`,
       },
     },
   },
