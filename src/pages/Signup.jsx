@@ -4,7 +4,7 @@ import { auth } from "@/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Header from "@/components/Header";
 
-export default function Login() {
+export default function Signup() {
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
 
@@ -23,21 +23,33 @@ export default function Login() {
       <main className='flex grow items-center justify-center p-4'>
         <div className='w-full max-w-[400px] overflow-hidden rounded-xl bg-white p-8 text-center text-nightRendezvous shadow-big'>
           <p className='mb-4 font-barlow text-2xl font-bold capitalize text-midnightExpress'>
-            login
+            Get Started
           </p>
 
           <p className='text-sm'>
-            Don&apos;t have an account?
+            Already have an account?
             <Link
-              to='/signup'
+              to='/login'
               className='font-semibold text-smashingPumpkins underline-offset-1 hover:underline'
             >
               {" "}
-              Get started
+              Login
             </Link>
           </p>
 
           <form className='my-8 flex flex-col gap-y-5'>
+            <div className='rounded-lg bg-lostAtSee1'>
+              <label htmlFor='fullname' className='sr-only text-lostAtSee'>
+                Full Name
+              </label>
+              <input
+                type='text'
+                name='fullname'
+                id='fullname'
+                placeholder='Full Name'
+                className='w-full bg-transparent p-3.5 text-midnightExpress outline-none'
+              />
+            </div>
             <div className='rounded-lg bg-lostAtSee1'>
               <label htmlFor='email' className='sr-only text-lostAtSee'>
                 Email address
@@ -64,16 +76,42 @@ export default function Login() {
               />
             </div>
 
-            <Link
-              to=''
-              className='self-end text-sm text-nightRendezvous underline decoration-nightRendezvous/40 hover:decoration-inherit'
-            >
-              Forgot password?
-            </Link>
+            <div className='rounded-lg bg-lostAtSee1'>
+              <label
+                htmlFor='confirmpassword'
+                className='sr-only text-lostAtSee'
+              >
+                Password
+              </label>
+              <input
+                type='password'
+                name='confirmpassword'
+                id='confirmpassword'
+                placeholder='Confirm Password'
+                className='w-full bg-transparent p-3.5 text-midnightExpress outline-none'
+              />
+            </div>
 
             <button className='h-12 w-full rounded-lg bg-midnightExpress p-2 text-[15px] font-bold text-white'>
-              Login
+              Sign Up
             </button>
+
+            <p className='text-xs text-nightRendezvous'>
+              I agree to
+              <Link
+                to=''
+                className='mx-1 inline-block text-midnightExpress underline decoration-nightRendezvous/40 hover:decoration-inherit'
+              >
+                Terms of Service
+              </Link>
+              and
+              <Link
+                to=''
+                className='mx-1 inline-block text-midnightExpress underline decoration-nightRendezvous/40 hover:decoration-inherit'
+              >
+                Privacy Policy.
+              </Link>
+            </p>
           </form>
 
           <span className='mb-8 flex items-center gap-2 text-sm text-lostAtSee'>
