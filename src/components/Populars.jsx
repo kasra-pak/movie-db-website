@@ -41,7 +41,37 @@ export default function Populars() {
         </Link>
       </div>
 
-      <Tabs names={allMediaTypes} active={mediaType} setActive={setMediaType} />
+      <div className='mb-4 mt-8 flex items-end justify-between'>
+        <Tabs
+          names={allMediaTypes}
+          active={mediaType}
+          setActive={setMediaType}
+        />
+
+        <span className='space-x-2'>
+          <button className='rounded-full p-2 hover:bg-nightRendezvous1'>
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              aria-hidden='true'
+              viewBox='0 0 32 32'
+              className='w-5 rotate-180 fill-current'
+            >
+              <path d='M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z' />
+            </svg>
+          </button>
+
+          <button className='rounded-full p-2 hover:bg-nightRendezvous1'>
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              aria-hidden='true'
+              viewBox='0 0 32 32'
+              className='w-5 fill-current'
+            >
+              <path d='M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z' />
+            </svg>
+          </button>
+        </span>
+      </div>
 
       {isLoading ? (
         <div className='flex h-72 items-center justify-center'>

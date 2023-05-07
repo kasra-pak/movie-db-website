@@ -19,7 +19,7 @@ const Tabs = ({ names, active, setActive }) => {
   };
 
   return (
-    <div className=' relative mb-4 mt-8 flex h-[45px] gap-4 text-sm font-semibold text-nightRendezvous'>
+    <div className=' relative flex h-[45px] gap-4 text-sm font-semibold text-nightRendezvous'>
       {tabs.map(tab => (
         <button
           key={tab.name}
