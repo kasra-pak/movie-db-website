@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import useAsync from "@/hooks/AsyncHooks";
 import { getPopularItems } from "@/api/functions";
@@ -12,10 +12,26 @@ const allMediaTypes = ["movie", "tv"];
 export default function Populars() {
   const { isLoading, data, run } = useAsync();
   const [mediaType, setMediaType] = useState(allMediaTypes[0]);
+  const scrollerRef = useRef(null);
 
   useEffect(() => {
     run(getPopularItems(mediaType).then(items => items.slice(0, 6)));
   }, [mediaType, run]);
+
+  const scroll = direction => {
+    const scrollerElement = scrollerRef?.current;
+    const currentScrollPosition = scrollerElement.scrollLeft;
+    const scrollAmount = Math.round(scrollerElement.offsetWidth / 2);
+    const directionSign = direction === "right" ? 1 : -1;
+
+    const scrollOptions = {
+      top: 0,
+      left: currentScrollPosition + directionSign * scrollAmount,
+      behavior: "smooth",
+    };
+
+    scrollerElement.scroll(scrollOptions);
+  };
 
   return (
     <section className='mt-4 p-4 sm:p-6'>
@@ -49,7 +65,12 @@ export default function Populars() {
         />
 
         <span className='space-x-2'>
-          <button className='rounded-full p-2 hover:bg-nightRendezvous1'>
+          <button
+            className='rounded-full p-2 hover:bg-nightRendezvous1'
+            onClick={() => {
+              scroll("left");
+            }}
+          >
             <svg
               xmlns='http://www.w3.org/2000/svg'
               aria-hidden='true'
@@ -60,7 +81,12 @@ export default function Populars() {
             </svg>
           </button>
 
-          <button className='rounded-full p-2 hover:bg-nightRendezvous1'>
+          <button
+            className='rounded-full p-2 hover:bg-nightRendezvous1'
+            onClick={() => {
+              scroll("right");
+            }}
+          >
             <svg
               xmlns='http://www.w3.org/2000/svg'
               aria-hidden='true'
@@ -78,7 +104,7 @@ export default function Populars() {
           <LoadingImg className='mx-auto w-12 fill-primary' />
         </div>
       ) : (
-        <Scroller data={data} />
+        <Scroller ref={scrollerRef} data={data} />
       )}
     </section>
   );
