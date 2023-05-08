@@ -1,23 +1,20 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
-import Home from "@/pages/Home";
-import Login from "@/pages/Login";
-import Signup from "@/pages/Signup";
-import Detail from "@/pages/Detail";
-import Watchlist from "@/pages/Watchlist";
-import AllResults from "@/pages/AllResult";
-import NotFound from "@/pages/NotFound";
+import { HashRouter } from "react-router-dom";
 
-export default function App() {
-  return (
-    <Routes>
-      <Route path='/' element={<Home />} />
-      <Route path='/login' element={<Login />} />
-      <Route path='/signup' element={<Signup />} />
-      <Route path='/detail/:media/:id' element={<Detail />} />
-      <Route path='/watchlist' element={<Watchlist />} />
-      <Route path='/all/:resultsFor/:media' element={<AllResults />} />
-      <Route path='*' element={<NotFound />} />
-    </Routes>
-  );
-}
+import { SearchProvider } from "@/contexts/SearchContext";
+import Router from "./routes";
+import "./index.css";
+import ScrollToTop from "@/components/ScrolToTop";
+
+const App = () => (
+  <HashRouter>
+    <SearchProvider>
+      <Router>
+        <ScrollToTop />
+        <Router />;
+      </Router>
+    </SearchProvider>
+  </HashRouter>
+);
+
+export default App;
