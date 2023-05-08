@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import { useSearchContext } from "@/contexts/SearchContext";
 import Logo from "@/components/Shared/Logo";
-import SearchBar from "@/components/SearchBar";
+// import SearchBar from "@/components/SearchBar";
 import MobileMenu from "./MobileMenu";
 import Navigations from "./Navigations";
 import LoginBtn from "./LoginBtn";
@@ -61,7 +61,7 @@ export default function Navbar() {
             searchBarOpen ? "absolute z-30" : ""
           } inset-x-4 inset-y-2 flex justify-end sm:inset-x-6`}
         >
-          <SearchBar />
+          {/* <SearchBar /> */}
         </div>
       </div>
 

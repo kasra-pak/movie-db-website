@@ -3,7 +3,7 @@ import { preventOverflow } from "@/utils/NumberUtils";
 import Slide from "./Slide";
 import SlideControls from "./SlideControls";
 
-const NewCarousel = ({ data }) => {
+const Carousel = ({ data }) => {
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
 
   useEffect(() => {
@@ -43,4 +43,4 @@ const NewCarousel = ({ data }) => {
   );
 };
 
-export default NewCarousel;
+export default Carousel;
