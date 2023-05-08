@@ -9,10 +9,12 @@ export default function MovieCard({ data }) {
         <img src={data.poster} alt={data.title} />
       </div>
       <div className='flex-grow p-2'>
-        <div className='flex flex-wrap gap-1 text-nightRendezvous'>
-          <p>Drama</p>
-          <p>Comedy</p>
-        </div>
+        <p className='line-clamp-1 text-sm text-nightRendezvous'>
+          {new Intl.ListFormat("en-GB", {
+            style: "long",
+            type: "conjunction",
+          }).format(data.genres)}
+        </p>
         <Link
           to={`/detail/${data.media}/${data.id}`}
           className='line-clamp-2 text-lg font-semibold text-midnightExpress underline-offset-1 hover:underline'

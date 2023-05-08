@@ -77,6 +77,7 @@ function getPopularItems(media = "movie") {
           score: item.vote_average,
           media: media,
           date: item.release_date || item.first_air_date,
+          genres: item.genre_ids.map(id => genres[id]),
         }));
       }
     })
@@ -102,6 +103,7 @@ function getTopRatedItems(media = "movie") {
           score: item.vote_average,
           media: media,
           date: item.release_date || item.first_air_date,
+          genres: item.genre_ids.map(id => genres[id]),
         }));
       }
     })
