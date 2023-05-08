@@ -12,10 +12,8 @@ export default function Home() {
   const { searchTerm, searchBarOpen } = useSearchContext();
   return (
     <>
-      <div className='relative'>
-        <Header />
-        <Trends />
-      </div>
+      <Header />
+      <Trends />
       <main>
         <Populars />
         <TopRatedItems />

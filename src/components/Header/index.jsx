@@ -7,41 +7,36 @@ import MobileMenu from "@/components/Navbar/MobileMenu";
 
 function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const headerRef = useRef(null);
 
   useEffect(() => {
     if (mobileMenuOpen) {
       const scrollBarWidth = window.innerWidth - document.body.clientWidth;
 
-      document.body.style.overflow = "hidden";
+      document.body.style.overflowY = "hidden";
       document.body.style.paddingRight = `${scrollBarWidth}px`;
     } else {
-      document.body.style.overflow = "";
+      document.body.style.overflowY = "";
       document.body.style.paddingRight = "";
     }
   }, [mobileMenuOpen]);
 
-  function toggleMobileMenu() {
-    setMobileMenuOpen(prevState => !prevState);
-  }
-
-  const headerRef = useRef(null);
-
   useEffect(() => {
     const toggleHeaderStyles = e => {
-      if (e.currentTarget.scrollY > 0) {
-        headerRef.current.classList.remove("fill-white", "text-white");
-        headerRef.current.classList.add(
-          "fill-midnightExpress",
-          "bg-white/80",
-          "backdrop-blur-[6px]"
-        );
+      const isWindowOnTop = e.currentTarget.scrolly === 0;
+      const onTopClasses = ["fill-white", "text-white"];
+      const scrolledClasses = [
+        "fill-midnightExpress",
+        "bg-white/80",
+        "backdrop-blur-[6px]",
+      ];
+
+      if (isWindowOnTop) {
+        headerRef.current.classList.add(...onTopClasses);
+        headerRef.current.classList.remove(...scrolledClasses);
       } else {
-        headerRef.current.classList.remove(
-          "fill-midnightExpress",
-          "bg-white/80",
-          "backdrop-blur-[6px]"
-        );
-        headerRef.current.classList.add("fill-white", "text-white");
+        headerRef.current.classList.remove(...onTopClasses);
+        headerRef.current.classList.add(...scrolledClasses);
       }
     };
 
@@ -52,19 +47,25 @@ function Header() {
     };
   }, []);
 
+  function toggleMobileMenu() {
+    setMobileMenuOpen(prevState => !prevState);
+  }
+
   return (
-    <header
-      ref={headerRef}
-      className='fixed inset-x-0 z-10 flex items-center justify-between gap-3 fill-white p-2 text-white'
-    >
-      <Logo />
-      <SearchButton />
-      <HamburgerButton handleClick={toggleMobileMenu} />
+    <>
+      <header
+        ref={headerRef}
+        className='fixed inset-x-0 z-10 flex items-center justify-between gap-3 fill-white p-2 text-white'
+      >
+        <Logo />
+        <SearchButton />
+        <HamburgerButton handleClick={toggleMobileMenu} />
+      </header>
       <MobileMenu
         mobileMenuOpen={mobileMenuOpen}
         toggleMobileMenu={toggleMobileMenu}
       />
-    </header>
+    </>
   );
 }
 
