@@ -12,7 +12,7 @@ export default function Home() {
   const { searchTerm, searchBarOpen } = useSearchContext();
   return (
     <>
-      <Header />
+      <Header blendOnTop />
       <Trends />
       <main>
         <Populars />

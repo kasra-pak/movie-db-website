@@ -19,7 +19,7 @@ export default function Detail() {
 
   return (
     <>
-      <Header />
+      <Header blendOnTop />
       {isLoading && (
         <main className='flex min-h-[90vh] items-center justify-center'>
           <LoadingImg className='w-12 fill-primary' />
