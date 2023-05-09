@@ -12,18 +12,27 @@ function Header() {
   useEffect(() => {
     if (mobileMenuOpen) {
       const scrollBarWidth = window.innerWidth - document.body.clientWidth;
+      const headerRightPadding = parseInt(
+        window
+          .getComputedStyle(headerRef.current)
+          .getPropertyValue("padding-right")
+      );
 
       document.body.style.overflowY = "hidden";
       document.body.style.paddingRight = `${scrollBarWidth}px`;
+      headerRef.current.style.paddingRight = `${
+        scrollBarWidth + headerRightPadding
+      }px`;
     } else {
       document.body.style.overflowY = "";
       document.body.style.paddingRight = "";
+      headerRef.current.style.paddingRight = "";
     }
   }, [mobileMenuOpen]);
 
   useEffect(() => {
     const toggleHeaderStyles = e => {
-      const isWindowOnTop = e.currentTarget.scrolly === 0;
+      const isWindowOnTop = e.currentTarget.scrollY === 0;
       const onTopClasses = ["fill-white", "text-white"];
       const scrolledClasses = [
         "fill-midnightExpress",
