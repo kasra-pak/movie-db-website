@@ -13,7 +13,7 @@ export default function Trends() {
 
   if (isLoading)
     return (
-      <section className='flex aspect-[16/9] items-center justify-center'>
+      <section className='flex aspect-[16/9] items-center justify-center bg-black/40'>
         <LoadingImg className='mx-auto w-12 fill-primary' />
       </section>
     );
