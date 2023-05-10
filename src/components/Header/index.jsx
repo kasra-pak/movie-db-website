@@ -4,9 +4,11 @@ import Logo from "@/components/Shared/Logo";
 import HamburgerButton from "./HamburgerButton";
 import SearchButton from "./SearchButton";
 import MobileMenu from "@/components/Navbar/MobileMenu";
+import SearchBar from "./SearchBar";
 
 function Header({ blendOnTop }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [searchBarOpen, setSearchBarOpen] = useState(false);
   const headerRef = useRef(null);
 
   const onTopClasses = useMemo(() => {
@@ -74,12 +76,26 @@ function Header({ blendOnTop }) {
         )}`}
       >
         <Logo />
-        <SearchButton />
+
+        <SearchButton
+          openSearchBar={() => {
+            setSearchBarOpen(true);
+          }}
+        />
+
         <HamburgerButton handleClick={toggleMobileMenu} />
       </header>
+
       <MobileMenu
         mobileMenuOpen={mobileMenuOpen}
         toggleMobileMenu={toggleMobileMenu}
+      />
+
+      <SearchBar
+        isOpen={searchBarOpen}
+        closeSearchBar={() => {
+          setSearchBarOpen(false);
+        }}
       />
     </>
   );
