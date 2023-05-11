@@ -4,52 +4,58 @@ import { useSearchContext } from "@/contexts/SearchContext";
 import LoadingImg from "@/images/loading/loading.svg";
 
 export default function SearchResult() {
-  const { results, searching } = useSearchContext();
+  const { results, searching, searchTerm } = useSearchContext();
   const jobs = {
     acting: "actor",
     directing: "director",
     writing: "writer",
   };
 
-  return (
-    <div>
-      {searching ? (
+  if (searching) {
+    return (
+      <div>
         <LoadingImg className='mx-auto w-12 fill-primary' />
-      ) : (
-        results && (
-          <div className='flex flex-col gap-3'>
-            {results.map((item, idx) => (
-              <Link
-                to={`/detail/${item.media}/${item.id}`}
-                className='flex min-h-[70px] items-center gap-3 overflow-hidden rounded-md bg-secondary shadow-md'
-                key={idx}
-              >
-                <img
-                  src={item.picture}
-                  alt={item.title}
-                  className='aspect-[8/10] h-20 object-cover'
-                />
-                <div className='w-9/12 pr-3 capitalize text-gray-100'>
-                  <h3 className='w-full truncate font-semibold tracking-wider'>
-                    {item.title}
-                  </h3>
-                  <p className='text-slate-400'>
-                    {item.media === "person"
-                      ? jobs[item.known_for.toLowerCase()]
-                      : item.release}
-                  </p>
-                </div>
-              </Link>
-            ))}
-            <Link
-              to='/'
-              className='mt-2 rounded-md bg-primary px-4 py-2 text-center font-bold tracking-wide text-gray-100 shadow-sm hover:bg-orange-500 hover:shadow-md'
-            >
-              Show all results
-            </Link>
-          </div>
-        )
-      )}
-    </div>
-  );
+      </div>
+    );
+  }
+
+  if (results) {
+    return (
+      <div className='flex flex-col gap-3 overflow-y-auto border-t border-lostAtSee/40 p-6'>
+        {results.map((item, idx) => (
+          <Link
+            to={`/detail/${item.media}/${item.id}`}
+            key={idx}
+            className='flex rounded-lg bg-white shadow-multi'
+          >
+            <div className='flex-shrink-0 overflow-hidden rounded-l-lg'>
+              <img
+                src={item.picture}
+                alt={item.title}
+                className='aspect-[2/3] w-20'
+              />
+            </div>
+
+            <div className='space-y-1 p-5 text-sm text-nightRendezvous'>
+              <p className='line-clamp-1 text-base font-semibold text-midnightExpress'>
+                {item.title}
+              </p>
+
+              <p>
+                {item.media === "person"
+                  ? jobs[item.known_for.toLowerCase()]
+                  : item.release}
+              </p>
+            </div>
+          </Link>
+        ))}
+        <Link
+          to='/'
+          className='mt-4 block w-full max-w-sm self-center rounded-lg bg-midnightExpress py-1.5 text-center font-bold text-white'
+        >
+          View all results for &quot;{searchTerm}&quot;
+        </Link>
+      </div>
+    );
+  }
 }

@@ -5,6 +5,7 @@ import HamburgerButton from "./HamburgerButton";
 import SearchButton from "./SearchButton";
 import MobileMenu from "@/components/Navbar/MobileMenu";
 import SearchBar from "./SearchBar";
+import SearchResult from "@/components/SearchResult";
 
 function Header({ blendOnTop }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -91,12 +92,19 @@ function Header({ blendOnTop }) {
         toggleMobileMenu={toggleMobileMenu}
       />
 
-      <SearchBar
-        isOpen={searchBarOpen}
-        closeSearchBar={() => {
-          setSearchBarOpen(false);
-        }}
-      />
+      <div
+        className={`fixed inset-x-0 z-20 bg-white/70 backdrop-blur-[6px] ${
+          searchBarOpen ? "" : "-translate-y-full"
+        }`}
+      >
+        <SearchBar
+          isOpen={searchBarOpen}
+          closeSearchBar={() => {
+            setSearchBarOpen(false);
+          }}
+        />
+        <SearchResult />
+      </div>
     </>
   );
 }

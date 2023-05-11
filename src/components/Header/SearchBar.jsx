@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from "react";
+import { useSearchContext } from "@/contexts/SearchContext";
 
 const SearchBar = ({ isOpen, closeSearchBar }) => {
+  const { searchTerm, handleSearchTermChange } = useSearchContext();
   const searchBarRef = useRef(null);
 
   useEffect(() => {
@@ -41,9 +43,7 @@ const SearchBar = ({ isOpen, closeSearchBar }) => {
         e.currentTarget.querySelector("#search-input").focus();
       }}
       id='search-bar'
-      className={`fixed inset-x-0 z-20 flex cursor-text justify-between bg-white/70 px-6 py-3 backdrop-blur-[6px] ${
-        isOpen ? "fixed" : "-translate-y-full"
-      }`}
+      className='flex cursor-text justify-between px-6 py-3'
     >
       <div className='flex flex-grow gap-x-2'>
         <svg
@@ -62,6 +62,9 @@ const SearchBar = ({ isOpen, closeSearchBar }) => {
           name='search'
           id='search-input'
           placeholder='Search...'
+          autoComplete='off'
+          value={searchTerm}
+          onChange={handleSearchTermChange}
           className='flex-grow bg-inherit text-sm font-bold text-midnightExpress outline-none'
         />
       </div>
