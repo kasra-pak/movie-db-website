@@ -26,18 +26,18 @@ export default function SearchResult() {
           <Link
             to={`/detail/${item.media}/${item.id}`}
             key={idx}
-            className='flex rounded-lg bg-white shadow-multi'
+            className='flex gap-4 rounded-lg bg-white shadow-multi'
           >
             <div className='flex-shrink-0 overflow-hidden rounded-l-lg'>
               <img
                 src={item.picture}
                 alt={item.title}
-                className='aspect-[2/3] w-20'
+                className='aspect-[2/3] w-12'
               />
             </div>
 
-            <div className='space-y-1 p-5 text-sm text-nightRendezvous'>
-              <p className='line-clamp-1 text-base font-semibold text-midnightExpress'>
+            <div className='flex flex-col justify-center gap-0.5 text-sm text-nightRendezvous'>
+              <p className='line-clamp-1 font-semibold text-midnightExpress'>
                 {item.title}
               </p>
 
@@ -51,7 +51,7 @@ export default function SearchResult() {
         ))}
         <Link
           to='/'
-          className='mt-4 block w-full max-w-sm self-center rounded-lg bg-midnightExpress py-1.5 text-center font-bold text-white'
+          className='mt-4 block w-full max-w-sm self-center rounded-lg bg-midnightExpress py-1.5 text-center text-sm font-bold text-white'
         >
           View all results for &quot;{searchTerm}&quot;
         </Link>
