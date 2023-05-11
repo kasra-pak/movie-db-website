@@ -5,7 +5,6 @@ import { getPopularItems, getTopRatedItems } from "@/api/functions";
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Shared/Footer";
-import FadingLine from "@/components/Shared/FadingLine";
 import Tabs from "@/components/Tabs";
 import LoadingImg from "@/images/loading/loading.svg";
 
@@ -73,7 +72,6 @@ function AllResults() {
             setActive={setMediaFilter}
           />
         </div>
-        <FadingLine className='mx-auto max-w-2xl' />
 
         <div className='mx-auto mt-5 flex max-w-lg flex-col gap-3 rounded-md bg-primary p-3 shadow-inner'>
           {itemsList}

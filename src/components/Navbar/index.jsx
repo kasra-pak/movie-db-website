@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useSearchContext } from "@/contexts/SearchContext";
 import Logo from "@/components/Shared/Logo";
 // import SearchBar from "@/components/SearchBar";
-import MobileMenu from "./MobileMenu";
+import MobileMenu from "@/components/Header/MobileMenu";
 import Navigations from "./Navigations";
 import LoginBtn from "./LoginBtn";
 

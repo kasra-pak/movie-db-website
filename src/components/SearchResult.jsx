@@ -5,6 +5,7 @@ import LoadingImg from "@/images/loading/loading.svg";
 
 export default function SearchResult() {
   const { results, searching, searchTerm } = useSearchContext();
+
   const jobs = {
     acting: "actor",
     directing: "director",

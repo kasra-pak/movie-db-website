@@ -3,7 +3,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import Logo from "@/components/Shared/Logo";
 import HamburgerButton from "./HamburgerButton";
 import SearchButton from "./SearchButton";
-import MobileMenu from "@/components/Navbar/MobileMenu";
+import MobileMenu from "./MobileMenu";
 import SearchBar from "./SearchBar";
 import SearchResult from "@/components/SearchResult";
 

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { logOutUser } from "@/firebase";
 import { useCurrentUserData } from "@/hooks/UserHooks";
-import NavLink from "./NavLink";
+import NavLink from "../Navbar/NavLink";
 
 import Logo from "@/components/Shared/Logo";
 import Tv from "@/images/mobile-menu/tv.svg";
