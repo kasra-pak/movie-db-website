@@ -21,7 +21,7 @@ export default function SearchResult() {
 
   if (results) {
     return (
-      <div className='flex flex-col gap-3 overflow-y-auto border-t border-lostAtSee/40 p-6'>
+      <div className='scrollbar-hidden flex max-h-[70vh] flex-col gap-3 overflow-y-auto border-y border-lostAtSee/40 p-6'>
         {results.map((item, idx) => (
           <Link
             to={`/detail/${item.media}/${item.id}`}

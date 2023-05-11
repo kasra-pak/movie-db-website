@@ -93,7 +93,7 @@ function Header({ blendOnTop }) {
       />
 
       <div
-        className={`fixed inset-x-0 z-20 bg-white/70 backdrop-blur-[6px] ${
+        className={`fixed inset-x-0 z-20 bg-white/70 shadow-multi backdrop-blur-[6px] ${
           searchBarOpen ? "" : "-translate-y-full"
         }`}
       >
