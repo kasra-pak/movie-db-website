@@ -1,12 +1,21 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { auth } from "@/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
+
+import { auth, logInUser } from "@/firebase";
+import useControlledInput from "@/hooks/FormHooks";
+import { validateEmail } from "@/validations/loginFormValidationRules";
 import Header from "@/components/Header";
 
 export default function Login() {
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
+  const [email, emailErrors, updateEmail] = useControlledInput(
+    null,
+    validateEmail
+  );
+  const [password, passwordErrors, updatePassword] = useControlledInput(null);
+  const [submitStatus, setSubmitStatus] = useState("idle");
 
   useEffect(() => {
     if (user) {
@@ -14,6 +23,13 @@ export default function Login() {
       navigate(-1);
     }
   }, [user, navigate]);
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    logInUser(email, password).catch(err => {
+      setSubmitStatus(`error: ${err}`);
+    });
+  };
 
   return (
     <div
@@ -37,7 +53,7 @@ export default function Login() {
             </Link>
           </p>
 
-          <form className='my-8 flex flex-col gap-y-5'>
+          <form onSubmit={handleSubmit} className='my-8 flex flex-col gap-y-5'>
             <div className='rounded-lg bg-lostAtSee1'>
               <label htmlFor='email' className='sr-only text-lostAtSee'>
                 Email address
@@ -47,6 +63,8 @@ export default function Login() {
                 name='email'
                 id='email'
                 placeholder='Email address'
+                value={email || ""}
+                onChange={updateEmail}
                 className='w-full bg-transparent p-3.5 text-midnightExpress outline-none'
               />
             </div>
@@ -60,6 +78,8 @@ export default function Login() {
                 name='password'
                 id='password'
                 placeholder='Password'
+                value={password || ""}
+                onChange={updatePassword}
                 className='w-full bg-transparent p-3.5 text-midnightExpress outline-none'
               />
             </div>
