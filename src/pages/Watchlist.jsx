@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { auth } from "@/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import Navbar from "@/components/Navbar";
+import Header from "@/components/Header";
 import Tabs from "@/components/Tabs";
 
 function Watchlist() {
@@ -12,7 +12,7 @@ function Watchlist() {
 
   useEffect(() => {
     if (!user) navigate("/login", { replace: false });
-  }, [user]);
+  }, [user, navigate]);
 
   return !user ? (
     <h1>
@@ -21,7 +21,7 @@ function Watchlist() {
     </h1>
   ) : (
     <>
-      <Navbar />
+      <Header />
       <main className='px-4 sm:px-6'>
         <Tabs />
       </main>

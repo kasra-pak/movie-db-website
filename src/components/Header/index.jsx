@@ -72,7 +72,9 @@ function Header({ blendOnTop }) {
     <>
       <header
         ref={headerRef}
-        className={`fixed inset-x-0 z-10 flex items-center justify-between gap-3 p-2 ${onTopClasses.join(
+        className={`${
+          blendOnTop ? "fixed" : ""
+        } inset-x-0 z-10 flex items-center justify-between gap-3 p-2 ${onTopClasses.join(
           " "
         )}`}
       >
@@ -93,7 +95,7 @@ function Header({ blendOnTop }) {
       />
 
       <div
-        className={`fixed inset-x-0 z-20 bg-white/70 shadow-multi backdrop-blur-[6px] ${
+        className={`fixed inset-x-0 top-0 z-20 bg-white/70 shadow-multi backdrop-blur-[6px] ${
           searchBarOpen ? "" : "-translate-y-full"
         }`}
       >
