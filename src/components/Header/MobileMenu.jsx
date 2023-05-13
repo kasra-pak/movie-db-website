@@ -15,7 +15,11 @@ import Spinner from "@/images/loading/spinner.svg";
 function MobileMenu({ mobileMenuOpen, toggleMobileMenu }) {
   const [userData, userDataStatus] = useCurrentUserData();
 
-  const navItems = ["Movies", "TV Shows", "Watchlist"];
+  const navItems = [
+    { name: "Movies", path: "/" },
+    { name: "TV Shows", path: "/" },
+    { name: "Watchlist", path: "/watchlist" },
+  ];
 
   return (
     <div
@@ -36,22 +40,42 @@ function MobileMenu({ mobileMenuOpen, toggleMobileMenu }) {
         </div>
         <nav className='flex flex-col'>
           {navItems.map((item, idx) => (
-            <a
+            <Link
+              to={item.path}
               key={idx}
               className='cursor-pointer px-8 py-3.5 text-sm text-nightRendezvous hover:bg-lostAtSee1'
             >
-              {item}
-            </a>
+              {item.name}
+            </Link>
           ))}
         </nav>
-        <div className='p-6'>
-          <Link
-            to='/login'
-            className='block w-full rounded-lg bg-midnightExpress py-1.5 text-center font-bold text-white'
+
+        <span className='my-2 block h-px border-b border-dashed border-lostAtSee/[0.24]'></span>
+
+        {userDataStatus === "success" ? (
+          <button
+            onClick={logOutUser}
+            className='w-full cursor-pointer px-8 py-3.5 text-left text-sm text-nightRendezvous hover:bg-lostAtSee1'
           >
-            Login
-          </Link>
-        </div>
+            Logout
+          </button>
+        ) : (
+          <div className='p-6'>
+            <Link
+              to={userDataStatus === "idle" ? "/login" : ""}
+              className={`block w-full rounded-lg bg-midnightExpress py-1.5 text-center font-bold text-white ${
+                userDataStatus === "loading"
+                  ? "pointer-events-none cursor-wait"
+                  : ""
+              }`}
+            >
+              {userDataStatus === "idle" && "Login"}
+              {userDataStatus === "loading" && (
+                <Spinner className='mx-auto w-5 animate-spin fill-white' />
+              )}
+            </Link>
+          </div>
+        )}
         {/* <NavLink linkTo='/'>
               <Movie aria-hidden='true' />
               Movies
