@@ -6,6 +6,7 @@ import { useCurrentUserWatchlist } from "@/hooks/ListHooks";
 import { auth } from "@/firebase";
 import Header from "@/components/Header";
 import Tabs from "@/components/Shared/Tabs";
+import WatchlistCard from "../components/WatchlistCard";
 
 const allTabs = ["watched", "not watched"];
 
@@ -19,8 +20,11 @@ function Watchlist() {
     // if (!user) navigate("/login", { replace: false });
   }, [user, navigate]);
 
-  useEffect(() => {}, [activeTab]);
-  console.log(watched, unwatched);
+  const listItems =
+    activeTab === "watched"
+      ? watched.map(item => <WatchlistCard key={item.id} data={item} />)
+      : unwatched.map(item => <WatchlistCard key={item.id} data={item} />);
+
   return !user ? (
     <h1>
       we can place a timer and a message to tell the users that they need an
@@ -36,49 +40,7 @@ function Watchlist() {
 
         <Tabs names={allTabs} active={activeTab} setActive={setActiveTab} />
 
-        <div className='mt-6 space-y-4'>
-          {activeTab === "watched"
-            ? watched.map(item => (
-                <div
-                  key={item.id}
-                  className='flex items-start gap-5 rounded-lg border border-lostAtSee/[0.24] p-5'
-                >
-                  <div className='overflow-hidden rounded-lg'>
-                    <img src={item.poster} alt={item.title} className='w-20' />
-                  </div>
-
-                  <p>
-                    <span className='font-semibold text-midnightExpress'>
-                      {item.title}
-                    </span>
-                    <br />
-                    <span className='text-sm text-nightRendezvous'>
-                      {item.media}
-                    </span>
-                  </p>
-                </div>
-              ))
-            : unwatched.map(item => (
-                <div
-                  key={item.id}
-                  className='flex items-start gap-5 rounded-lg border border-lostAtSee/[0.24] p-5'
-                >
-                  <div className='overflow-hidden rounded-lg'>
-                    <img src={item.poster} alt={item.title} className='w-20' />
-                  </div>
-
-                  <p>
-                    <span className='font-semibold text-midnightExpress'>
-                      {item.title}
-                    </span>
-                    <br />
-                    <span className='text-sm text-nightRendezvous'>
-                      {item.media}
-                    </span>
-                  </p>
-                </div>
-              ))}
-        </div>
+        <div className='mt-6 space-y-4'>{listItems}</div>
       </main>
     </>
   );
