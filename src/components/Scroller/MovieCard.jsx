@@ -1,13 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { parseDate } from "@/utils/DateUtils";
+import ToggleWatchlistStatusButton from "@/components/Shared/ToggleWatchlistStatusButton";
 
 export default function MovieCard({ data }) {
   return (
     <div className='flex w-5/12 shrink-0 flex-col overflow-hidden rounded-lg shadow-multi'>
-      <div className='aspect-[2/3] w-full'>
+      <div className='relative aspect-[2/3] w-full'>
         <img src={data.poster} alt={data.title} />
+        <ToggleWatchlistStatusButton
+          id={data.id}
+          title={data.title}
+          media={data.media}
+        />
       </div>
+
       <div className='flex-grow p-2'>
         <p className='line-clamp-1 text-sm text-nightRendezvous'>
           {new Intl.ListFormat("en-GB", {
