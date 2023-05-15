@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getDetail } from "@/api/functions";
 import { useCurrentUserData } from "./UserHooks";
 import { updateUserWatchlist } from "@/firebase";
+import useAsync from "./AsyncHooks";
 
 function useMediaWatchlist(id) {
   const [userData] = useCurrentUserData();
@@ -45,27 +46,35 @@ function useMediaWatchlist(id) {
 }
 
 function useCurrentUserWatchlist() {
+  const { run, data, isSuccess } = useAsync();
   const [userData] = useCurrentUserData();
   const [watched, setWatched] = useState([]);
   const [unWatched, setUnwatched] = useState([]);
 
+  const fetchList = async list => {
+    let result = [];
+
+    for (const item of list) {
+      const temp = await getDetail(item.media, item.id);
+
+      result.push({ ...temp, watchedDate: item.watchedDate });
+    }
+
+    return result;
+  };
+
   useEffect(() => {
     if (userData.watchlist) {
-      userData.watchlist.forEach(item => {
-        getDetail(item.media, item.id).then(data => {
-          item.watchedDate
-            ? setWatched(prevState => [
-                ...prevState,
-                { ...data, media: item.media },
-              ])
-            : setUnwatched(prevState => [
-                ...prevState,
-                { ...data, media: item.media },
-              ]);
-        });
-      });
+      run(fetchList(userData.watchlist));
     }
-  }, [userData]);
+  }, [run, userData.watchlist]);
+
+  useEffect(() => {
+    if (isSuccess) {
+      setWatched(data.filter(item => item.watchedDate));
+      setUnwatched(data.filter(item => !item.watchedDate));
+    }
+  }, [data, isSuccess]);
 
   return [watched, unWatched];
 }

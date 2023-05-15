@@ -134,6 +134,7 @@ function getDetail(media = "movie", id) {
             runtime: data.runtime,
             tagline: data.tagline,
             release: data.release_date.split("-")[0],
+            media,
           };
         } else {
           return {
@@ -152,6 +153,7 @@ function getDetail(media = "movie", id) {
             seasons_num: data.number_of_seasons,
             episodes_num: data.number_of_episodes,
             in_production: data.in_production,
+            media,
           };
         }
       }

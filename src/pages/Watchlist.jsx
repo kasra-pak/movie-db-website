@@ -13,6 +13,7 @@ const allTabs = ["watched", "not watched"];
 function Watchlist() {
   const [user] = useAuthState(auth);
   const [watched, unwatched] = useCurrentUserWatchlist();
+  // const [watchlist] = useCurrentUserWatchlistTemp();
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState(allTabs[0]);
 
@@ -20,17 +21,26 @@ function Watchlist() {
     // if (!user) navigate("/login", { replace: false });
   }, [user, navigate]);
 
-  const listItems =
-    activeTab === "watched"
-      ? watched.map(item => <WatchlistCard key={item.id} data={item} />)
-      : unwatched.map(item => <WatchlistCard key={item.id} data={item} />);
+  if (!user) {
+    return (
+      <h1>
+        we can place a timer and a message to tell the users that they need an
+        account to access their watchlist
+      </h1>
+    );
+  }
 
-  return !user ? (
-    <h1>
-      we can place a timer and a message to tell the users that they need an
-      account to access their watchlist
-    </h1>
-  ) : (
+  // console.log(watched, unwatched);
+
+  const watchedItems = watched.map(item => (
+    <WatchlistCard key={item.id} data={item} />
+  ));
+
+  const unwatchedItems = unwatched.map(item => (
+    <WatchlistCard key={item.id} data={item} />
+  ));
+
+  return (
     <>
       <Header />
       <main className='my-8 px-4 sm:px-6'>
@@ -40,7 +50,9 @@ function Watchlist() {
 
         <Tabs names={allTabs} active={activeTab} setActive={setActiveTab} />
 
-        <div className='mt-6 space-y-4'>{listItems}</div>
+        <div className='mt-6 space-y-4'>
+          {activeTab === "watched" ? watchedItems : unwatchedItems}
+        </div>
       </main>
     </>
   );
