@@ -4,12 +4,18 @@ import { useMediaWatchlist } from "@/hooks/ListHooks";
 const WatchlistCard = ({ data }) => {
   const [, , addToWatchlist] = useMediaWatchlist(data.id);
 
-  const markAsWatched = () => {
-    addToWatchlist({
-      media: data.media,
-      watchedDate: Date.now(),
-      title: data.title,
-    });
+  const toggleWatched = () => {
+    data.watchedDate
+      ? addToWatchlist({
+          media: data.media,
+          watchedDate: null,
+          title: data.title,
+        })
+      : addToWatchlist({
+          media: data.media,
+          watchedDate: Date.now(),
+          title: data.title,
+        });
   };
 
   return (
@@ -30,10 +36,10 @@ const WatchlistCard = ({ data }) => {
         </p>
 
         <button
-          onClick={markAsWatched}
+          onClick={toggleWatched}
           className='w-max self-end rounded-lg bg-midnightExpress px-2 py-1 text-[13px] font-bold text-white '
         >
-          Mark as Watched
+          {data.watchedDate ? "Mark as Unwatched" : "Mark as Watched"}
         </button>
       </div>
     </div>
