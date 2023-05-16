@@ -13,24 +13,10 @@ const allTabs = ["watched", "not watched"];
 function Watchlist() {
   const [user] = useAuthState(auth);
   const [watched, unwatched] = useCurrentUserWatchlist();
-  // const [watchlist] = useCurrentUserWatchlistTemp();
-  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState(allTabs[0]);
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    // if (!user) navigate("/login", { replace: false });
-  }, [user, navigate]);
-
-  if (!user) {
-    return (
-      <h1>
-        we can place a timer and a message to tell the users that they need an
-        account to access their watchlist
-      </h1>
-    );
-  }
-
-  // console.log(watched, unwatched);
+  if (!user) return navigate("/login");
 
   const watchedItems = watched.map(item => (
     <WatchlistCard key={item.id} data={item} />

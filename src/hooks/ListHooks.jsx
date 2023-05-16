@@ -10,7 +10,7 @@ function useMediaWatchlist(id) {
 
   useEffect(() => {
     setStatus(() => {
-      if (!userData.watchlist) return "notAdded";
+      if (!userData?.watchlist) return "notAdded";
 
       for (const item of userData.watchlist) {
         if (item.id === id) {
@@ -64,10 +64,10 @@ function useCurrentUserWatchlist() {
   };
 
   useEffect(() => {
-    if (userData.watchlist) {
+    if (userData?.watchlist) {
       run(fetchList(userData.watchlist));
     }
-  }, [run, userData.watchlist]);
+  }, [run, userData?.watchlist]);
 
   useEffect(() => {
     if (isSuccess) {

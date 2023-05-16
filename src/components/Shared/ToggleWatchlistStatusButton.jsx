@@ -1,11 +1,19 @@
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useNavigate } from "react-router-dom";
+
+import { auth } from "@/firebase";
 import { useMediaWatchlist } from "@/hooks/ListHooks";
 
 const ToggleWatchlistStatusButton = ({ id, title, media }) => {
+  const [user] = useAuthState(auth);
   const [state, userData, addToWatchlist, removeFromWatchlist] =
     useMediaWatchlist(id);
+  const navigate = useNavigate();
 
   const changeState = () => {
+    if (!user) return navigate("/login");
+
     if (state === "notAdded") {
       addToWatchlist({
         media: media,

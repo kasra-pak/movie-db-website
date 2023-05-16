@@ -101,12 +101,12 @@ export default function Intro({ media, data }) {
           </div>
         </div>
 
-        <ListTogglerButtons
+        {/* <ListTogglerButtons
           mediaData={{ id: data.id, type: media, title: data.title }}
           tooltipPosition='left'
           direction='col'
           className='row-span-2 flex h-full w-5 flex-col xs:w-6'
-        />
+        /> */}
       </div>
     </>
   );

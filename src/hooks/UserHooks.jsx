@@ -5,7 +5,7 @@ import { db, auth } from "@/firebase";
 
 function useCurrentUserData() {
   const [user] = useAuthState(auth);
-  const [userData, setUserData] = useState({});
+  const [userData, setUserData] = useState(null);
   const [state, setState] = useState("idle");
 
   useEffect(() => {
@@ -19,7 +19,7 @@ function useCurrentUserData() {
         },
         error => {
           console.log(error);
-          setUserData({});
+          setUserData(null);
           setState("rejected");
         }
       );
@@ -28,7 +28,7 @@ function useCurrentUserData() {
         unsubscribe();
       };
     } else {
-      setUserData({});
+      setUserData(null);
       setState("idle");
     }
   }, [user]);
