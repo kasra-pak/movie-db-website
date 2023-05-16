@@ -74,7 +74,7 @@ function Header({ blendOnTop }) {
         ref={headerRef}
         className={`${
           blendOnTop ? "fixed" : ""
-        } inset-x-0 z-10 flex items-center justify-between gap-3 p-2 ${onTopClasses.join(
+        } inset-x-0 z-10 flex items-center justify-between gap-3 p-4 ${onTopClasses.join(
           " "
         )}`}
       >
