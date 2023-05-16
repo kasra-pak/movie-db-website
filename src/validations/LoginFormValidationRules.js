@@ -36,7 +36,6 @@ function validatePassword(pass) {
 
 function validateRePassword(mainPassword, confirmPassword) {
   let errors = [];
-  console.log(mainPassword, confirmPassword);
   if (mainPassword !== confirmPassword) errors.push("Passwords do not match");
 
   return errors.length ? errors : null;

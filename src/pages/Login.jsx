@@ -4,7 +4,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 
 import { auth, logInUser } from "@/firebase";
 import useControlledInput from "@/hooks/FormHooks";
-import { validateEmail } from "@/validations/loginFormValidationRules";
+import { validateEmail } from "@/validations/LoginFormValidationRules";
 import Header from "@/components/Header";
 
 export default function Login() {

@@ -1,12 +1,34 @@
 import React, { useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { auth } from "@/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
+
+import { auth, registerUser } from "@/firebase";
+import useControlledInput from "@/hooks/FormHooks";
+import {
+  validateName,
+  validateEmail,
+  validatePassword,
+  validateRePassword,
+} from "@/validations/LoginFormValidationRules";
 import Header from "@/components/Header";
 
 export default function Signup() {
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
+  const [name, nameErrors, updateName] = useControlledInput(null, validateName);
+  const [email, emailErrors, updateEmail] = useControlledInput(
+    null,
+    validateEmail
+  );
+  const [password, passwordErrors, updatePassword] = useControlledInput(
+    null,
+    validatePassword
+  );
+
+  const [rePassword, rePasswordErrors, updateRePassword] = useControlledInput(
+    null,
+    validateRePassword
+  );
 
   useEffect(() => {
     if (user) {
@@ -14,6 +36,13 @@ export default function Signup() {
       navigate(-1);
     }
   }, [user, navigate]);
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    registerUser(name, email, password).catch(err => {
+      console.log(`signup error: ${err}`);
+    });
+  };
 
   return (
     <div
@@ -37,7 +66,7 @@ export default function Signup() {
             </Link>
           </p>
 
-          <form className='my-8 flex flex-col gap-y-5'>
+          <form onSubmit={handleSubmit} className='my-8 flex flex-col gap-y-5'>
             <div className='rounded-lg bg-lostAtSee1'>
               <label htmlFor='fullname' className='sr-only text-lostAtSee'>
                 Full Name
@@ -47,6 +76,8 @@ export default function Signup() {
                 name='fullname'
                 id='fullname'
                 placeholder='Full Name'
+                value={name || ""}
+                onChange={updateName}
                 className='w-full bg-transparent p-3.5 text-midnightExpress outline-none'
               />
             </div>
@@ -59,6 +90,8 @@ export default function Signup() {
                 name='email'
                 id='email'
                 placeholder='Email address'
+                value={email || ""}
+                onChange={updateEmail}
                 className='w-full bg-transparent p-3.5 text-midnightExpress outline-none'
               />
             </div>
@@ -72,6 +105,8 @@ export default function Signup() {
                 name='password'
                 id='password'
                 placeholder='Password'
+                value={password || ""}
+                onChange={updatePassword}
                 className='w-full bg-transparent p-3.5 text-midnightExpress outline-none'
               />
             </div>
@@ -88,6 +123,8 @@ export default function Signup() {
                 name='confirmpassword'
                 id='confirmpassword'
                 placeholder='Confirm Password'
+                value={rePassword || ""}
+                onChange={updateRePassword}
                 className='w-full bg-transparent p-3.5 text-midnightExpress outline-none'
               />
             </div>
