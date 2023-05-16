@@ -18,4 +18,12 @@ function convertToHour(minutes) {
   }
 }
 
-export { preventOverflow, convertToHour };
+function convertToKilo(number) {
+  if (number >= 1000) {
+    return `${(number / 1000).toFixed(1)}K`;
+  } else {
+    return number;
+  }
+}
+
+export { preventOverflow, convertToHour, convertToKilo };

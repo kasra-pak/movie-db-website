@@ -51,3 +51,9 @@ Users can find a wealth of movie-related information on the website. Also provid
 ## Status
 
 The website is still in progress.
+
+**TODO:**
+
+- [ ] Create an advanced search using the `Discover` endpoint.
+- [ ] Add the director's name on the detail page.
+- [ ] Add a fallback image for casts with no image.

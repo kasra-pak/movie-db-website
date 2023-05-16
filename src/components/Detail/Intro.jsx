@@ -1,5 +1,5 @@
 import React from "react";
-import { convertToHour } from "@/utils/NumberUtils";
+import { convertToHour, convertToKilo } from "@/utils/NumberUtils";
 
 import { useMediaWatchlist } from "@/hooks/ListHooks";
 
@@ -50,7 +50,7 @@ export default function Intro({ data }) {
           <h1 className='font-barlow text-2xl font-bold capitalize'>
             {data.title}
           </h1>
-          <p className='text-xs tracking-wider opacity-80 xs:text-sm'>
+          <p className='mt-2 text-xs tracking-wider opacity-80 xs:text-sm'>
             {data.tagline}
           </p>
         </div>
@@ -67,15 +67,25 @@ export default function Intro({ data }) {
             >
               <path d='m16 2-4.55 9.22-10.17 1.47 7.36 7.18L6.9 30l9.1-4.78L25.1 30l-1.74-10.13 7.36-7.17-10.17-1.48Z' />
             </svg>
+            {data.scoreCount === 0 ? (
+              <p className='font-barlow text-midnightExpress'>
+                Be the first one to vote
+              </p>
+            ) : (
+              <>
+                <p className='font-barlow text-nightRendezvous'>
+                  <span className='text-[17px] font-semibold text-midnightExpress'>
+                    {data.scoreAverage.toFixed(1)}
+                  </span>
+                  {"/10"}
+                </p>
 
-            <p className='font-barlow text-nightRendezvous'>
-              <span className='text-[17px] font-semibold text-midnightExpress'>
-                {data.score.toFixed(1)}
-              </span>
-              {"/10"}
-            </p>
-
-            <p className='text-nightRendezvous'>(12K reviews)</p>
+                <p className='text-nightRendezvous'>
+                  {data.scoreCount &&
+                    `(${convertToKilo(data.scoreCount)} votes)`}
+                </p>
+              </>
+            )}
           </div>
 
           <div className='flex items-center gap-1 text-midnightExpress'>
