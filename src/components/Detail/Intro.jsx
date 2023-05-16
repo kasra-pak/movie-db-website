@@ -1,9 +1,11 @@
 import React from "react";
 import { convertToHour } from "@/utils/NumberUtils";
 
-import ListTogglerButtons from "@/components/Shared/ListTogglerButtons";
+import { useMediaWatchlist } from "@/hooks/ListHooks";
 
-export default function Intro({ media, data }) {
+export default function Intro({ data }) {
+  const [state, userData, addToWatchlist, removeFromWatchlist] =
+    useMediaWatchlist(data.id);
   const Runtime = convertToHour(data.runtime);
 
   const numberOfEpisodes = `${data.episodes_num} Episode${
@@ -11,9 +13,25 @@ export default function Intro({ media, data }) {
   }`;
 
   const firstAndLastRelease =
-    media === "movie"
+    data.media === "movie"
       ? data.release
       : `${data.first_air} - ${data.in_production ? "" : data.last_air}`;
+
+  const changeState = () => {
+    if (state === "notAdded" || state === "watched") {
+      addToWatchlist({
+        media: data.media,
+        watchedDate: null,
+        title: data.title,
+      });
+    } else if (state === "added") {
+      addToWatchlist({
+        media: data.media,
+        watchedDate: Date.now(),
+        title: data.title,
+      });
+    }
+  };
 
   return (
     <>
@@ -84,7 +102,7 @@ export default function Intro({ media, data }) {
               <path d='M20.59 22 15 16.41V7h2v8.58l5 5.01L20.59 22z' />
             </svg>
 
-            {media === "tv" && <p className='w-max'>{numberOfEpisodes}</p>}
+            {data.media === "tv" && <p className='w-max'>{numberOfEpisodes}</p>}
 
             {Runtime && <p className='w-max'>{Runtime}</p>}
           </div>
@@ -101,12 +119,23 @@ export default function Intro({ media, data }) {
           </div>
         </div>
 
-        {/* <ListTogglerButtons
-          mediaData={{ id: data.id, type: media, title: data.title }}
-          tooltipPosition='left'
-          direction='col'
-          className='row-span-2 flex h-full w-5 flex-col xs:w-6'
-        /> */}
+        <div className='mt-8 flex max-w-md flex-col gap-3 text-sm font-semibold text-white min-[400px]:flex-row'>
+          <button
+            className='grow basis-5/12 rounded-lg bg-midnightExpress px-5 py-2'
+            onClick={changeState}
+          >
+            {state === "notAdded" && "Add to Watchlist"}
+            {state === "added" && "Mark as Watched"}
+            {state === "watched" && "Mark as Unwatched"}
+          </button>
+
+          <button
+            className='grow basis-5/12 rounded-lg bg-rose-600 px-5 py-2'
+            onClick={() => removeFromWatchlist(data.id)}
+          >
+            Remove from Watchlist
+          </button>
+        </div>
       </div>
     </>
   );

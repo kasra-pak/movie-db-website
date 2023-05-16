@@ -27,7 +27,7 @@ export default function Detail() {
       )}
       {isSuccess && (
         <main className='bg-secondary text-gray-100'>
-          <Intro media={media} data={data} />
+          <Intro data={data} />
 
           <span className='mx-4 my-6 block h-px border-b border-dashed border-lostAtSee/[0.24]'></span>
 
