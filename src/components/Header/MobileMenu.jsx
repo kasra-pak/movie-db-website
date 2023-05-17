@@ -1,10 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { logOutUser } from "@/firebase";
-import { useCurrentUserData } from "@/hooks/UserHooks";
-import NavLink from "../Navbar/NavLink";
-
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth, logOutUser } from "@/firebase";
 import Logo from "@/components/Shared/Logo";
+
 import Tv from "@/images/mobile-menu/tv.svg";
 import Movie from "@/images/mobile-menu/movie.svg";
 import Bookmark from "@/images/mobile-menu/bookmark.svg";
@@ -12,18 +11,15 @@ import Login from "@/images/mobile-menu/login.svg";
 import LogoutMobileMenu from "@/images/mobile-menu/logout.svg";
 import Spinner from "@/images/loading/spinner.svg";
 
-function MobileMenu({ mobileMenuOpen, toggleMobileMenu }) {
-  const [userData, userDataStatus] = useCurrentUserData();
-
-  const navItems = [
-    { name: "Movies", path: "/" },
-    { name: "TV Shows", path: "/" },
-    { name: "Watchlist", path: "/watchlist" },
-  ];
+function MobileMenu({ mobileMenuOpen, toggleMobileMenu, navItems }) {
+  const [user, loading] = useAuthState(auth);
+  // const [userData, userDataStatus] = useCurrentUserData();
 
   return (
     <div
-      className={`fixed inset-0 z-20 ${mobileMenuOpen ? "block" : "hidden"}`}
+      className={`fixed inset-0 z-20 ${
+        mobileMenuOpen ? "block" : "hidden"
+      } min-[900px]:hidden`}
     >
       <div
         className='absolute inset-0 bg-gray-800/60'
@@ -38,12 +34,13 @@ function MobileMenu({ mobileMenuOpen, toggleMobileMenu }) {
         <div className='p-4'>
           <Logo />
         </div>
+
         <nav className='flex flex-col'>
           {navItems.map((item, idx) => (
             <Link
               to={item.path}
               key={idx}
-              className='cursor-pointer px-8 py-3.5 text-sm text-nightRendezvous hover:bg-lostAtSee1'
+              className='px-8 py-3.5 text-sm text-nightRendezvous hover:bg-lostAtSee1'
             >
               {item.name}
             </Link>
@@ -52,27 +49,24 @@ function MobileMenu({ mobileMenuOpen, toggleMobileMenu }) {
 
         <span className='my-2 block h-px border-b border-dashed border-lostAtSee/[0.24]'></span>
 
-        {userDataStatus === "success" ? (
+        {user || loading ? (
           <button
             onClick={logOutUser}
             className='w-full cursor-pointer px-8 py-3.5 text-left text-sm text-nightRendezvous hover:bg-lostAtSee1'
           >
-            Logout
+            {loading && <Spinner className='w-5 animate-spin fill-current' />}
+
+            {user && "Logout"}
           </button>
         ) : (
           <div className='p-6'>
             <Link
-              to={userDataStatus === "idle" ? "/login" : ""}
+              to='/login'
               className={`block w-full rounded-lg bg-midnightExpress py-1.5 text-center font-bold text-white ${
-                userDataStatus === "loading"
-                  ? "pointer-events-none cursor-wait"
-                  : ""
+                loading ? "pointer-events-none cursor-wait" : ""
               }`}
             >
-              {userDataStatus === "idle" && "Login"}
-              {userDataStatus === "loading" && (
-                <Spinner className='mx-auto w-5 animate-spin fill-white' />
-              )}
+              Login
             </Link>
           </div>
         )}

@@ -5,7 +5,7 @@ export default function Logo() {
   return (
     <Link
       to='/'
-      className='flex items-baseline gap-x-px text-xl font-black uppercase'
+      className='flex items-baseline gap-x-px text-xl font-black uppercase text-inherit'
     >
       movie
       <svg

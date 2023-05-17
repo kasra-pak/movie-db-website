@@ -2,7 +2,7 @@ import React from "react";
 
 const HamburgerButton = ({ handleClick }) => {
   return (
-    <button className='p-1' onClick={handleClick}>
+    <button className='p-1 min-[900px]:hidden' onClick={handleClick}>
       <svg
         xmlns='http://www.w3.org/2000/svg'
         aria-hidden='true'

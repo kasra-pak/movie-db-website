@@ -4,7 +4,7 @@ const SearchButton = ({ openSearchBar }) => {
   return (
     <button
       id='search-toggle-button'
-      className='ml-auto p-1'
+      className='ml-auto rounded-full p-2 hover:bg-nightRendezvous1'
       onClick={openSearchBar}
     >
       <svg
