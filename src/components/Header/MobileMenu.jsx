@@ -4,11 +4,6 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, logOutUser } from "@/firebase";
 import Logo from "@/components/Shared/Logo";
 
-import Tv from "@/images/mobile-menu/tv.svg";
-import Movie from "@/images/mobile-menu/movie.svg";
-import Bookmark from "@/images/mobile-menu/bookmark.svg";
-import Login from "@/images/mobile-menu/login.svg";
-import LogoutMobileMenu from "@/images/mobile-menu/logout.svg";
 import Spinner from "@/images/loading/spinner.svg";
 
 function MobileMenu({ mobileMenuOpen, toggleMobileMenu, navItems }) {
@@ -40,8 +35,9 @@ function MobileMenu({ mobileMenuOpen, toggleMobileMenu, navItems }) {
             <Link
               to={item.path}
               key={idx}
-              className='px-8 py-3.5 text-sm text-nightRendezvous hover:bg-lostAtSee1'
+              className='flex gap-3 px-6 py-3.5 text-sm text-nightRendezvous hover:bg-lostAtSee1'
             >
+              {item.icon}
               {item.name}
             </Link>
           ))}
@@ -52,11 +48,22 @@ function MobileMenu({ mobileMenuOpen, toggleMobileMenu, navItems }) {
         {user || loading ? (
           <button
             onClick={logOutUser}
-            className='w-full cursor-pointer px-8 py-3.5 text-left text-sm text-nightRendezvous hover:bg-lostAtSee1'
+            className='flex w-full cursor-pointer gap-3 px-6 py-3.5 text-left text-sm text-nightRendezvous hover:bg-lostAtSee1'
           >
             {loading && <Spinner className='w-5 animate-spin fill-current' />}
 
-            {user && "Logout"}
+            {user && (
+              <>
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  viewBox='0 0 32 32'
+                  className='w-5 fill-current'
+                >
+                  <path d='M3.651 16.989h17.326a1 1 0 1 0 0-2H3.713l3.617-3.617a.999.999 0 1 0-1.414-1.414L.009 16.02l5.907 6.063a.999.999 0 1 0 1.414-1.414zM29.989 0h-17a2 2 0 0 0-2 2v9h2.013V3.22c0-.668.542-1.21 1.21-1.21h14.523c.669 0 1.21.542 1.21 1.21l.032 25.572a1.21 1.21 0 0 1-1.21 1.21H14.214a1.21 1.21 0 0 1-1.21-1.21v-7.824l-2.013.003v9.03a2 2 0 0 0 2 2H29.99a2 2 0 0 0 2.001-2v-28a2 2 0 0 0-2-2z' />
+                </svg>
+                Logout
+              </>
+            )}
           </button>
         ) : (
           <div className='p-6'>

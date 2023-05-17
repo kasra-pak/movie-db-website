@@ -11,10 +11,26 @@ import SearchBar from "./SearchBar";
 import SearchResult from "@/components/SearchResult";
 import Spinner from "@/images/loading/spinner.svg";
 
+import Tv from "@/images/mobile-menu/tv.svg";
+import Movie from "@/images/mobile-menu/movie.svg";
+import Eye from "@/images/mobile-menu/eye.svg";
+
 const navItems = [
-  { name: "Movies", path: "/nowhere" },
-  { name: "TV Shows", path: "/nowhere" },
-  { name: "Watchlist", path: "/watchlist" },
+  {
+    name: "Movies",
+    path: "/nowhere",
+    icon: <Movie className='w-5 fill-current' />,
+  },
+  {
+    name: "TV Shows",
+    path: "/nowhere",
+    icon: <Tv className='w-5 fill-current' />,
+  },
+  {
+    name: "Watchlist",
+    path: "/watchlist",
+    icon: <Eye className='w-5 fill-current' />,
+  },
 ];
 
 function Header({ blendOnTop }) {
@@ -124,12 +140,11 @@ function Header({ blendOnTop }) {
               {user && (
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
-                  aria-hidden='true'
                   viewBox='0 0 32 32'
+                  aria-hidden='true'
                   className='w-5 fill-current'
                 >
-                  <path d='M6 30h12a2.002 2.002 0 0 0 2-2v-3h-2v3H6V4h12v3h2V4a2.002 2.002 0 0 0-2-2H6a2.002 2.002 0 0 0-2 2v24a2.002 2.002 0 0 0 2 2Z' />
-                  <path d='M20.586 20.586 24.172 17H10v-2h14.172l-3.586-3.586L22 10l6 6-6 6-1.414-1.414z' />
+                  <path d='M3.651 16.989h17.326a1 1 0 1 0 0-2H3.713l3.617-3.617a.999.999 0 1 0-1.414-1.414L.009 16.02l5.907 6.063a.999.999 0 1 0 1.414-1.414zM29.989 0h-17a2 2 0 0 0-2 2v9h2.013V3.22c0-.668.542-1.21 1.21-1.21h14.523c.669 0 1.21.542 1.21 1.21l.032 25.572a1.21 1.21 0 0 1-1.21 1.21H14.214a1.21 1.21 0 0 1-1.21-1.21v-7.824l-2.013.003v9.03a2 2 0 0 0 2 2H29.99a2 2 0 0 0 2.001-2v-28a2 2 0 0 0-2-2z' />
                 </svg>
               )}
 
