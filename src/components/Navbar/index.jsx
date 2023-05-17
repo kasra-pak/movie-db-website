@@ -8,8 +8,6 @@ import MobileMenu from "@/components/Header/MobileMenu";
 import Navigations from "./Navigations";
 import LoginBtn from "./LoginBtn";
 
-import Close from "@/images/navbar/close.svg";
-
 export default function Navbar() {
   const { searchBarOpen } = useSearchContext();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -31,14 +29,14 @@ export default function Navbar() {
         aria-expanded={mobileMenuOpen}
         onClick={toggleMobileMenu}
       >
-        {mobileMenuOpen ? (
+        {/* {mobileMenuOpen ? (
           <Close
             className='w-[90%] fill-primary stroke-primary'
             aria-hidden='true'
           />
         ) : (
           <Hamburger className='w-full stroke-primary' aria-hidden='true' />
-        )}
+        )} */}
       </button>
       <MobileMenu id='mobile-menu' mobileMenuOpen={mobileMenuOpen} />
 

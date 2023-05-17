@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { logOutUser } from "@/firebase";
 import { useCurrentUserData } from "@/hooks/UserHooks";
 import Tooltip from "@/components/Shared/Tooltip";
-import Logout from "@/images/login/logout.svg";
+import Logout from "@/images/home/logout.svg";
 import Spinner from "@/images/loading/spinner.svg";
 
 function LoginBtn() {
