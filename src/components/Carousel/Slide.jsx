@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import ArrowLine from "@/images/home/arrow-line.svg";
 
 const Slide = ({ slideIndex, activeSlideIndex, data }) => {
   return (
@@ -35,14 +36,7 @@ const Slide = ({ slideIndex, activeSlideIndex, data }) => {
           className='mt-4 flex gap-2 text-xs font-bold uppercase opacity-70 hover:underline hover:opacity-100'
         >
           view more
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            aria-hidden='true'
-            viewBox='0 0 24 24'
-            className='w-4 fill-current'
-          >
-            <path d='M5 13h11.86l-3.63 4.36a1 1 0 0 0 1.54 1.28l5-6a1.19 1.19 0 0 0 .09-.15c0-.05.05-.08.07-.13A1 1 0 0 0 20 12a1 1 0 0 0-.07-.36c0-.05-.05-.08-.07-.13a1.19 1.19 0 0 0-.09-.15l-5-6A1 1 0 0 0 14 5a1 1 0 0 0-.64.23 1 1 0 0 0-.13 1.41L16.86 11H5a1 1 0 0 0 0 2Z' />
-          </svg>
+          <ArrowLine className='w-4 fill-current' />
         </Link>
       </div>
     </div>

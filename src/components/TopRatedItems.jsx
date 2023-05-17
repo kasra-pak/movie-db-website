@@ -6,6 +6,7 @@ import useAsync from "@/hooks/AsyncHooks";
 import Scroller from "@/components/Scroller";
 import Tabs from "@/components/Shared/Tabs";
 import LoadingImg from "@/images/loading/loading.svg";
+import Arrow from "@/images/home/arrow.svg";
 
 const allMediaTypes = ["movie", "tv"];
 
@@ -45,14 +46,7 @@ export default function TopRatedItems() {
         >
           View All
           <span>
-            <svg
-              xmlns='http://www.w3.org/2000/svg'
-              aria-hidden='true'
-              viewBox='0 0 32 32'
-              className='w-5 fill-current'
-            >
-              <path d='M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z' />
-            </svg>
+            <Arrow className='w-5 fill-current' />
           </span>
         </Link>
       </div>
@@ -71,14 +65,7 @@ export default function TopRatedItems() {
               scroll("left");
             }}
           >
-            <svg
-              xmlns='http://www.w3.org/2000/svg'
-              aria-hidden='true'
-              viewBox='0 0 32 32'
-              className='w-5 rotate-180 fill-current'
-            >
-              <path d='M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z' />
-            </svg>
+            <Arrow className='w-5 rotate-180 fill-current' />
           </button>
 
           <button
@@ -87,14 +74,7 @@ export default function TopRatedItems() {
               scroll("right");
             }}
           >
-            <svg
-              xmlns='http://www.w3.org/2000/svg'
-              aria-hidden='true'
-              viewBox='0 0 32 32'
-              className='w-5 fill-current'
-            >
-              <path d='M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z' />
-            </svg>
+            <Arrow className='w-5 fill-current' />
           </button>
         </span>
       </div>

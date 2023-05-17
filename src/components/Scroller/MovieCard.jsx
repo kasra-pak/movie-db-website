@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { parseDate } from "@/utils/DateUtils";
 import ToggleWatchlistStatusButton from "@/components/Shared/ToggleWatchlistStatusButton";
+import Star from "@/images/home/star.svg";
 
 export default function MovieCard({ data }) {
   return (
@@ -38,14 +39,7 @@ export default function MovieCard({ data }) {
         <div
           className={`flex items-center gap-0.5 xs:gap-1.5 xs:px-1.5 xs:py-0.5`}
         >
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            aria-hidden='true'
-            viewBox='0 0 32 32'
-            className='w-4 fill-[#FFAB00]'
-          >
-            <path d='m16 2-4.55 9.22-10.17 1.47 7.36 7.18L6.9 30l9.1-4.78L25.1 30l-1.74-10.13 7.36-7.17-10.17-1.48Z' />
-          </svg>
+          <Star className='w-4 fill-[#FFAB00]' />
           <p className='font-barlow text-sm/none font-semibold text-midnightExpress'>
             {data.score.toFixed(1)}
           </p>

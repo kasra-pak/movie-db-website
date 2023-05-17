@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 
 import { auth } from "@/firebase";
 import { useMediaWatchlist } from "@/hooks/ListHooks";
+import Plus from "@/images/home/plus.svg";
+import Check from "@/images/home/check.svg";
 
 const ToggleWatchlistStatusButton = ({ id, title, media }) => {
   const [user] = useAuthState(auth);
@@ -32,21 +34,9 @@ const ToggleWatchlistStatusButton = ({ id, title, media }) => {
         className='flex w-full items-center justify-center p-1.5 opacity-70 hover:bg-nightRendezvous1 hover:opacity-100'
       >
         {state === "notAdded" ? (
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            viewBox='0 0 24 24'
-            className='w-5 fill-current'
-          >
-            <path d='M11 19v-6H5v-2h6V5h2v6h6v2h-6v6h-2Z' />
-          </svg>
+          <Plus className='w-5 fill-current' />
         ) : (
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            viewBox='0 0 24 24'
-            className='w-5 fill-current'
-          >
-            <path d='M20.61 5.207a1 1 0 0 1 .183 1.403l-10 13a1 1 0 0 1-1.5.097l-5-5a1 1 0 0 1 1.414-1.414l4.195 4.195L19.207 5.39a1 1 0 0 1 1.403-.183Z' />
-          </svg>
+          <Check className='w-5 fill-current' />
         )}
         <p>Watchlist</p>
       </button>

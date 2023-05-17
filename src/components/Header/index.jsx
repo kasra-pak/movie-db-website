@@ -10,7 +10,7 @@ import MobileMenu from "./MobileMenu";
 import SearchBar from "./SearchBar";
 import SearchResult from "@/components/SearchResult";
 import Spinner from "@/images/loading/spinner.svg";
-
+import Logout from "@/images/home/logout.svg";
 import Tv from "@/images/mobile-menu/tv.svg";
 import Movie from "@/images/mobile-menu/movie.svg";
 import Eye from "@/images/mobile-menu/eye.svg";
@@ -35,7 +35,7 @@ const navItems = [
 
 function Header({ blendOnTop }) {
   const [user, loading] = useAuthState(auth);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(true);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchBarOpen, setSearchBarOpen] = useState(false);
   const headerRef = useRef(null);
 
@@ -137,16 +137,7 @@ function Header({ blendOnTop }) {
               onClick={logOutUser}
               className='hidden cursor-pointer rounded-full p-2 text-left text-sm hover:bg-nightRendezvous1 min-[900px]:block'
             >
-              {user && (
-                <svg
-                  xmlns='http://www.w3.org/2000/svg'
-                  viewBox='0 0 32 32'
-                  aria-hidden='true'
-                  className='w-5 fill-current'
-                >
-                  <path d='M3.651 16.989h17.326a1 1 0 1 0 0-2H3.713l3.617-3.617a.999.999 0 1 0-1.414-1.414L.009 16.02l5.907 6.063a.999.999 0 1 0 1.414-1.414zM29.989 0h-17a2 2 0 0 0-2 2v9h2.013V3.22c0-.668.542-1.21 1.21-1.21h14.523c.669 0 1.21.542 1.21 1.21l.032 25.572a1.21 1.21 0 0 1-1.21 1.21H14.214a1.21 1.21 0 0 1-1.21-1.21v-7.824l-2.013.003v9.03a2 2 0 0 0 2 2H29.99a2 2 0 0 0 2.001-2v-28a2 2 0 0 0-2-2z' />
-                </svg>
-              )}
+              {user && <Logout className='w-5 fill-current' />}
 
               {loading && (
                 <Spinner className='mx-auto w-5 animate-spin fill-current' />

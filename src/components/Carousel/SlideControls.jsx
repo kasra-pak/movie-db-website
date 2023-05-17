@@ -1,4 +1,5 @@
 import React from "react";
+import Arrow from "@/images/home/arrow.svg";
 
 const SlideControls = ({
   activeSlideIndex,
@@ -12,14 +13,7 @@ const SlideControls = ({
         className='w-7 hover:rounded-full hover:bg-nightRendezvous1'
         onClick={skipToPrev}
       >
-        <svg
-          xmlns='http://www.w3.org/2000/svg'
-          aria-hidden='true'
-          viewBox='0 0 32 32'
-          className='-scale-x-100 fill-current opacity-50 hover:opacity-100'
-        >
-          <path d='M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z' />
-        </svg>
+        <Arrow className='-scale-x-100 fill-current opacity-50 hover:opacity-100' />
       </button>
       <span className='min-w-[3ch]'>
         {activeSlideIndex + 1}/{slideCount}
@@ -28,14 +22,7 @@ const SlideControls = ({
         className='w-7 hover:rounded-full hover:bg-nightRendezvous1'
         onClick={skipToNext}
       >
-        <svg
-          xmlns='http://www.w3.org/2000/svg'
-          aria-hidden='true'
-          viewBox='0 0 32 32'
-          className='fill-current opacity-50 hover:opacity-100'
-        >
-          <path d='M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z' />
-        </svg>
+        <Arrow className='fill-current opacity-50 hover:opacity-100' />
       </button>
     </div>
   );
