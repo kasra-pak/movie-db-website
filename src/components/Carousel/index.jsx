@@ -28,6 +28,7 @@ const Carousel = ({ data }) => {
       <div className='relative bottom-0 mx-auto h-full w-full max-w-6xl bg-black'>
         <SlideControls
           data={data}
+          setActiveSlideIndex={setActiveSlideIndex}
           activeSlideIndex={activeSlideIndex}
           slideCount={data.length}
           skipToNext={skipToNextSlide}
