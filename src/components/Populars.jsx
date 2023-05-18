@@ -35,18 +35,18 @@ export default function Populars() {
   };
 
   return (
-    <section className='mt-4 p-4 sm:p-6'>
+    <section className='mx-auto mt-4 max-w-6xl p-4 sm:p-6'>
       <div className='flex items-center justify-between'>
-        <h2 className='font-barlow text-2xl font-bold text-midnightExpress'>
+        <h2 className='font-barlow text-2xl font-bold text-midnightExpress min-[600px]:text-[1.625rem] min-[900px]:text-3xl xl:text-[2rem]'>
           Popular
         </h2>
         <Link
           to={`/all/popular/${mediaType}`}
-          className='inline-flex gap-1.5 rounded-lg px-2 py-1.5 text-sm font-semibold text-midnightExpress hover:bg-lostAtSee1'
+          className='inline-flex items-center gap-1.5 rounded-lg px-2 py-1.5 text-sm font-semibold text-midnightExpress hover:bg-lostAtSee1'
         >
           View All
           <span>
-            <Arrow className='w-5 fill-current' />
+            <Arrow className='w-5 fill-current md:w-6' />
           </span>
         </Link>
       </div>
@@ -65,7 +65,7 @@ export default function Populars() {
               scroll("left");
             }}
           >
-            <Arrow className='w-5 rotate-180 fill-current' />
+            <Arrow className='w-5 rotate-180 fill-current md:w-6' />
           </button>
 
           <button
@@ -74,7 +74,7 @@ export default function Populars() {
               scroll("right");
             }}
           >
-            <Arrow className='w-5 fill-current' />
+            <Arrow className='w-5 fill-current md:w-6' />
           </button>
         </span>
       </div>
