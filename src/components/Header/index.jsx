@@ -102,7 +102,7 @@ function Header({ blendOnTop }) {
         ref={headerRef}
         className={`${
           blendOnTop ? "fixed" : ""
-        } inset-x-0 z-10 ${onTopClasses.join(" ")}`}
+        } inset-x-0 z-20 ${onTopClasses.join(" ")}`}
       >
         <div className='mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4 min-[900px]:h-20 min-[900px]:px-6'>
           <Logo />
