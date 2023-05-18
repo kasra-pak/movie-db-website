@@ -24,7 +24,17 @@ const Carousel = ({ data }) => {
   }
 
   return (
-    <div className='relative aspect-[16/9]'>
+    <div className='relative aspect-[16/9] max-h-screen w-full'>
+      <div className='relative bottom-0 mx-auto h-full w-full max-w-6xl bg-black'>
+        <SlideControls
+          data={data}
+          activeSlideIndex={activeSlideIndex}
+          slideCount={data.length}
+          skipToNext={skipToNextSlide}
+          skipToPrev={skipToPrevSlide}
+        />
+      </div>
+
       {data.map((item, idx) => (
         <Slide
           key={item.id}
@@ -33,12 +43,6 @@ const Carousel = ({ data }) => {
           data={item}
         />
       ))}
-      <SlideControls
-        activeSlideIndex={activeSlideIndex}
-        slideCount={data.length}
-        skipToNext={skipToNextSlide}
-        skipToPrev={skipToPrevSlide}
-      />
     </div>
   );
 };

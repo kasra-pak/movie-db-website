@@ -137,7 +137,7 @@ function Header({ blendOnTop }) {
               onClick={logOutUser}
               className='hidden cursor-pointer rounded-full p-2 text-left text-sm hover:bg-nightRendezvous1 min-[900px]:block'
             >
-              {user && <Logout className='w-5 fill-current' />}
+              {user && <Logout className='w-5 rotate-180 fill-current' />}
 
               {loading && (
                 <Spinner className='mx-auto w-5 animate-spin fill-current' />
@@ -146,7 +146,7 @@ function Header({ blendOnTop }) {
           ) : (
             <Link
               to='/login'
-              className={`hidden w-full min-w-[75px] rounded-lg bg-midnightExpress px-4 py-1.5 text-center text-sm font-bold text-white min-[900px]:block ${
+              className={`hidden min-w-[75px] rounded-lg bg-midnightExpress px-4 py-1.5 text-center text-sm font-bold text-white min-[900px]:block ${
                 loading ? "pointer-events-none cursor-wait" : ""
               }`}
             >

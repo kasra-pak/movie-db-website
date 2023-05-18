@@ -12,8 +12,10 @@ const Slide = ({ slideIndex, activeSlideIndex, data }) => {
       }`}
     >
       <div className='absolute inset-0 bg-black/10 bg-gradient-to-b from-white/0 to-black to-80%'></div>
-      <div className='absolute inset-0 flex flex-col justify-end gap-2 p-6'>
-        <p className='text-2xl font-bold'>{data.title}</p>
+      <div className='absolute inset-0 mx-auto flex max-w-6xl flex-col justify-end gap-2 p-6 xl:mb-8'>
+        <p className='text-2xl font-bold min-[600px]:text-[1.625rem] min-[900px]:text-3xl xl:text-[2rem]'>
+          {data.title}
+        </p>
         {/* <div className='flex gap-1'>
           {data.genres.map((genre, idx) =>
             idx === data.genres.length - 1 ? (
@@ -30,7 +32,9 @@ const Slide = ({ slideIndex, activeSlideIndex, data }) => {
             )
           )}
         </div> */}
-        <p className='line-clamp-1 text-sm'>{data.overview}</p>
+        <p className='line-clamp-1 max-w-2xl text-sm sm:line-clamp-2'>
+          {data.overview}
+        </p>
         <Link
           to={`/detail/${data.media}/${data.id}`}
           className='mt-4 flex gap-2 text-xs font-bold uppercase opacity-70 hover:underline hover:opacity-100'
