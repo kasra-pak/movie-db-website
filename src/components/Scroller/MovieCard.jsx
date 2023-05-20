@@ -6,8 +6,8 @@ import Star from "@/images/home/star.svg";
 
 export default function MovieCard({ data }) {
   return (
-    <div className='flex w-5/12 shrink-0 flex-col overflow-hidden rounded-lg shadow-multi'>
-      <div className='relative aspect-[2/3] w-full'>
+    <div className='flex w-5/12 max-w-[270px] shrink-0 flex-col overflow-hidden rounded-xl shadow-multi'>
+      <div className='relative aspect-[2/3] w-full overflow-hidden'>
         <img src={data.poster} alt={data.title} />
         <ToggleWatchlistStatusButton
           id={data.id}
@@ -16,8 +16,8 @@ export default function MovieCard({ data }) {
         />
       </div>
 
-      <div className='flex-grow p-2'>
-        <p className='line-clamp-1 text-sm text-nightRendezvous'>
+      <div className='flex-grow p-2 xs:p-4'>
+        <p className='truncate text-sm text-nightRendezvous'>
           {new Intl.ListFormat("en-GB", {
             style: "long",
             type: "conjunction",
@@ -25,7 +25,7 @@ export default function MovieCard({ data }) {
         </p>
         <Link
           to={`/detail/${data.media}/${data.id}`}
-          className='line-clamp-2 text-lg font-semibold text-midnightExpress underline-offset-1 hover:underline'
+          className='mt-2 line-clamp-2 text-lg font-semibold text-midnightExpress underline-offset-1 hover:underline'
         >
           {data.title}
         </Link>
@@ -33,7 +33,7 @@ export default function MovieCard({ data }) {
 
       <span className='block h-px border-b border-dashed border-lostAtSee/[0.24]'></span>
 
-      <div className='flex items-center justify-between p-2'>
+      <div className='flex items-center justify-between p-4'>
         <p className='text-sm text-lostAtSee'>{parseDate(data.date)}</p>
 
         <div

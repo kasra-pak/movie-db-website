@@ -35,7 +35,7 @@ export default function Populars() {
   };
 
   return (
-    <section className='mx-auto mt-4 max-w-6xl p-4 sm:p-6'>
+    <section className='mx-auto max-w-6xl p-4 sm:p-6 md:pt-10 xl:pt-12 2xl:pt-14'>
       <div className='flex items-center justify-between'>
         <h2 className='font-barlow text-2xl font-bold text-midnightExpress min-[600px]:text-[1.625rem] min-[900px]:text-3xl xl:text-[2rem]'>
           Popular
@@ -51,7 +51,7 @@ export default function Populars() {
         </Link>
       </div>
 
-      <div className='mb-4 mt-8 flex items-end justify-between'>
+      <div className='mb-4 mt-8 flex items-end justify-between md:mt-10'>
         <Tabs
           names={allMediaTypes}
           active={mediaType}

@@ -28,10 +28,10 @@ const ToggleWatchlistStatusButton = ({ id, title, media }) => {
   };
 
   return (
-    <div className='absolute inset-x-2 top-2 rounded-lg bg-eigengrau text-sm font-semibold text-white backdrop-blur-[6px]'>
+    <div className='absolute inset-x-2 top-2 rounded-lg bg-eigengrau text-sm font-semibold text-white backdrop-blur-[6px] md:inset-x-3 md:top-3'>
       <button
         onClick={changeState}
-        className='flex w-full items-center justify-center p-1.5 opacity-70 hover:bg-nightRendezvous1 hover:opacity-100'
+        className='flex w-full items-center justify-center p-1.5 opacity-70 hover:bg-nightRendezvous1 hover:opacity-100 md:p-2'
       >
         {state === "notAdded" ? (
           <Plus className='w-5 fill-current' />
