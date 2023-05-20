@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 import { auth, logInUser } from "@/firebase";
@@ -12,20 +12,25 @@ import Twitter from "@/images/home/twitter.svg";
 
 export default function Login() {
   const [user] = useAuthState(auth);
-  const navigate = useNavigate();
   const [email, emailErrors, updateEmail] = useControlledInput(
     null,
     validateEmail
   );
   const [password, passwordErrors, updatePassword] = useControlledInput(null);
   const [submitStatus, setSubmitStatus] = useState("idle");
+  const navigate = useNavigate();
+  const location = useLocation();
+  console.log(location.state);
 
   useEffect(() => {
     if (user) {
-      // navigate("/", { replace: true });
+      if (location.state?.from) {
+        navigate(location.state.from);
+      }
+
       navigate(-1);
     }
-  }, [user, navigate]);
+  }, [user, navigate, location]);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -49,6 +54,7 @@ export default function Login() {
             Don&apos;t have an account?
             <Link
               to='/signup'
+              state={location.state?.from ? location.state : null}
               className='font-semibold text-smashingPumpkins underline-offset-1 hover:underline'
             >
               {" "}

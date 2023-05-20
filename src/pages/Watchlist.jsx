@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { Navigate, useLocation } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 import { useCurrentUserWatchlist } from "@/hooks/ListHooks";
@@ -14,9 +14,7 @@ function Watchlist() {
   const [user] = useAuthState(auth);
   const [watched, unwatched] = useCurrentUserWatchlist();
   const [activeTab, setActiveTab] = useState(allTabs[0]);
-  const navigate = useNavigate();
-
-  if (!user) return navigate("/login");
+  const location = useLocation();
 
   const watchedItems = watched.map(item => (
     <WatchlistCard key={item.id} data={item} />
@@ -25,6 +23,10 @@ function Watchlist() {
   const unwatchedItems = unwatched.map(item => (
     <WatchlistCard key={item.id} data={item} />
   ));
+
+  if (!user) {
+    return <Navigate to='/login' state={{ from: location }} replace />;
+  }
 
   return (
     <>

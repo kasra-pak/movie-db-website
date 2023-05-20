@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 
-import { auth, registerUser } from "@/firebase";
+import { auth, registerUser, logInUser } from "@/firebase";
 import useControlledInput from "@/hooks/FormHooks";
 import {
   validateName,
@@ -17,7 +17,6 @@ import Twitter from "@/images/home/twitter.svg";
 
 export default function Signup() {
   const [user] = useAuthState(auth);
-  const navigate = useNavigate();
   const [name, nameErrors, updateName] = useControlledInput(null, validateName);
   const [email, emailErrors, updateEmail] = useControlledInput(
     null,
@@ -32,18 +31,30 @@ export default function Signup() {
     null,
     validateRePassword
   );
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  console.log(location.state);
 
   useEffect(() => {
     if (user) {
-      // navigate("/", { replace: true });
+      if (location.state?.from) {
+        navigate(location.state.from);
+      }
+
       navigate(-1);
     }
-  }, [user, navigate]);
+  }, [user, navigate, location]);
 
   const handleSubmit = e => {
     e.preventDefault();
+
     registerUser(name, email, password).catch(err => {
       console.log(`signup error: ${err}`);
+    });
+
+    logInUser(name, email).catch(err => {
+      console.log(`login error: ${err}`);
     });
   };
 
