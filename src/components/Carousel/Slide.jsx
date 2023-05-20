@@ -12,6 +12,7 @@ const Slide = ({ slideIndex, activeSlideIndex, data }) => {
       }`}
     >
       <div className='absolute inset-0 bg-black/10 bg-gradient-to-b from-white/0 to-black to-80%'></div>
+
       <div className='absolute inset-0 mx-auto flex max-w-6xl flex-col justify-end gap-2 p-4 sm:p-6 xl:mb-8'>
         <p className='text-2xl font-bold min-[600px]:text-[1.625rem] min-[900px]:text-3xl xl:text-[2rem]'>
           {data.title}
