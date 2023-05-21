@@ -1,20 +1,33 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import Header from "@/components/Header";
 
 function NotFound() {
-  const navigate = useNavigate();
   return (
-    <main className='mx-auto flex h-screen w-11/12 flex-col items-center justify-center gap-y-5 md:gap-y-8'>
-      <h1 className='text-center text-2xl font-bold tracking-wide text-orange-100 sm:text-3xl md:text-4xl lg:text-5xl lg:tracking-wider xl:text-6xl xl:leading-snug'>
-        Whooops... This page is not available!
-      </h1>
-      <button
-        onClick={() => navigate(-1)}
-        className='text-md rounded-md bg-midnightExpress px-4 py-2 font-semibold uppercase tracking-wider text-gray-100 shadow-sm hover:bg-orange-500 hover:shadow-md sm:text-lg md:text-xl'
-      >
-        go back
-      </button>
-    </main>
+    <>
+      <Header />
+      <main className='mx-auto flex h-[85vh] flex-col items-center justify-center gap-y-5 p-4 sm:p-6 md:gap-y-6'>
+        <h2 className='font-barlow text-2xl font-bold text-midnightExpress min-[600px]:text-[1.625rem] min-[900px]:text-3xl xl:text-[2rem]'>
+          Page Not Found!
+        </h2>
+
+        <p className='font-barlow text-5xl font-black capitalize text-smashingPumpkins min-[900px]:text-7xl'>
+          404 error
+        </p>
+
+        <p className='max-w-xl text-center text-nightRendezvous'>
+          Sorry, we couldn&apos;t find the page you&apos;re looking for. Perhaps
+          you&apos;ve mistyped the URL? Be sure to check your spelling.
+        </p>
+
+        <Link
+          to='/'
+          className='rounded-md bg-midnightExpress px-4 py-3 text-sm font-bold text-white hover:bg-nightfall'
+        >
+          Go To Home
+        </Link>
+      </main>
+    </>
   );
 }
 

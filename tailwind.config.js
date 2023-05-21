@@ -27,6 +27,7 @@ module.exports = {
         lostAtSee1: "hsl(210 13% 62% / .08)",
         eigengrau: "hsl(214 24% 11% / .48)",
         lobster: "hsl(7 86% 38%)",
+        nightfall: "hsl(213 14% 31%)",
       },
       boxShadow: {
         multi:
