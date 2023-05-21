@@ -36,7 +36,7 @@ function Tabs() {
           /> */}
         </div>
       </header>
-      <div className='rounded-md bg-primary p-2 shadow-md shadow-[rgba(234,88,12,.2)]'>
+      <div className='rounded-md bg-midnightExpress p-2 shadow-md shadow-[rgba(234,88,12,.2)]'>
         <TabContent
           data={activeTab === "watched" ? watched : unwatched}
           viewMode={viewMode}

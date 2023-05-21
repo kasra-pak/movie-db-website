@@ -28,7 +28,7 @@ function AllResults() {
   if (isLoading) {
     itemsList = (
       <div className='bg-secondary p-4'>
-        <LoadingImg className='mx-auto w-10 fill-primary' />
+        <LoadingImg className='mx-auto w-10 fill-midnightExpress' />
       </div>
     );
   }
@@ -37,7 +37,7 @@ function AllResults() {
     itemsList = data.map(item => (
       <Link
         to={`/detail/${item.media}/${item.id}`}
-        className='flex min-h-[70px] items-center gap-3 overflow-hidden rounded-md bg-secondary shadow-md'
+        className='bg-secondary flex min-h-[70px] items-center gap-3 overflow-hidden rounded-md shadow-md'
         key={item.id}
       >
         <img
@@ -73,7 +73,7 @@ function AllResults() {
           />
         </div>
 
-        <div className='mx-auto mt-5 flex max-w-lg flex-col gap-3 rounded-md bg-primary p-3 shadow-inner'>
+        <div className='mx-auto mt-5 flex max-w-lg flex-col gap-3 rounded-md bg-midnightExpress p-3 shadow-inner'>
           {itemsList}
         </div>
       </main>

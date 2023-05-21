@@ -11,16 +11,16 @@ function LoginBtn() {
 
   if (userDataStatus === "success") {
     return (
-      <div className='hidden items-center justify-around rounded-md border-2 border-primary md:flex'>
-        <p className='w-max px-2 py-1 capitalize text-primary'>
+      <div className='hidden items-center justify-around rounded-md border-2 border-midnightExpress md:flex'>
+        <p className='w-max px-2 py-1 capitalize text-midnightExpress'>
           {userData.name}
         </p>
         <Tooltip label='Logout' className=''>
           <button
             onClick={logOutUser}
-            className='block rounded-r-sm bg-primary px-2 py-1 text-gray-900'
+            className='block rounded-r-sm bg-midnightExpress px-2 py-1 text-gray-900'
           >
-            <Logout className='w-7 fill-secondary' />
+            <Logout className='fill-secondary w-7' />
           </button>
         </Tooltip>
       </div>
@@ -30,10 +30,10 @@ function LoginBtn() {
   return (
     <Link
       to='/login'
-      className='hidden min-w-[100px] justify-center rounded-md bg-primary px-3 py-2 text-gray-900 md:flex'
+      className='hidden min-w-[100px] justify-center rounded-md bg-midnightExpress px-3 py-2 text-gray-900 md:flex'
     >
       {userDataStatus === "loading" ? (
-        <Spinner className='w-7 fill-secondary' />
+        <Spinner className='fill-secondary w-7' />
       ) : (
         "Log In"
       )}
@@ -44,12 +44,12 @@ function LoginBtn() {
 export default LoginBtn;
 
 // return Object.entries(userData).length ? (
-//   <div className='hidden justify-around items-center border-2 border-primary rounded-md md:flex'>
-//     <p className='w-max text-primary capitalize px-2 py-1'>{userData.name}</p>
+//   <div className='hidden justify-around items-center border-2 border-midnightExpress rounded-md md:flex'>
+//     <p className='w-max text-midnightExpress capitalize px-2 py-1'>{userData.name}</p>
 //     <Tooltip label='Logout' className=''>
 //       <button
 //         onClick={logOutUser}
-//         className='block rounded-r-sm text-gray-900 px-2 py-1 bg-primary'
+//         className='block rounded-r-sm text-gray-900 px-2 py-1 bg-midnightExpress'
 //       >
 //         <Logout className='w-7 fill-secondary' />
 //       </button>
@@ -58,7 +58,7 @@ export default LoginBtn;
 // ) : (
 //   <Link
 //     to='/login'
-//     className='hidden md:block text-gray-900 bg-primary px-3 py-1 rounded-md'
+//     className='hidden md:block text-gray-900 bg-midnightExpress px-3 py-1 rounded-md'
 //   >
 //     Log In
 //   </Link>

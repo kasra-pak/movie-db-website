@@ -10,7 +10,7 @@ function NotFound() {
       </h1>
       <button
         onClick={() => navigate(-1)}
-        className='text-md rounded-md bg-primary px-4 py-2 font-semibold uppercase tracking-wider text-gray-100 shadow-sm hover:bg-orange-500 hover:shadow-md sm:text-lg md:text-xl'
+        className='text-md rounded-md bg-midnightExpress px-4 py-2 font-semibold uppercase tracking-wider text-gray-100 shadow-sm hover:bg-orange-500 hover:shadow-md sm:text-lg md:text-xl'
       >
         go back
       </button>

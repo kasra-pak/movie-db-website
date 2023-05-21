@@ -88,7 +88,7 @@ function MobileMenu({ mobileMenuOpen, toggleMobileMenu, navItems }) {
               {userDataStatus === "idle" && (
                 <>
                   <Login aria-hidden='true' />
-                  <span className='text-primary'>Login</span>
+                  <span className='text-midnightExpress'>Login</span>
                 </>
               )}
               {userDataStatus === "loading" && (
@@ -97,7 +97,7 @@ function MobileMenu({ mobileMenuOpen, toggleMobileMenu, navItems }) {
                     className='mobile-menu-icon animate-spin'
                     aria-hidden='true'
                   />
-                  <span className='text-primary'>Loading</span>
+                  <span className='text-midnightExpress'>Loading</span>
                 </>
               )}
               {userDataStatus === "success" && (
@@ -107,7 +107,7 @@ function MobileMenu({ mobileMenuOpen, toggleMobileMenu, navItems }) {
                 >
                   <div className='flex items-end'>
                     <LogoutMobileMenu aria-hidden='true' />
-                    <span className='text-primary'>Logout</span>
+                    <span className='text-midnightExpress'>Logout</span>
                     <span className='ml-auto capitalize'>{userData.name}</span>
                   </div>
                 </button>

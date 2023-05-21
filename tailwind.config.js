@@ -18,8 +18,6 @@ module.exports = {
         "xs-2xl": "clamp(.75rem, 4vw, 1.5rem)",
       },
       colors: {
-        primary: "#ea580c",
-        secondary: "#ffffff",
         smashingPumpkins: "hsl(15 96% 55%)",
         smashingPumpkins1: "hsl(15 96% 55% / .08)",
         midnightExpress: "hsl(211 24% 17%)",

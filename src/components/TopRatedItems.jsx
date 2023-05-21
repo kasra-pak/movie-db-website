@@ -81,7 +81,7 @@ export default function TopRatedItems() {
 
       {isLoading ? (
         <div className='flex h-72 items-center justify-center'>
-          <LoadingImg className='mx-auto w-12 fill-primary' />
+          <LoadingImg className='mx-auto w-12 fill-midnightExpress' />
         </div>
       ) : (
         <Scroller ref={scrollerRef} data={data} />

@@ -15,7 +15,7 @@ export default function SearchResult() {
   if (searching) {
     return (
       <div>
-        <LoadingImg className='mx-auto w-12 fill-primary' />
+        <LoadingImg className='mx-auto w-12 fill-midnightExpress' />
       </div>
     );
   }

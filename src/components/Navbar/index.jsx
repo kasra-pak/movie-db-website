@@ -31,11 +31,11 @@ export default function Navbar() {
       >
         {/* {mobileMenuOpen ? (
           <Close
-            className='w-[90%] fill-primary stroke-primary'
+            className='w-[90%] fill-midnightExpress stroke-midnightExpress'
             aria-hidden='true'
           />
         ) : (
-          <Hamburger className='w-full stroke-primary' aria-hidden='true' />
+          <Hamburger className='w-full stroke-midnightExpress' aria-hidden='true' />
         )} */}
       </button>
       <MobileMenu id='mobile-menu' mobileMenuOpen={mobileMenuOpen} />
@@ -43,7 +43,7 @@ export default function Navbar() {
       {/* Logo */}
       <Link
         to='/'
-        className={`flex items-center gap-x-1.5 fill-primary text-primary ${
+        className={`flex items-center gap-x-1.5 fill-midnightExpress text-midnightExpress ${
           searchBarOpen ? "z-10" : "z-30"
         } transition-all`}
       >
