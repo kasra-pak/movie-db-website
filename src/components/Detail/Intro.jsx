@@ -46,7 +46,7 @@ export default function Intro({ data }) {
 
         <div className='absolute inset-0 bg-black/10 bg-gradient-to-b from-white/0 to-black to-90%'></div>
 
-        <div className='absolute inset-x-0 bottom-0 mx-auto flex h-2/3 max-h-96 max-w-6xl items-end gap-8 p-4 min-[900px]:p-6 lg:pb-10'>
+        <div className='absolute inset-x-0 bottom-0 mx-auto flex h-2/3 max-h-96 max-w-6xl items-end gap-8 p-4 sm:p-6 lg:pb-10'>
           <div className='aspect-[2/3] h-full overflow-hidden rounded-lg border border-white shadow-multi'>
             <img src={data.poster} alt={data.title} className='h-full' />
           </div>
@@ -136,7 +136,7 @@ export default function Intro({ data }) {
         </div>
       </div>
 
-      <div className='mx-auto my-6 max-w-6xl p-4 text-midnightExpress min-[900px]:p-6 lg:hidden'>
+      <div className='mx-auto my-6 max-w-6xl p-4 text-midnightExpress sm:p-6 lg:hidden'>
         <div className='mb-6 sm:mb-8'>
           <h1 className='font-barlow text-2xl font-bold capitalize min-[600px]:text-[1.625rem] min-[900px]:text-3xl xl:text-[2rem]'>
             {data.title}
