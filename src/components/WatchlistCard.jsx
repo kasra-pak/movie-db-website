@@ -1,8 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useMediaWatchlist } from "@/hooks/ListHooks";
+import TrashBin from "@/images/home/trash-bin.svg";
 
 const WatchlistCard = ({ data }) => {
-  const [, , addToWatchlist] = useMediaWatchlist(data.id);
+  const [, , addToWatchlist, removeFromWatchlist] = useMediaWatchlist(data.id);
 
   const toggleWatched = () => {
     data.watchedDate
@@ -25,15 +27,27 @@ const WatchlistCard = ({ data }) => {
       </div>
 
       <div className='flex w-full flex-col'>
-        <p className='h-full'>
-          <span className='font-semibold text-midnightExpress'>
-            {data.title}
-          </span>
-          <br />
-          <span className='text-sm capitalize text-nightRendezvous'>
-            {data.media}
-          </span>
-        </p>
+        <div className='flex grow items-start'>
+          <div className='grow space-y-1'>
+            <Link
+              to={`/detail/${data.media}/${data.id}`}
+              className='font-semibold text-midnightExpress underline-offset-1 hover:underline'
+            >
+              {data.title}
+            </Link>
+
+            <p className='text-sm capitalize text-nightRendezvous'>
+              {data.media}
+            </p>
+          </div>
+
+          <button
+            className='rounded-full p-2 hover:bg-nightRendezvous1'
+            onClick={removeFromWatchlist}
+          >
+            <TrashBin className='w-5' />
+          </button>
+        </div>
 
         <button
           onClick={toggleWatched}
