@@ -104,7 +104,7 @@ function Header({ blendOnTop }) {
           blendOnTop ? "fixed" : ""
         } inset-x-0 z-20 ${onTopClasses.join(" ")}`}
       >
-        <div className='mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4 min-[900px]:h-20 min-[900px]:px-6'>
+        <div className='mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4 sm:px-6 min-[900px]:h-20'>
           <Logo />
 
           <nav className='ml-10 hidden h-full gap-10 min-[900px]:flex'>

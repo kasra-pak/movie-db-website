@@ -52,7 +52,7 @@ const SlideControls = ({
 
   return (
     <>
-      <div className='absolute bottom-4 right-4 z-10 flex items-center rounded-lg bg-eigengrau p-0.5 text-center text-sm font-semibold text-white backdrop-blur-[6px] lg:hidden xl:bottom-14'>
+      <div className='absolute bottom-4 right-4 z-10 flex items-center rounded-lg bg-eigengrau p-0.5 text-center text-sm font-semibold text-white backdrop-blur-[6px] sm:bottom-6 sm:right-6 lg:hidden xl:bottom-14'>
         <button
           className='w-7 hover:rounded-full hover:bg-nightRendezvous1'
           onClick={skipToPrev}
