@@ -146,7 +146,7 @@ function Header({ blendOnTop }) {
           ) : (
             <Link
               to='/login'
-              className={`hidden min-w-[75px] rounded-lg bg-midnightExpress px-4 py-1.5 text-center text-sm font-bold text-white min-[900px]:block ${
+              className={`hidden min-w-[75px] rounded-lg bg-midnightExpress px-4 py-1.5 text-center text-sm font-bold text-white hover:bg-nightfall min-[900px]:block ${
                 loading ? "pointer-events-none cursor-wait" : ""
               }`}
             >

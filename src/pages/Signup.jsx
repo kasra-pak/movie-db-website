@@ -64,7 +64,7 @@ export default function Signup() {
     >
       <Header />
       <main className='flex grow items-center justify-center p-4'>
-        <div className='min-[900px]:text-left w-full max-w-[400px] overflow-hidden rounded-xl bg-white p-8 text-center text-nightRendezvous shadow-big'>
+        <div className='w-full max-w-[400px] overflow-hidden rounded-xl bg-white p-8 text-center text-nightRendezvous shadow-big min-[900px]:text-left'>
           <p className='mb-4 font-barlow text-2xl font-bold capitalize text-midnightExpress min-[600px]:text-[1.625rem] min-[900px]:text-3xl xl:text-[2rem]'>
             Get Started
           </p>
@@ -143,7 +143,7 @@ export default function Signup() {
               />
             </div>
 
-            <button className='h-12 w-full rounded-lg bg-midnightExpress p-2 text-[15px] font-bold text-white'>
+            <button className='h-12 w-full rounded-lg bg-midnightExpress p-2 text-[15px] font-bold text-white hover:bg-nightfall'>
               Sign Up
             </button>
 

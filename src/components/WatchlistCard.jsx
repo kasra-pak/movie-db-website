@@ -51,7 +51,7 @@ const WatchlistCard = ({ data }) => {
 
         <button
           onClick={toggleWatched}
-          className='w-max self-end rounded-lg bg-midnightExpress px-2 py-1 text-[13px] font-bold text-white'
+          className='w-max self-end rounded-lg bg-midnightExpress px-2 py-1 text-[13px] font-bold text-white hover:bg-nightfall'
         >
           {data.watchedDate ? "Mark as Unwatched" : "Mark as Watched"}
         </button>

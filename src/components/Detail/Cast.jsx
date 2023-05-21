@@ -86,7 +86,7 @@ export default function Cast({ media, id }) {
         {limit === data.length && limit > initialLengthLimit && (
           <button
             onClick={collapseList}
-            className='col-span-full w-1/4 min-w-max max-w-xs justify-self-center rounded-lg bg-midnightExpress px-2 py-1 text-sm font-semibold tracking-wider text-white shadow-md'
+            className='col-span-full w-1/4 min-w-max max-w-xs justify-self-center rounded-lg bg-midnightExpress px-2 py-1 text-sm font-semibold tracking-wider text-white shadow-md hover:bg-nightfall'
           >
             Collapse all
           </button>

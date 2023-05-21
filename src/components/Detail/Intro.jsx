@@ -116,7 +116,7 @@ export default function Intro({ data }) {
 
               <div className='inline-flex flex-col gap-y-4 text-sm font-semibold text-white'>
                 <button
-                  className='rounded-lg bg-midnightExpress px-5 py-2'
+                  className='rounded-lg bg-midnightExpress px-5 py-2 hover:bg-nightfall'
                   onClick={changeState}
                 >
                   {state === "notAdded" && "Add to Watchlist"}
@@ -125,7 +125,7 @@ export default function Intro({ data }) {
                 </button>
 
                 <button
-                  className='rounded-lg bg-rose-600 px-5 py-2'
+                  className='rounded-lg bg-rose-600 px-5 py-2 hover:bg-rose-500'
                   onClick={() => removeFromWatchlist(data.id)}
                 >
                   Remove from Watchlist
@@ -202,7 +202,7 @@ export default function Intro({ data }) {
 
         <div className='mt-8 flex max-w-md flex-col gap-3 text-sm font-semibold text-white min-[400px]:flex-row'>
           <button
-            className='grow basis-5/12 rounded-lg bg-midnightExpress px-5 py-2'
+            className='grow basis-5/12 rounded-lg bg-midnightExpress px-5 py-2 hover:bg-nightfall'
             onClick={changeState}
           >
             {state === "notAdded" && "Add to Watchlist"}
@@ -211,7 +211,7 @@ export default function Intro({ data }) {
           </button>
 
           <button
-            className='grow basis-5/12 rounded-lg bg-rose-600 px-5 py-2'
+            className='grow basis-5/12 rounded-lg bg-rose-600 px-5 py-2 hover:bg-rose-500'
             onClick={() => removeFromWatchlist(data.id)}
           >
             Remove from Watchlist

@@ -64,7 +64,7 @@ function MobileMenu({ mobileMenuOpen, toggleMobileMenu, navItems }) {
           <div className='p-6'>
             <Link
               to='/login'
-              className={`block w-full rounded-lg bg-midnightExpress py-1.5 text-center font-bold text-white ${
+              className={`block w-full rounded-lg bg-midnightExpress py-1.5 text-center font-bold text-white hover:bg-nightfall ${
                 loading ? "pointer-events-none cursor-wait" : ""
               }`}
             >
