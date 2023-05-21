@@ -21,7 +21,7 @@ const WatchlistCard = ({ data }) => {
   };
 
   return (
-    <div className='flex gap-5 rounded-lg border border-lostAtSee/[0.24] p-5'>
+    <div className='flex max-w-xl gap-5 rounded-lg border border-lostAtSee/[0.24] p-5'>
       <div className='shrink-0 overflow-hidden rounded-lg'>
         <img src={data.poster} alt={data.title} className='w-20' />
       </div>
@@ -31,7 +31,7 @@ const WatchlistCard = ({ data }) => {
           <div className='grow space-y-1'>
             <Link
               to={`/detail/${data.media}/${data.id}`}
-              className='font-semibold text-midnightExpress underline-offset-1 hover:underline'
+              className='font-semibold text-midnightExpress underline-offset-1 hover:underline sm:text-lg'
             >
               {data.title}
             </Link>

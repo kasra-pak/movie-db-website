@@ -41,14 +41,14 @@ function Watchlist() {
     return (
       <>
         <Header />
-        <main className='my-8 px-4 sm:px-6'>
-          <h1 className='mb-6 font-barlow text-[1.5rem] font-bold text-midnightExpress'>
+        <main className='mx-auto my-8 max-w-6xl px-4 sm:px-6'>
+          <h1 className='mb-6 font-barlow text-[1.5rem] font-bold text-midnightExpress min-[600px]:text-[1.625rem] min-[900px]:text-3xl xl:text-[2rem]'>
             Watchlist
           </h1>
 
           <Tabs names={allTabs} active={activeTab} setActive={setActiveTab} />
 
-          <div className='mt-6 space-y-4'>
+          <div className='mt-6 grid gap-4 lg:grid-cols-2 lg:gap-6 '>
             {activeTab === "watched" ? watchedItems : unwatchedItems}
           </div>
         </main>
