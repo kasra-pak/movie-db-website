@@ -44,13 +44,15 @@ const SearchBar = ({ isOpen, closeSearchBar }) => {
         e.currentTarget.querySelector("#search-input").focus();
       }}
       id='search-bar'
-      className='flex cursor-text justify-between px-6 py-3'
+      className='mx-auto flex max-w-6xl cursor-text justify-between px-6 py-3'
     >
       <div className='flex flex-grow gap-x-2'>
         <Search className='aspect-square w-5 fill-lostAtSee' />
+
         <label htmlFor='search-input' className='sr-only'>
           Search
         </label>
+
         <input
           type='search'
           name='search'
@@ -62,6 +64,7 @@ const SearchBar = ({ isOpen, closeSearchBar }) => {
           className='flex-grow bg-inherit text-sm font-bold text-midnightExpress outline-none'
         />
       </div>
+
       <button className='rounded-lg bg-smashingPumpkins px-3 py-2 text-sm font-bold text-white hover:bg-lobster hover:shadow-pumpkins'>
         Search
       </button>

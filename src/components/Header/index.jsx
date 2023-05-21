@@ -175,7 +175,10 @@ function Header({ blendOnTop }) {
             setSearchBarOpen(false);
           }}
         />
-        <SearchResult />
+
+        <div className='border-y border-lostAtSee/40'>
+          <SearchResult />
+        </div>
       </div>
     </>
   );

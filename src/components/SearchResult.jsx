@@ -14,15 +14,15 @@ export default function SearchResult() {
 
   if (searching) {
     return (
-      <div>
-        <LoadingImg className='mx-auto w-12 fill-midnightExpress' />
+      <div className='flex h-[518px] items-center p-10'>
+        <LoadingImg className='mx-auto w-10 fill-midnightExpress' />
       </div>
     );
   }
 
   if (results) {
     return (
-      <div className='scrollbar-hidden flex max-h-[70vh] flex-col gap-3 overflow-y-auto border-y border-lostAtSee/40 p-6'>
+      <div className='scrollbar-hidden mx-auto flex max-h-[70vh] max-w-3xl flex-col gap-3 overflow-y-auto p-6'>
         {results.map((item, idx) => (
           <Link
             to={`/detail/${item.media}/${item.id}`}
