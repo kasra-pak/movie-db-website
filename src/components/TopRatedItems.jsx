@@ -16,7 +16,7 @@ export default function TopRatedItems() {
   const scrollerRef = useRef(null);
 
   useEffect(() => {
-    run(getTopRatedItems(mediaType).then(items => items.slice(0, 6)));
+    run(getTopRatedItems(mediaType));
   }, [mediaType, run]);
 
   const scroll = direction => {

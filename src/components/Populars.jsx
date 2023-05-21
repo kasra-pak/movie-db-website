@@ -16,7 +16,7 @@ export default function Populars() {
   const scrollerRef = useRef(null);
 
   useEffect(() => {
-    run(getPopularItems(mediaType).then(items => items.slice(0, 6)));
+    run(getPopularItems(mediaType));
   }, [mediaType, run]);
 
   const scroll = direction => {
