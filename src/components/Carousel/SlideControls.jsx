@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useLayoutEffect, useRef } from "react";
 import Arrow from "@/images/home/arrow.svg";
 import Star from "@/images/home/star.svg";
 import { preventOverflow } from "@/utils/NumberUtils";
@@ -13,15 +13,17 @@ const SlideControls = ({
 }) => {
   const nodeRef = useRef(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    const show = 3;
+    const mid = (slideCount / 2).toFixed(1);
+
     const nodeRefElement = nodeRef.current;
     const childHeight =
       nodeRefElement.children[0].getBoundingClientRect().height;
-    nodeRefElement.style.height = `${3 * childHeight}px`;
-    nodeRefElement.style.tranform = `translateY(-${2.5 * childHeight}px)`;
-    nodeRefElement.scroll(0, childHeight);
+    nodeRefElement.scroll(0, (mid - 1) * childHeight);
+    nodeRefElement.style.height = `${show * childHeight}px`;
 
-    const focusedIndex = Math.floor(slideCount / 2);
+    const focusedIndex = Math.floor(mid);
 
     nodeRefElement.childNodes.forEach((child, idx) => {
       const x = Math.abs(focusedIndex - activeSlideIndex);
@@ -108,13 +110,6 @@ const SlideControls = ({
       </div>
     </>
   );
-};
-
-const neighbors = (idx, len) => {
-  const lower = preventOverflow(idx - 1, len);
-  const upper = preventOverflow(idx + 1, len);
-
-  return [lower, idx, upper];
 };
 
 export default SlideControls;

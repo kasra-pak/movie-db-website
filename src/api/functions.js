@@ -44,7 +44,7 @@ function getTrendingItems() {
       if (data.status_message) {
         throw new Error(data.status_message);
       } else {
-        return data.results.slice(0, 5).map(item => ({
+        return data.results.map(item => ({
           id: item.id,
           title: item.title || item.name,
           media: item.media_type,
