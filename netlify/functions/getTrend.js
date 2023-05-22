@@ -7,7 +7,7 @@ exports.handler = async function () {
   // const method = req.query.method;
   // const query = req.query.q;
 
-  const url = `${baseURL}/trending/tv/week?${keyName}=${keyValue}`;
+  const url = `${baseURL}/trending/all/week?${keyName}=${keyValue}`;
 
   try {
     let response = await needle("get", url);
