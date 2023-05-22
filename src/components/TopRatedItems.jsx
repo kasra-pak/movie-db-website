@@ -41,7 +41,7 @@ export default function TopRatedItems() {
           Top Rated
         </h2>
         <Link
-          to={`/all/popular/${mediaType}`}
+          to={`/all/top/${mediaType}`}
           className='inline-flex items-center gap-1.5 rounded-lg px-2 py-1.5 text-sm font-semibold text-midnightExpress hover:bg-lostAtSee1'
         >
           View All

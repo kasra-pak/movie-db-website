@@ -1,86 +1,65 @@
-import React, { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
 import useAsync from "@/hooks/AsyncHooks";
 import { getPopularItems, getTopRatedItems } from "@/api/functions";
 
-import Navbar from "@/components/Navbar";
+import Header from "@/components/Header";
+import MovieCard from "@/components/Scroller/MovieCard";
 import Footer from "@/components/Shared/Footer";
-import Tabs from "@/components/Tabs";
 import LoadingImg from "@/images/loading/loading.svg";
 
-const allMediaTypes = ["movie", "tv"];
+const titles = {
+  top: "Top Rated",
+  popular: "Popular",
+  tv: "TV Shows",
+  movie: "Movies",
+};
 
 function AllResults() {
   const { isLoading, isSuccess, data, run } = useAsync();
   const { resultsFor, media } = useParams();
-  const [mediaFilter, setMediaFilter] = useState(media);
 
   useEffect(() => {
     if (resultsFor === "top") {
-      run(getTopRatedItems(mediaFilter));
+      run(getTopRatedItems(media));
     } else if (resultsFor === "popular") {
-      run(getPopularItems(mediaFilter));
+      run(getPopularItems(media));
     }
-  }, [mediaFilter, resultsFor, run]);
-
-  let itemsList;
+  }, [media, resultsFor, run]);
 
   if (isLoading) {
-    itemsList = (
-      <div className='bg-secondary p-4'>
-        <LoadingImg className='mx-auto w-10 fill-midnightExpress' />
-      </div>
+    return (
+      <>
+        <Header />
+
+        <main className='my-8 flex h-[85vh] items-center justify-center px-4 sm:px-6'>
+          <LoadingImg className='w-10 text-midnightExpress' />
+        </main>
+      </>
     );
   }
 
-  if (isSuccess) {
-    itemsList = data.map(item => (
-      <Link
-        to={`/detail/${item.media}/${item.id}`}
-        className='bg-secondary flex min-h-[70px] items-center gap-3 overflow-hidden rounded-md shadow-md'
-        key={item.id}
-      >
-        <img
-          src={item.poster}
-          alt={item.title}
-          className='aspect-[8/10] h-20 object-cover'
-        />
-        <div className='w-9/12 pr-3 capitalize text-gray-100'>
-          <h3 className='w-full truncate font-semibold tracking-wider sm:text-lg'>
-            {item.title}
-          </h3>
-          <p className='text-slate-400'>{item.release}</p>
-        </div>
-      </Link>
-    ));
-  }
+  if (isSuccess && data) {
+    return (
+      <>
+        <Header />
 
-  return (
-    <>
-      <Navbar />
-
-      <main className='p-4 sm:p-6'>
-        <div className='mx-auto mb-2 flex max-w-2xl items-baseline justify-between xs:mb-3'>
-          <h1 className='text-xl font-semibold capitalize tracking-wide text-slate-100 xs:text-2xl'>
-            {resultsFor === "top" && "top rated"}
-            {resultsFor === "popular" && "popular"}
-            {resultsFor === "search" && `all results for "searchTerm"`}
+        <main className='mx-auto max-w-6xl p-4 sm:p-6'>
+          <h1 className='my-10 text-2xl font-bold capitalize text-midnightExpress min-[600px]:text-[1.625rem] min-[900px]:text-3xl xl:text-[2rem]'>
+            {`${titles[resultsFor]} ${titles[media]}`}
           </h1>
-          <Tabs
-            names={allMediaTypes}
-            active={mediaFilter}
-            setActive={setMediaFilter}
-          />
-        </div>
 
-        <div className='mx-auto mt-5 flex max-w-lg flex-col gap-3 rounded-md bg-midnightExpress p-3 shadow-inner'>
-          {itemsList}
-        </div>
-      </main>
+          <div className='grid gap-6 min-[400px]:grid-cols-2 sm:grid-cols-3 min-[900px]:grid-cols-4'>
+            {data.map(item => (
+              <MovieCard key={item.id} data={item} />
+            ))}
+          </div>
+        </main>
 
-      <Footer />
-    </>
-  );
+        <Footer />
+      </>
+    );
+  }
 }
 
 export default AllResults;

@@ -18,12 +18,12 @@ import Eye from "@/images/mobile-menu/eye.svg";
 const navItems = [
   {
     name: "Movies",
-    path: "/nowhere",
+    path: "/all/top/movie",
     icon: <Movie className='w-5 fill-current' />,
   },
   {
     name: "TV Shows",
-    path: "/nowhere",
+    path: "/all/top/tv",
     icon: <Tv className='w-5 fill-current' />,
   },
   {

@@ -4,9 +4,11 @@ import { parseDate } from "@/utils/DateUtils";
 import ToggleWatchlistStatusButton from "@/components/Shared/ToggleWatchlistStatusButton";
 import Star from "@/images/home/star.svg";
 
-export default function MovieCard({ data }) {
+export default function MovieCard({ data, className }) {
   return (
-    <div className='flex w-5/12 max-w-[270px] shrink-0 flex-col overflow-hidden rounded-xl shadow-multi'>
+    <div
+      className={`flex flex-col overflow-hidden rounded-xl shadow-multi ${className}`}
+    >
       <div className='relative aspect-[2/3] w-full overflow-hidden'>
         <img src={data.poster} alt={data.title} />
         <ToggleWatchlistStatusButton
