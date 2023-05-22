@@ -36,7 +36,7 @@ const SearchBar = ({ isOpen, closeSearchBar }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    navigate(`/search/${searchTerm}`);
+    navigate(`/search/${searchTerm.replaceAll(" ", "-")}`);
   };
 
   return (

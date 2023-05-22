@@ -50,8 +50,9 @@ export default function SearchResult() {
             </div>
           </Link>
         ))}
+
         <Link
-          to={`/search/${searchTerm}`}
+          to={`/search/${searchTerm.replaceAll(" ", "-")}`}
           className='mt-4 block w-full max-w-max self-center rounded-lg bg-midnightExpress px-4 py-1.5 text-center text-sm font-bold text-white hover:bg-nightfall'
         >
           View all results for &quot;{searchTerm}&quot;

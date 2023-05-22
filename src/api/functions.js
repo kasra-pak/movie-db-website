@@ -197,7 +197,7 @@ function searchItems(searchTerm) {
             "-"
           )[0],
           known_for: item.known_for_department,
-          score: item.vote_average,
+          score: item.vote_average || item.popularity,
         }));
       }
     })
