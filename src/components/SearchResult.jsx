@@ -31,7 +31,7 @@ export default function SearchResult() {
           >
             <div className='flex-shrink-0 overflow-hidden rounded-l-lg'>
               <img
-                src={item.picture}
+                src={item.poster}
                 alt={item.title}
                 className='aspect-[2/3] w-12'
               />
@@ -51,7 +51,7 @@ export default function SearchResult() {
           </Link>
         ))}
         <Link
-          to='/'
+          to={`/search/${searchTerm}`}
           className='mt-4 block w-full max-w-max self-center rounded-lg bg-midnightExpress px-4 py-1.5 text-center text-sm font-bold text-white hover:bg-nightfall'
         >
           View all results for &quot;{searchTerm}&quot;

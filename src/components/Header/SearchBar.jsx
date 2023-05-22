@@ -1,10 +1,12 @@
 import React, { useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { useSearchContext } from "@/contexts/SearchContext";
 import Search from "@/images/home/search.svg";
 
 const SearchBar = ({ isOpen, closeSearchBar }) => {
   const { searchTerm, handleSearchTermChange } = useSearchContext();
   const searchBarRef = useRef(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (isOpen) {
@@ -34,6 +36,7 @@ const SearchBar = ({ isOpen, closeSearchBar }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
+    navigate(`/search/${searchTerm}`);
   };
 
   return (

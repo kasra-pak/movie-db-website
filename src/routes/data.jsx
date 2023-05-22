@@ -6,6 +6,7 @@ import Signup from "@/pages/Signup";
 import Detail from "@/pages/Detail";
 import Watchlist from "@/pages/Watchlist";
 import AllResults from "@/pages/AllResult";
+import Search from "@/pages/Search";
 import NotFound from "@/pages/NotFound";
 
 const routesData = [
@@ -42,6 +43,12 @@ const routesData = [
   {
     path: "/all/:resultsFor/:media",
     element: <AllResults />,
+    title: "results",
+  },
+
+  {
+    path: "/search/:query/",
+    element: <Search />,
     title: "results",
   },
 

@@ -184,7 +184,11 @@ function searchItems(searchTerm) {
           id: item.id,
           media: item.media_type,
           title: item.title || item.name,
-          picture:
+          date: item.release_date || item.first_air_date,
+          genres: item.genre_ids
+            ? item.genre_ids.map(id => genres[id])
+            : undefined,
+          poster:
             (item.poster_path && `${imgUrl}${posterSize}${item.poster_path}`) ||
             (item.profile_path &&
               `${imgUrl}${profileSize}${item.profile_path}`) ||
@@ -193,10 +197,7 @@ function searchItems(searchTerm) {
             "-"
           )[0],
           known_for: item.known_for_department,
-          // score: item.vote_average,
-          // media: media,
-          // ...item
-          // ...item
+          score: item.vote_average,
         }));
       }
     })
